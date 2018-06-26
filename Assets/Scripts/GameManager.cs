@@ -60,4 +60,12 @@ public class GameManager : MonoBehaviour
 			return maps;
 		}
 	}
+
+	public Player[] Players 
+	{
+		get
+		{
+			return players;
+		}
+	}
 }

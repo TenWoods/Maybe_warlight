@@ -5,15 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour 
 {
 	/*玩家所拥有的地图格*/
-	private Map[] maps;
+	private List<Map> maps;
 	/*玩家在GameManager处的索引*/
 	private int playerID = 0;
+	/*玩家当前操作结束*/
 	private bool operateEnd = true;
+	/*玩家操作类*/
 	private Operation selfOperate;
 
 	private void Start() 
 	{
-		maps = new Map[100];
+		maps = new List<Map>();
 		selfOperate = new Operation();
 	}
 
@@ -22,6 +24,14 @@ public class Player : MonoBehaviour
 		if (!operateEnd)
 		{
 			selfOperate.Operate(this);
+		}
+	}
+
+	public List<Map> Maps 
+	{
+		get
+		{
+			return maps;
 		}
 	}
 
