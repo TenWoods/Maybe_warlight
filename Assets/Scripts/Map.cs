@@ -10,12 +10,27 @@ public class Map : MonoBehaviour
 	private int mapID;
 	/*玩家编号，-1为不属于任何玩家*/
 	private int playerID;
+	/*地图的地形属性*/
+	private int terrain;
 
 	private void Start() 
 	{
 		soldierNum = 0;
 		mapID = -1;
 		playerID = -1;
+	}
+
+	/*确认是否对此地图块有操作权限*/
+	public bool CheckAuthority(int operatorID)
+	{
+		if (operatorID == playerID || playerID == -1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public int MapID
@@ -39,6 +54,18 @@ public class Map : MonoBehaviour
 		set
 		{
 			playerID = value;
+		}
+	}
+
+	public int Terrain 
+	{
+		get
+		{
+			return terrain;
+		}
+		set
+		{
+			terrain = value;
 		}
 	}
 }

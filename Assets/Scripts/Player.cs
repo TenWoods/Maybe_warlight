@@ -17,6 +17,14 @@ public class Player : MonoBehaviour
 		selfOperate = new Operation();
 	}
 
+	private void Update() 
+	{
+		if (!operateEnd)
+		{
+			selfOperate.Operate(this);
+		}
+	}
+
 	public bool OperateEnd 
 	{
 		set 
