@@ -7,12 +7,12 @@ public class MapManager : MonoBehaviour
 	/*管理的地图方块的地形*/
 	private int terrain;
 	/*管理的地图块的数量*/
-	private int mapBlocksNum;
+	private int mapBlocksNum = 1;
 	/*管理的地图块的起始编号*/
 	[SerializeField]
 	private int mapBlockIDStart;
 	/*初始时所属玩家ID*/
-	private int playerID;
+	private int playerID = -1;
 
 	public void InitBlocks(GameManager gm)
 	{

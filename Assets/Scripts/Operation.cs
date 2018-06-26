@@ -4,16 +4,14 @@ using UnityEngine;
  
 public class Operation
 {
-	/*操作进行的阶段(枚举)定义*/
-	public enum OperateState{ADD_SOLDIER, COMMAND_SOLDIER, USE_CARDS, OP_END};
 	/*执行操作的玩家ID*/
 	private int playerID;
 	/*目前玩家处于的操作阶段*/
 	private OperateState state;
 	/*分配阶段的第一个地图块*/
-	private Map firstMap;
+	private GameObject firstMap;
 	/*分配阶段的第二个地图块*/
-	private Map secondMap;
+	private GameObject secondMap;
 
     private void Start()
 	{
@@ -23,21 +21,25 @@ public class Operation
 		secondMap = null;
 	}
 
-	public void Operate(Player player)
+	public void Operate(Player player, OperateState state)
 	{
+		this.state = state;
 		//TODO:玩家所能进行的所有操作
 		ClickMapBlock();
 	}
 
+	/*对鼠标点击事件进行处理*/
 	private void ClickMapBlock()
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
+			Debug.Log("鼠标点击");
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hitInfo;
 			Physics.Raycast(ray, out hitInfo);
 			if (hitInfo.collider != null)
 			{
+				Debug.Log("击中物体");
 				//TODO:每个case需要做的事
 				switch(state)
 				{
@@ -45,7 +47,7 @@ public class Operation
 					{
 						if (hitInfo.collider.tag == "Map")
 						{
-							
+							CommandOperate(hitInfo.collider.gameObject);	
 						}
 						break;
 					}
@@ -56,6 +58,23 @@ public class Operation
 				}
 			}
 		}
+	}
+
+	private void CommandOperate(GameObject mapBlock)
+	{
+		if (firstMap == null)
+		{
+			firstMap = mapBlock;
+			Debug.Log("选择起始地图块");
+			return;
+		}
+		secondMap = mapBlock;
+		Debug.Log("选择第二块地图块");
+		Debug.Log("画了个箭头");
+		firstMap = null;
+		secondMap = null;
+		//TODO:画箭头，计算第一地图块上的有效人数
+
 	}
 
 	public int PlayerID

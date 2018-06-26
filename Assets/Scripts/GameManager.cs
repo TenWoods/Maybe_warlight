@@ -25,12 +25,12 @@ public class GameManager : MonoBehaviour
 		players = new Player[playerNum];
 		maps = new Map[mapBlocksNum];
 		mapManagerNum = mapManagers.Length;
-		InitPlayers();
+		//InitPlayers();
 	}
 
 	private void Update()
 	{
-		
+
 	}
 
 	/*初始化所有地图方块*/

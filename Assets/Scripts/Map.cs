@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-	/*这一格所拥有士兵数s*/
-	private float soldierNum;
 	/*地图在玩家处的索引，-1为错误*/
 	private int mapID_player;
 	/*地图在GameManger处的编号*/
@@ -16,10 +14,14 @@ public class Map : MonoBehaviour
 	private Player owner;
 	/*地图的地形属性*/
 	private int terrain;
+	//人数在计算时向上取整
+	/*该格实际人数*/
+	private float baseSoldierNum = 1;
+	/*该格有效人数*/
+	private float effectSoldierNum = 1;
 
 	private void Start() 
 	{
-		soldierNum = 0;
 		mapID_player = -1;
 		playerID = -1;
 		owner = null;
