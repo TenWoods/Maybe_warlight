@@ -306,6 +306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 1825918126772124, guid: 85104413253196b449da7b1647d96418, type: 2}
+  angle: 0
+  arrowPos: {x: 0, y: 0, z: 0}
 --- !u!4 &662037081
 Transform:
   m_ObjectHideFlags: 0
