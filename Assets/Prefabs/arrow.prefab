@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4761158851152912}
   - component: {fileID: 212369375591327906}
-  - component: {fileID: 114108547101640058}
   m_Layer: 0
   m_Name: arrow
   m_TagString: arrow
@@ -34,27 +33,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825918126772124}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.00000017484555, w: 1}
   m_LocalPosition: {x: 0, y: 20, z: -5.4435625}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114108547101640058
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1825918126772124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb2bd4bd3a719b14b86b0d7c5576f38e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angle: 0
-  arrowPos: {x: 0, y: 0, z: 0}
-  arrow: {fileID: 1825918126772124}
 --- !u!212 &212369375591327906
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -89,8 +74,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 85206a8b0d9481441a3b1ae44db06277, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: d866551871c245b458c8f61aad664b81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
