@@ -8,6 +8,7 @@ TagManager:
   - 2
   - start
   - arrow
+  - Map
   layers:
   - Default
   - TransparentFX
