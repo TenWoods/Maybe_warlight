@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
+	/*地图块上实际人数的UI显示*/
+	public Text baseSoldierNum_UI;
+	/*地图块上有效人数的UI显示*/
+	public Text effectSoldierNum_UI;
 	/*地图在玩家处的索引，-1为错误*/
 	private int mapID_player;
 	/*地图在GameManger处的编号*/
@@ -19,15 +24,32 @@ public class Map : MonoBehaviour
 	private float baseSoldierNum = 1;
 	/*该格有效人数*/
 	private float effectSoldierNum = 1;
+	/*相邻的地图块*/
+	[SerializeField]
+	private Map[] nextMap;
 
 	private void Start() 
 	{
 		mapID_player = -1;
-		playerID = -1;
+		playerID = 1;
 		owner = null;
+		InitMapUI();
 	}
 
-	/*确认是否对此地图块有操作权限*/
+	/// <summary>
+	/// 初始化地图块UI显示
+	/// </summary>
+	private void InitMapUI()
+	{
+		baseSoldierNum_UI.text = baseSoldierNum.ToString();
+		effectSoldierNum_UI.text = effectSoldierNum.ToString();
+	}
+
+	/// <summary>
+	/// 确认是否有操作权限
+	/// </summary>
+	/// <param name="operatorID">操作玩家ID</param>
+	/// <returns>是否有权限</returns>
 	public bool CheckAuthority(int operatorID)
 	{
 		if (operatorID == playerID || playerID == -1)
@@ -40,7 +62,10 @@ public class Map : MonoBehaviour
 		}
 	}
 
-	/*设置地图块所属*/
+	/// <summary>
+	/// 设置地图块所属
+	/// </summary>
+	/// <param name="owner">所属玩家</param>
 	public void SetMapOwner(Player owner)
 	{
 		if (playerID != -1)
@@ -51,6 +76,16 @@ public class Map : MonoBehaviour
 		this.owner.Maps.Add(this);
 		playerID = this.owner.PlayerID;
 		mapID_player = this.owner.Maps.IndexOf(this);
+	}
+
+	/// <summary>
+	/// 增兵
+	/// </summary>
+	public void AddSoldier()
+	{
+		baseSoldierNum += 1;
+		//更新UI显示
+		baseSoldierNum_UI.text = baseSoldierNum.ToString();
 	}
 
 	public int MapID_Player
@@ -98,6 +133,14 @@ public class Map : MonoBehaviour
 		set
 		{
 			terrain = value;
+		}
+	}
+
+	public Map[] NextMap 
+	{
+		get
+		{
+			return nextMap;
 		}
 	}
 }

@@ -33,7 +33,9 @@ public class GameManager : MonoBehaviour
 
 	}
 
-	/*初始化所有地图方块*/
+	/// <summary>
+	/// 初始化所有地图方块
+	/// </summary>
 	private void InitMapBlocks()
 	{
 		for (int i = 0; i < mapManagerNum; i++)
@@ -42,7 +44,9 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	/*初始化所有玩家*/
+	/// <summary>
+	/// 初始化所有玩家
+	/// </summary>
 	private void InitPlayers()
 	{
 		for (int i = 0; i < playerNum; i++)

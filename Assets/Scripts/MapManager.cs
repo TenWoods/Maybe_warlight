@@ -14,6 +14,10 @@ public class MapManager : MonoBehaviour
 	/*初始时所属玩家ID*/
 	private int playerID = -1;
 
+	/// <summary>
+	/// 对地图上所有的地图块
+	/// </summary>
+	/// <param name="gm"></param>
 	public void InitBlocks(GameManager gm)
 	{
 		int i;

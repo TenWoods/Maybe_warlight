@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 135582363301790200}
   m_Layer: 0
   m_Name: MapBlock
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +52,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c474c1bab0b8034fbb24c593ff7b711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseSoldierNum_UI: {fileID: 0}
+  effectSoldierNum_UI: {fileID: 0}
+  nextMap:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!135 &135582363301790200
 SphereCollider:
   m_ObjectHideFlags: 1
