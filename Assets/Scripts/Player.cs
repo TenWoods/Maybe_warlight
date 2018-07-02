@@ -23,11 +23,12 @@ public class Player : MonoBehaviour
 	[SerializeField] //设定初始值
 	private int leaderPoint;
 	/*手牌最大的数量*/
-	private int cards_Num_Max;
+	[SerializeField]
+	private int cards_Num_Max = 0;
 	/*手中的卡牌,-1为空*/
 	private List<int> cards_in_hand;
 	/*牌库*/
-	private int[] cards;
+	private int[] cards = {0};
 	/*抽牌指针在牌库位置*/
 	private int cards_index = 0;
 	/*每回合开始是否为操作类更新数据*/
@@ -68,6 +69,11 @@ public class Player : MonoBehaviour
 	/// </summary>
 	public void GetCard()
 	{
+		if (cards_in_hand.Count >= cards_Num_Max)
+		{
+			//TODO:抽完牌后弃牌
+			return;
+		}
 		cards_in_hand.Add(cards[cards_index]);
 	}
 

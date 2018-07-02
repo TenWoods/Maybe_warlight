@@ -27,12 +27,15 @@ public class Map : MonoBehaviour
 	/*相邻的地图块*/
 	[SerializeField]
 	private Map[] nextMap;
+	/*指向相邻地图块的箭头*/
+	private GameObject[] arrows;
 
 	private void Start() 
 	{
 		mapID_player = -1;
 		playerID = 1;
 		owner = null;
+		arrows = new GameObject[nextMap.Length];
 		InitMapUI();
 	}
 
@@ -141,6 +144,14 @@ public class Map : MonoBehaviour
 		get
 		{
 			return nextMap;
+		}
+	}
+
+	public GameObject[] Arrows
+	{
+		get
+		{
+			return arrows;
 		}
 	}
 }

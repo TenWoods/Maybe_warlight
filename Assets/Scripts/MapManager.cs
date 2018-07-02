@@ -5,6 +5,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour 
 {
 	/*管理的地图方块的地形*/
+	[SerializeField]
 	private int terrain;
 	/*管理的地图块的数量*/
 	private int mapBlocksNum = 1;

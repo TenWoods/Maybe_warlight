@@ -88,7 +88,8 @@ public class Operation
 					{
 						if (hitInfo.collider.tag == "Card")
 						{
-
+							Debug.Log("出牌");
+							//TODO:出牌操作;牌的效果、手牌List中相应牌去除
 						}
 						break;
 					}
@@ -104,31 +105,40 @@ public class Operation
 	/// <param name="mapBlock">地图块</param>
 	private void CommandOperate(GameObject mapBlock)
 	{
-		if (firstMap == null)
-		{
-			bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
-			if (!hasAuthority)
-			{
-				return;
-			}
-			firstMap = mapBlock;
-			Debug.Log("选择起始地图块");
-			return;
-		}
-		secondMap = mapBlock;
-		Map firstMap_property = firstMap.GetComponent<Map>();
-		Map secondMap_property = secondMap.GetComponent<Map>();
-		if (!CheckNeighbour(firstMap_property, secondMap_property))
-		{
-			Debug.Log("这两块不相邻!");
-			return;
-		}
-		Debug.Log("选择第二块地图块");
-		Debug.Log("画了个箭头");
-		firstMap = null;
-		secondMap = null;
+		// if (firstMap == null)
+		// {
+		// 	bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
+		// 	if (!hasAuthority)
+		// 	{
+		// 		return;
+		// 	}
+		// 	firstMap = mapBlock;
+		// 	Debug.Log("选择起始地图块");
+		// 	return;
+		// }
+		// secondMap = mapBlock;
+		// Map firstMap_property = firstMap.GetComponent<Map>();
+		// Map secondMap_property = secondMap.GetComponent<Map>();
+		// if (!CheckNeighbour(firstMap_property, secondMap_property))
+		// {
+		// 	Debug.Log("这两块不相邻!");
+		// 	return;
+		// }
+		// Debug.Log("选择第二块地图块");
+		// Debug.Log("画了个箭头");
+		// firstMap = null;
+		// secondMap = null;
 		//TODO:画箭头，计算第一地图块上的有效人数
-
+		Map mapBlockData = mapBlock.GetComponent<Map>();
+		for (int i = 0; i < mapBlockData.NextMap.Length; i++)
+		{
+			if (mapBlockData.Arrows[i] != null)
+			{
+				mapBlockData.Arrows[i].SetActive(true);
+				continue;
+			}
+			//TODO:画箭头,并把箭头给地图块保存
+		}
 	}
 
 	/// <summary>
