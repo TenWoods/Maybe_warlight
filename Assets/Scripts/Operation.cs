@@ -57,9 +57,8 @@ public class Operation
 		if (Input.GetMouseButtonDown(0))
 		{
 			Debug.Log("鼠标点击");
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hitInfo;
-			Physics.Raycast(ray, out hitInfo);
+			Vector2 mousPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			RaycastHit2D hitInfo = Physics2D.Raycast(mousPos, Vector2.zero);
 			if (hitInfo.collider != null)
 			{
 				Debug.Log("击中物体");
@@ -128,7 +127,7 @@ public class Operation
 		// Debug.Log("画了个箭头");
 		// firstMap = null;
 		// secondMap = null;
-		//TODO:画箭头，计算第一地图块上的有效人数
+		////TODO:画箭头，计算第一地图块上的有效人数
 		Map mapBlockData = mapBlock.GetComponent<Map>();
 		for (int i = 0; i < mapBlockData.NextMap.Length; i++)
 		{
@@ -137,6 +136,7 @@ public class Operation
 				mapBlockData.Arrows[i].SetActive(true);
 				continue;
 			}
+			Debug.Log("画了个箭头");
 			//TODO:画箭头,并把箭头给地图块保存
 		}
 	}

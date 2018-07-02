@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	/*地图管理者*/
 	private MapManager[] mapManagers;
+	/*游戏是否开始*/
+	[SerializeField]
+	private bool gameStart = false;
 	
 	private void Start() 
 	{
@@ -30,6 +33,10 @@ public class GameManager : MonoBehaviour
 
 	private void Update()
 	{
+		if (!gameStart)
+		{
+			return;
+		}
 
 	}
 
@@ -54,6 +61,32 @@ public class GameManager : MonoBehaviour
 			players[i] = new Player();
 			players[i].PlayerID = i + 1;
 			//TODO:生成玩家之后对玩家进行初始化
+		}
+	}
+
+	/// <summary>
+	/// 开始游戏
+	/// </summary>
+	public void StartGame()
+	{
+		Debug.Log("开始");
+		gameStart = true;
+		foreach (Player p in players)
+		{
+			p.GameStart = gameStart;
+		}
+	}
+
+	/// <summary>
+	/// 结束游戏
+	/// </summary>
+	public void EndGame()
+	{
+		Debug.Log("结束");
+		gameStart = false;
+		foreach (Player p in players)
+		{
+			p.GameStart = gameStart;
 		}
 	}
 

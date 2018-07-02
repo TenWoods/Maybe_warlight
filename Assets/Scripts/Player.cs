@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
 	private int cards_index = 0;
 	/*每回合开始是否为操作类更新数据*/
 	private bool hasUpdated = false;
+	/*游戏开始*/
+	private bool gameStart = false;
 
 	private void Start() 
 	{
@@ -44,6 +46,10 @@ public class Player : MonoBehaviour
 
 	private void Update() 
 	{
+		if (!gameStart)
+		{
+			return;
+		}
 		if (!operateEnd)
 		{
 			if (!hasUpdated)
@@ -122,6 +128,14 @@ public class Player : MonoBehaviour
 		get
 		{
 			return leaderPoint;
+		}
+	}
+
+	public bool GameStart 
+	{
+		set
+		{
+			gameStart = value;
 		}
 	}
 }

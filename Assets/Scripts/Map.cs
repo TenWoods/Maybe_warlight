@@ -36,6 +36,7 @@ public class Map : MonoBehaviour
 		playerID = 1;
 		owner = null;
 		arrows = new GameObject[nextMap.Length];
+		GetNextBlock();
 		InitMapUI();
 	}
 
@@ -89,6 +90,15 @@ public class Map : MonoBehaviour
 		baseSoldierNum += 1;
 		//更新UI显示
 		baseSoldierNum_UI.text = baseSoldierNum.ToString();
+	}
+
+	/// <summary>
+	/// 获取相邻的地图块
+	/// </summary>
+	private void GetNextBlock()
+	{
+		//TODO:或许用射线
+
 	}
 
 	public int MapID_Player
