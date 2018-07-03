@@ -39,18 +39,16 @@ public class Map : MonoBehaviour
 	private List<Map> nextMaps = new List<Map>();
 	/*指向相邻地图块的箭头*/
 	private GameObject[] arrows;
-	/*相邻的大地图块(MapManager)*/
-	[SerializeField]
-	private MapManager[] nextMapManager;
 
 	/// <summary>
 	/// 根据初始数据进行初始化
 	/// </summary>
-	public void Init_Start(GameManager gm) 
+	public void Init_Start() 
 	{
-		//GetNextBlock(gm);
+		GetNextBlock();
 		arrows = new GameObject[nextMaps.Count];
 		InitMapUI();
+		StopGetNextBlock();
 	}
 
 	/// <summary>
@@ -108,23 +106,34 @@ public class Map : MonoBehaviour
 	/// <summary>
 	/// 获取相邻的地图块(使用碰撞体)
 	/// </summary>
-	private void GetNextBlock(GameManager gm)
+	private void GetNextBlock()
 	{
+		Debug.Log("Turn On");
 		GetComponent<EdgeCollider2D>().enabled = true;
 	}
 
-	private void OnTriggerStay(Collider other)
+	/// <summary>
+	/// 关闭相邻测试
+	/// </summary>
+	private void StopGetNextBlock()
+	{
+		Debug.Log("Turn Off");
+		GetComponent<EdgeCollider2D>().enabled = false;
+	}
+
+	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (!(other.tag == "Map"))
 		{
 			return;
 		}
-		Debug.Log("Get");
 		Map mapData = other.gameObject.GetComponent<Map>();
-		if (!nextMaps.Contains(mapData))
+		//提出重复的地图块
+		if (nextMaps.Contains(mapData))
 		{
-			nextMaps.Add(mapData);
+			return;
 		}
+		nextMaps.Add(mapData);
 	}
 
 	public int MapID_Player
@@ -200,14 +209,6 @@ public class Map : MonoBehaviour
 		get
 		{
 			return arrows;
-		}
-	}
-
-	public MapManager[] NextMapManager
-	{
-		set
-		{
-			nextMapManager = value;
 		}
 	}
 }

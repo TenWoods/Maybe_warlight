@@ -16,10 +16,13 @@ public class GameManager : MonoBehaviour
 	/*游戏是否开始*/
 	[SerializeField]
 	private bool gameStart = false;
+	/*所有玩家的行为步骤*/
+	private PlayerStep[] all_Steps; 
 	
 	private void Start() 
 	{
 		mapManagerNum = mapManagers.Length;
+		all_Steps = new PlayerStep[players.Length];
 		InitMapBlocks();
 		InitPlayers();
 	}
@@ -79,6 +82,39 @@ public class GameManager : MonoBehaviour
 		foreach (Player p in players)
 		{
 			p.GameStart = gameStart;
+		}
+	}
+
+	/// <summary>
+	/// 改变玩家至增兵状态
+	/// </summary>
+	public void ChangeToAdd()
+	{
+		foreach(Player p in players)
+		{
+			p.ChangerOperateState(OperateState.ADD_SOLDIER);
+		}
+	}
+
+	/// <summary>
+	/// 改变玩家至命令状态
+	/// </summary>
+	public void ChangeToCommand()
+	{
+		foreach(Player p in players)
+		{
+			p.ChangerOperateState(OperateState.COMMAND_SOLDIER);
+		}
+	}
+
+	/// <summary>
+	/// 改变玩家至使用卡牌状态
+	/// </summary>
+	public void ChangeToUseCard()
+	{
+		foreach(Player p in players)
+		{
+			p.ChangerOperateState(OperateState.USE_CARDS);
 		}
 	}
 

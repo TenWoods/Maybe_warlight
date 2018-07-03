@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500594843301722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.064869, y: -3.7938678, z: -0.109977014}
+  m_LocalPosition: {x: 8.01, y: -1.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,14 +77,14 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
 --- !u!68 &68509136820832258
 EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1500594843301722}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -93,9 +93,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.3372779, y: -0.11247039}
-  - {x: -0.23851776, y: 1.1285605}
-  - {x: 0.6999464, y: 1.774529}
+  - {x: -0.980227, y: -0.9205303}
+  - {x: 0.049167633, y: -0.33486545}
+  - {x: 0.5741482, y: -0.67066884}
+  - {x: 1.5467291, y: 0.75271845}
+  - {x: 0.45564842, y: 0.75975645}
 --- !u!114 &114762055284880362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,10 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c474c1bab0b8034fbb24c593ff7b711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapID_player: 0
+  mapID_MapManager: 0
+  mapManagerID: 0
+  playerID: 0
   baseSoldierNum_UI: {fileID: 0}
   effectSoldierNum_UI: {fileID: 0}
-  nextMap:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  nextMaps: []
+  nextMapManager: []

@@ -36,13 +36,16 @@ public class Player : MonoBehaviour
 	private bool hasUpdated = false;
 	/*游戏开始*/
 	private bool gameStart = false;
+	/*玩家操作记录*/
+	private PlayerStep steps;
 
 	private void Start() 
 	{
 		maps = new List<Map>();
 		cards_in_hand = new List<int>();
+		steps = new PlayerStep();
 		opState = OperateState.OP_END;
-		selfOperate = new Operation(this);
+		selfOperate = new Operation(this, steps);
 	}
 
 	private void Update() 

@@ -9,22 +9,24 @@ public class Operation
 	/*目前玩家处于的操作阶段*/
 	private OperateState state;
 	/*分配阶段的第一个地图块*/
-	private GameObject firstMap;
-	// /*分配阶段的第二个地图块*/
-	// private GameObject secondMap;
+	private GameObject clickMap;
 	/*增兵阶段的目前统率值*/
 	private int leaderPoint_current;
+	/*记录玩家行为步骤*/
+	private PlayerStep save_Steps;
+	/*增兵的数量*/
+	private int addNum = 0;
 
 	/// <summary>
 	/// 操作类的构造函数
 	/// </summary>
 	/// <param name="player">所属玩家</param>
-	public Operation(Player player)
+	public Operation(Player player, PlayerStep steps)
 	{
 		playerID = player.PlayerID;
 		state = player.OpState;
-		firstMap = null;
-		// secondMap = null;
+		clickMap = null;
+		save_Steps = steps;
 	}
 
 	/// <summary>
@@ -70,7 +72,11 @@ public class Operation
 						if (hitInfo.collider.tag == "Map")
 						{
 							Debug.Log("分配兵力");
-							CommandOperate(hitInfo.collider.gameObject);	
+							DrawArrows(hitInfo.collider.gameObject);	
+						}
+						if (hitInfo.collider.tag == "Arrow")
+						{
+							CommandSoilder(hitInfo.collider.gameObject);
 						}
 						break;
 					}
@@ -99,43 +105,19 @@ public class Operation
 	}
 	
 	/// <summary>
-	/// 分配兵力攻打操作
+	/// 画箭头，显示箭头
 	/// </summary>
 	/// <param name="mapBlock">地图块</param>
-	private void CommandOperate(GameObject mapBlock)
+	private void DrawArrows(GameObject mapBlock)
 	{
-		// if (firstMap == null)
-		// {
-		// bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
-		// if (!hasAuthority)
-		// {
-		// 	return;
-		// }
-		// 	firstMap = mapBlock;
-		// 	Debug.Log("选择起始地图块");
-		// 	return;
-		// }
-		// secondMap = mapBlock;
-		// Map firstMap_property = firstMap.GetComponent<Map>();
-		// Map secondMap_property = secondMap.GetComponent<Map>();
-		// if (!CheckNeighbour(firstMap_property, secondMap_property))
-		// {
-		// 	Debug.Log("这两块不相邻!");
-		// 	return;
-		// }
-		// Debug.Log("选择第二块地图块");
-		// Debug.Log("画了个箭头");
-		// firstMap = null;
-		// secondMap = null;
-		//TODO:画箭头，计算第一地图块上的有效人数
-		if(firstMap == null)
+		if(clickMap == null)
 		{
 			bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
 			if (!hasAuthority)
 			{
 				return;
 			}
-			firstMap = mapBlock;
+			clickMap = mapBlock;
 			Debug.Log("选择地图块");
 			Map mapBlockData = mapBlock.GetComponent<Map>();
 			for (int i = 0; i < mapBlockData.NextMaps.Count; i++)
@@ -146,10 +128,19 @@ public class Operation
 					continue;
 				}
 				Debug.Log("画了个箭头");
-				//TODO:画箭头,并把箭头给地图块保存
+				//TODO:画箭头,并把箭头给地图块保存,索引代表指向哪块相邻块
 			}
 		}
 		
+	}
+	/// <summary>
+	/// 控制士兵移动方向
+	/// </summary>
+	/// <param name="arrow">点击的箭头</param>
+	private void CommandSoilder(GameObject arrow)
+	{
+
+		//TODO:记录此步操作
 	}
 
 	/// <summary>
@@ -185,6 +176,7 @@ public class Operation
 		if (leaderPoint_current > 0)
 		{
 			Debug.Log("增兵");
+			save_Steps.SaveSteps(1, mapBlock.GetComponent<Map>(), 1);
 			mapBlock.GetComponent<Map>().AddSoldier();
 			leaderPoint_current -= 1;
 		}
