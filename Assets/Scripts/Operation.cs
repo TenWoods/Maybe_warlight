@@ -10,8 +10,8 @@ public class Operation
 	private OperateState state;
 	/*分配阶段的第一个地图块*/
 	private GameObject firstMap;
-	/*分配阶段的第二个地图块*/
-	private GameObject secondMap;
+	// /*分配阶段的第二个地图块*/
+	// private GameObject secondMap;
 	/*增兵阶段的目前统率值*/
 	private int leaderPoint_current;
 
@@ -24,7 +24,7 @@ public class Operation
 		playerID = player.PlayerID;
 		state = player.OpState;
 		firstMap = null;
-		secondMap = null;
+		// secondMap = null;
 	}
 
 	/// <summary>
@@ -106,11 +106,11 @@ public class Operation
 	{
 		// if (firstMap == null)
 		// {
-		// 	bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
-		// 	if (!hasAuthority)
-		// 	{
-		// 		return;
-		// 	}
+		// bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
+		// if (!hasAuthority)
+		// {
+		// 	return;
+		// }
 		// 	firstMap = mapBlock;
 		// 	Debug.Log("选择起始地图块");
 		// 	return;
@@ -127,18 +127,29 @@ public class Operation
 		// Debug.Log("画了个箭头");
 		// firstMap = null;
 		// secondMap = null;
-		////TODO:画箭头，计算第一地图块上的有效人数
-		Map mapBlockData = mapBlock.GetComponent<Map>();
-		for (int i = 0; i < mapBlockData.NextMap.Length; i++)
+		//TODO:画箭头，计算第一地图块上的有效人数
+		if(firstMap == null)
 		{
-			if (mapBlockData.Arrows[i] != null)
+			bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
+			if (!hasAuthority)
 			{
-				mapBlockData.Arrows[i].SetActive(true);
-				continue;
+				return;
 			}
-			Debug.Log("画了个箭头");
-			//TODO:画箭头,并把箭头给地图块保存
+			firstMap = mapBlock;
+			Debug.Log("选择地图块");
+			Map mapBlockData = mapBlock.GetComponent<Map>();
+			for (int i = 0; i < mapBlockData.NextMaps.Count; i++)
+			{
+				if (mapBlockData.Arrows[i] != null)
+				{
+					mapBlockData.Arrows[i].SetActive(true);
+					continue;
+				}
+				Debug.Log("画了个箭头");
+				//TODO:画箭头,并把箭头给地图块保存
+			}
 		}
+		
 	}
 
 	/// <summary>
@@ -149,9 +160,9 @@ public class Operation
 	/// <returns>检测结果</returns>
 	private bool CheckNeighbour(Map firstMap, Map secondMap)
 	{
-		foreach(Map m in firstMap.NextMap)
+		foreach(Map m in firstMap.NextMaps)
 		{
-			if (m.MapID_GameManager == secondMap.MapID_GameManager)
+			if (m.MapID_MapManager == secondMap.MapID_MapManager && m.MapManagerID == secondMap.MapManagerID)
 			{
 				return true;
 			}
@@ -166,7 +177,6 @@ public class Operation
 	private void OperateMapSoldierNum(GameObject mapBlock)
 	{
 		bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
-		int mapID = mapBlock.GetComponent<Map>().MapID_GameManager;
 		if (!hasAuthority)
 		{
 			Debug.Log("没有权限");
@@ -174,7 +184,7 @@ public class Operation
 		}
 		if (leaderPoint_current > 0)
 		{
-			Debug.Log(mapID + "增兵");
+			Debug.Log("增兵");
 			mapBlock.GetComponent<Map>().AddSoldier();
 			leaderPoint_current -= 1;
 		}

@@ -5,48 +5,52 @@ using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
+	/*地图的地形属性*/
+	private int terrain;
+	/*地图在玩家处的索引，-1为错误*/
+	[SerializeField]//调试用
+	private int mapID_player;
+	/*地图在MapManger处的编号*/
+	[SerializeField]//调试用
+	[Header("MapManger处的编号")]
+	private int mapID_MapManager;
+	/*所属MapManager的编号*/
+	[SerializeField]//调试用
+	[Header("MapManger编号")]
+	private int mapManagerID;
+	/*玩家编号，-1为不属于任何玩家*/
+	[SerializeField]//调试用
+	[Header("玩家编号")]
+	private int playerID;
 	/*地图块上实际人数的UI显示*/
 	public Text baseSoldierNum_UI;
 	/*地图块上有效人数的UI显示*/
 	public Text effectSoldierNum_UI;
-	/*地图在玩家处的索引，-1为错误*/
-	private int mapID_player;
-	/*地图在GameManger处的编号*/
-	private int mapID_gameManager;
-	/*玩家编号，-1为不属于任何玩家*/
-	private int playerID;
 	/*地图所属玩家对象*/
 	private Player owner;
-	/*地图的地形属性*/
-	private int terrain;
-	//人数在计算时向上取整
 	/*该格实际人数*/
+	//人数在计算时向上取整
 	private float baseSoldierNum = 1;
 	/*该格有效人数*/
 	private float effectSoldierNum = 1;
 	/*相邻的地图块*/
+	//自动获取
 	[SerializeField]
-	private Map[] nextMap;
+	private List<Map> nextMaps = new List<Map>();
 	/*指向相邻地图块的箭头*/
 	private GameObject[] arrows;
-
-	private void Start() 
-	{
-		mapID_player = -1;
-		playerID = 1;
-		owner = null;
-		arrows = new GameObject[nextMap.Length];
-		GetNextBlock();
-		InitMapUI();
-	}
+	/*相邻的大地图块(MapManager)*/
+	[SerializeField]
+	private MapManager[] nextMapManager;
 
 	/// <summary>
-	/// 初始化地图块UI显示
+	/// 根据初始数据进行初始化
 	/// </summary>
-	private void InitMapUI()
+	public void Init_Start(GameManager gm) 
 	{
-		baseSoldierNum_UI.text = baseSoldierNum.ToString();
-		effectSoldierNum_UI.text = effectSoldierNum.ToString();
+		//GetNextBlock(gm);
+		arrows = new GameObject[nextMaps.Count];
+		InitMapUI();
 	}
 
 	/// <summary>
@@ -93,12 +97,34 @@ public class Map : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 获取相邻的地图块
+	/// 初始化地图块UI显示
 	/// </summary>
-	private void GetNextBlock()
+	private void InitMapUI()
 	{
-		//TODO:或许用射线
+		baseSoldierNum_UI.text = baseSoldierNum.ToString();
+		effectSoldierNum_UI.text = effectSoldierNum.ToString();
+	}
 
+	/// <summary>
+	/// 获取相邻的地图块(使用碰撞体)
+	/// </summary>
+	private void GetNextBlock(GameManager gm)
+	{
+		GetComponent<EdgeCollider2D>().enabled = true;
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		if (!(other.tag == "Map"))
+		{
+			return;
+		}
+		Debug.Log("Get");
+		Map mapData = other.gameObject.GetComponent<Map>();
+		if (!nextMaps.Contains(mapData))
+		{
+			nextMaps.Add(mapData);
+		}
 	}
 
 	public int MapID_Player
@@ -113,15 +139,27 @@ public class Map : MonoBehaviour
 		}
 	}
 
-	public int MapID_GameManager 
+	public int MapID_MapManager 
 	{
 		get
 		{
-			return mapID_gameManager;
+			return mapID_MapManager;
 		}
 		set
 		{
-			mapID_gameManager = value;
+			mapID_MapManager = value;
+		}
+	}
+
+	public int MapManagerID 
+	{
+		get
+		{
+			return mapManagerID;
+		}
+		set
+		{
+			mapManagerID = value;
 		}
 	}
 
@@ -149,11 +187,11 @@ public class Map : MonoBehaviour
 		}
 	}
 
-	public Map[] NextMap 
+	public List<Map> NextMaps
 	{
 		get
 		{
-			return nextMap;
+			return nextMaps;
 		}
 	}
 
@@ -162,6 +200,14 @@ public class Map : MonoBehaviour
 		get
 		{
 			return arrows;
+		}
+	}
+
+	public MapManager[] NextMapManager
+	{
+		set
+		{
+			nextMapManager = value;
 		}
 	}
 }

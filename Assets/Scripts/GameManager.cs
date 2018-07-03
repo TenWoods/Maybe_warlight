@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour 
 {
-	/*玩家数量*/
-	[SerializeField]
-	private int playerNum = 1;
 	/*游戏玩家*/
+	[SerializeField]
 	private Player[] players;
-	/*地图块的数量*/
-	private int mapBlocksNum = 100;
-	/*游戏地图*/
-	private Map[] maps;
 	/*地图管理者数量*/
 	[SerializeField]
 	private int mapManagerNum;
@@ -25,10 +19,9 @@ public class GameManager : MonoBehaviour
 	
 	private void Start() 
 	{
-		players = new Player[playerNum];
-		maps = new Map[mapBlocksNum];
 		mapManagerNum = mapManagers.Length;
-		//InitPlayers();
+		InitMapBlocks();
+		InitPlayers();
 	}
 
 	private void Update()
@@ -47,7 +40,7 @@ public class GameManager : MonoBehaviour
 	{
 		for (int i = 0; i < mapManagerNum; i++)
 		{
-			mapManagers[i].InitBlocks(this);
+			mapManagers[i].InitBlocksData(this);
 		}
 	}
 
@@ -56,9 +49,8 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	private void InitPlayers()
 	{
-		for (int i = 0; i < playerNum; i++)
+		for (int i = 0; i < players.Length; i++)
 		{
-			players[i] = new Player();
 			players[i].PlayerID = i + 1;
 			//TODO:生成玩家之后对玩家进行初始化
 		}
@@ -90,19 +82,19 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public Map[] Maps
-	{
-		get
-		{
-			return maps;
-		}
-	}
-
 	public Player[] Players 
 	{
 		get
 		{
 			return players;
+		}
+	}
+
+	public MapManager[] MapManagers
+	{
+		get
+		{
+			return mapManagers;
 		}
 	}
 }

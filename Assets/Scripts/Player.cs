@@ -7,6 +7,7 @@ public enum OperateState{ADD_SOLDIER, COMMAND_SOLDIER, USE_CARDS, OP_END};
 public class Player : MonoBehaviour 
 {
 	/*玩家所拥有的地图格*/
+	[SerializeField]//调试用
 	private List<Map> maps;
 	/*玩家在GameManager处的索引*/
 	[SerializeField]
