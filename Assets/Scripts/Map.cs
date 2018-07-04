@@ -38,7 +38,8 @@ public class Map : MonoBehaviour
 	[SerializeField]
 	private List<Map> nextMaps = new List<Map>();
 	/*指向相邻地图块的箭头*/
-	private GameObject[] arrows;
+	[SerializeField]
+	private List<GameObject> arrows;
 
 	/// <summary>
 	/// 根据初始数据进行初始化
@@ -46,9 +47,9 @@ public class Map : MonoBehaviour
 	public void Init_Start() 
 	{
 		GetNextBlock();
-		arrows = new GameObject[nextMaps.Count];
+		arrows = new List<GameObject>();
 		InitMapUI();
-		StopGetNextBlock();
+		//StopGetNextBlock();
 	}
 
 	/// <summary>
@@ -204,7 +205,7 @@ public class Map : MonoBehaviour
 		}
 	}
 
-	public GameObject[] Arrows
+	public List<GameObject> Arrows
 	{
 		get
 		{

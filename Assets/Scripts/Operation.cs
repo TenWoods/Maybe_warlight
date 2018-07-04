@@ -16,6 +16,8 @@ public class Operation
 	private int leaderPoint_current;
 	/*记录玩家行为步骤*/
 	private PlayerStep save_Steps;
+	/*玩家类*/
+	private GameObject arrow;
 
 	/// <summary>
 	/// 操作类的构造函数
@@ -23,6 +25,7 @@ public class Operation
 	/// <param name="player">所属玩家</param>
 	public Operation(Player player, PlayerStep steps)
 	{
+		arrow = player.arrow_Prefab;
 		playerID = player.PlayerID;
 		state = player.OpState;
 		clickMap = null;
@@ -110,28 +113,52 @@ public class Operation
 	/// <param name="mapBlock">地图块</param>
 	private void DrawArrows(GameObject mapBlock)
 	{
-		if(clickMap == null)
+		if(clickMap == mapBlock)
 		{
-			bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
-			if (!hasAuthority)
+			//点击相同地图块
+			return;
+		}
+		bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
+		if (!hasAuthority)
+		{
+			//没有权限
+			return;
+		}
+		if (clickMap != null)
+		{
+			for (int i = 0; i < clickMap.GetComponent<Map>().Arrows.Count; i++)
 			{
-				return;
-			}
-			clickMap = mapBlock;
-			Debug.Log("选择地图块");
-			Map mapBlockData = mapBlock.GetComponent<Map>();
-			for (int i = 0; i < mapBlockData.NextMaps.Count; i++)
-			{
-				if (mapBlockData.Arrows[i] != null)
-				{
-					mapBlockData.Arrows[i].SetActive(true);
-					continue;
-				}
-				Debug.Log("画了个箭头");
-				//TODO:画箭头,并把箭头给地图块保存,索引代表指向哪块相邻块
+				clickMap.GetComponent<Map>().Arrows[i].SetActive(false);
 			}
 		}
-		
+		clickMap = mapBlock;
+		Debug.Log("选择地图块");
+		Map mapBlockData = clickMap.GetComponent<Map>();
+		if (mapBlockData.Arrows.Count == 0)
+		{
+			Vector3 nextPos;  //相邻方块位置
+			Vector3 dir;   //箭头方向
+			Vector3 pos;   //箭头的位置
+			float angle;
+			for (int i = 0; i < mapBlockData.NextMaps.Count; i++)
+			{
+				Debug.Log("画了个箭头");
+				//TODO:
+				nextPos = mapBlockData.NextMaps[i].transform.position;
+				dir = nextPos - mapBlock.transform.position;
+				angle = Vector3.Angle(Vector3.right, dir);
+				Debug.Log(angle);
+				pos = (nextPos + mapBlock.transform.position) / 2;
+				mapBlockData.Arrows.Add(GameObject.Instantiate(arrow, pos, Quaternion.Euler(0, 0, angle)));
+			}
+		}
+		else
+		{
+			for (int i = 0; i < mapBlockData.Arrows.Count; i++)
+			{
+				mapBlockData.Arrows[i].SetActive(true);
+			}
+		}
 	}
 
 	/// <summary>

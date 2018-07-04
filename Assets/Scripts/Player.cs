@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 	private bool gameStart = false;
 	/*玩家操作记录*/
 	private PlayerStep steps;
+	/*需要生成的箭头*/
+	public GameObject arrow_Prefab;
 
 	private void Start() 
 	{
