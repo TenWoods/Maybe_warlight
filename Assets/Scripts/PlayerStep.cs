@@ -4,25 +4,62 @@ using UnityEngine;
 
 public class PlayerStep
 {
-	/*操作步骤集合*/
-	private List<int> operations = new List<int>();
-	/*操作地图块集合*/
-	private List<Map> changedMaps = new List<Map>();
-	/*操作数据集合*/
-	private List<int> operations_Data = new List<int>();
+	/*增兵地图块集合*/
+	private List<Map> addMaps;
+	/*增兵数量集合*/
+	private List<int> addNums;
+	/*指挥地图块集合*/
+	private List<Map> commandMaps;
+	/*卡牌使用集合*/
+	private List<Map> cardMaps;
 	/*读取步骤指针*/
 	private int step_Pointer = 0;
 
+	public PlayerStep()
+	{
+		addMaps = new List<Map>();
+		addNums = new List<int>();
+		commandMaps = new List<Map>();
+		cardMaps = new List<Map>();
+	}
+
 
 	/// <summary>
-	/// 储存玩家的行动步骤
+	/// 储存玩家增兵行动步骤
 	/// </summary>
-	public void SaveSteps(int operate_ID, Map map, int changeData)
+	public void SaveAddSteps(int addNum, Map map)
 	{
-		operations.Add(operate_ID);
-		changedMaps.Add(map);
-		operations_Data.Add(changeData);
+		if (addMaps.Contains(map))
+		{
+			addNums[addMaps.IndexOf(map)] += addNum;
+		}
+		else
+		{
+			addMaps.Add(map);
+			addNums.Add(addNum);
+		}
 	} 
+
+	/// <summary>
+	/// 储存玩家指挥操作
+	/// </summary>
+	public void SaveCommamdSteps(Map map)
+	{
+		if (commandMaps.Contains(map))
+		{
+			return;
+		}
+		commandMaps.Add(map);
+	}
+
+	public void SaveCardSteps(Map map)
+	{
+		if (cardMaps.Contains(map))
+		{
+			return;
+		}
+		cardMaps.Add(map);
+	}
 
 	/// <summary>
 	/// 读取储存的步骤并播放效果

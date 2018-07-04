@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
 		foreach (Player p in players)
 		{
 			p.GameStart = gameStart;
+			p.OperateEnd = false;
 		}
 	}
 
@@ -115,6 +116,18 @@ public class GameManager : MonoBehaviour
 		foreach(Player p in players)
 		{
 			p.ChangerOperateState(OperateState.USE_CARDS);
+		}
+	}
+
+	/// <summary>
+	/// 改变玩家至回合结束
+	/// </summary>
+	public void ChangeToEnd()
+	{
+		foreach(Player p in players)
+		{
+			p.ChangerOperateState(OperateState.OP_END);
+			p.OperateEnd = true;
 		}
 	}
 

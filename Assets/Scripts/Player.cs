@@ -63,6 +63,10 @@ public class Player : MonoBehaviour
 			}
 			selfOperate.Operate(this, opState);
 		}
+		else
+		{
+			//TODO:记录玩家行动的步骤，并反馈给GameManager
+		}
 	}
 
 	/// <summary>
@@ -71,7 +75,7 @@ public class Player : MonoBehaviour
 	/// <param name="op">操作状态枚举变量</param>
 	public void ChangerOperateState(OperateState op)
 	{
-		//TODO:改变玩家操作状态
+		opState = op;
 	}
 
 	/// <summary>

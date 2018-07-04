@@ -8,14 +8,14 @@ public class Operation
 	private int playerID;
 	/*目前玩家处于的操作阶段*/
 	private OperateState state;
-	/*分配阶段的第一个地图块*/
+	/*分配阶段选中地图块*/
 	private GameObject clickMap;
+	/*卡牌使用阶段选择的卡牌*/
+	private Card usedCard;
 	/*增兵阶段的目前统率值*/
 	private int leaderPoint_current;
 	/*记录玩家行为步骤*/
 	private PlayerStep save_Steps;
-	/*增兵的数量*/
-	private int addNum = 0;
 
 	/// <summary>
 	/// 操作类的构造函数
@@ -58,7 +58,6 @@ public class Operation
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			Debug.Log("鼠标点击");
 			Vector2 mousPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			RaycastHit2D hitInfo = Physics2D.Raycast(mousPos, Vector2.zero);
 			if (hitInfo.collider != null)
@@ -71,12 +70,12 @@ public class Operation
 					{
 						if (hitInfo.collider.tag == "Map")
 						{
-							Debug.Log("分配兵力");
+							Debug.Log("指挥");
 							DrawArrows(hitInfo.collider.gameObject);	
 						}
 						if (hitInfo.collider.tag == "Arrow")
 						{
-							CommandSoilder(hitInfo.collider.gameObject);
+							CommandSoilder(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
 						}
 						break;
 					}
@@ -94,6 +93,7 @@ public class Operation
 						if (hitInfo.collider.tag == "Card")
 						{
 							Debug.Log("出牌");
+							UseCard();
 							//TODO:出牌操作;牌的效果、手牌List中相应牌去除
 						}
 						break;
@@ -133,13 +133,14 @@ public class Operation
 		}
 		
 	}
+
 	/// <summary>
 	/// 控制士兵移动方向
 	/// </summary>
 	/// <param name="arrow">点击的箭头</param>
-	private void CommandSoilder(GameObject arrow)
+	private void CommandSoilder(GameObject arrow, Map map)
 	{
-
+		save_Steps.SaveCommamdSteps(map);
 		//TODO:记录此步操作
 	}
 
@@ -176,10 +177,15 @@ public class Operation
 		if (leaderPoint_current > 0)
 		{
 			Debug.Log("增兵");
-			save_Steps.SaveSteps(1, mapBlock.GetComponent<Map>(), 1);
+			save_Steps.SaveAddSteps(1, mapBlock.GetComponent<Map>());
 			mapBlock.GetComponent<Map>().AddSoldier();
 			leaderPoint_current -= 1;
 		}
+	}
+
+	private void UseCard()
+	{
+		//TODO:使用卡牌
 	}
 
 	public int PlayerID
