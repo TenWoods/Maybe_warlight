@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
 	private PlayerStep steps;
 	/*需要生成的箭头*/
 	public GameObject arrow_Prefab;
+	/*指挥所用UI*/
+	public GameObject commandUI;
 
 	private void Start() 
 	{

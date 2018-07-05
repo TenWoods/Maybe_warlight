@@ -18,6 +18,10 @@ public class Operation
 	private PlayerStep save_Steps;
 	/*箭头预制体*/
 	private GameObject arrow;
+	/*获取单步派兵数量(由UI控制)*/
+	private int soldierNum;
+	/*指挥所用UI*/
+	private GameObject commandUI;
 
 	/// <summary>
 	/// 操作类的构造函数
@@ -28,6 +32,8 @@ public class Operation
 		arrow = player.arrow_Prefab;
 		playerID = player.PlayerID;
 		state = player.OpState;
+		commandUI = player.commandUI;
+		commandUI.SetActive(false);
 		clickMap = null;
 		save_Steps = steps;
 	}
@@ -78,6 +84,7 @@ public class Operation
 						if (hitInfo.collider.tag == "Arrow")
 						{
 							Debug.Log("指挥");
+							//TODO:改为显示UI
 							CommandSoilder(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
 						}
 						break;
@@ -175,6 +182,7 @@ public class Operation
 		{
 			//增加移动目标
 			startMap.MoveDirMap.Add(startMap.NextMaps[index]);
+			startMap.MoveSoldierNum.Add(soldierNum);
 		}
 		//TODO:记录此步操作
 		save_Steps.SaveCommamdSteps(startMap, startMap.NextMaps[index]);

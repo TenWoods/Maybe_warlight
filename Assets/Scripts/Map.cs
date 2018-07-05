@@ -56,7 +56,6 @@ public class Map : MonoBehaviour
 		GetNextBlock();
 		arrows = new List<GameObject>();
 		InitMapUI();
-		//StopGetNextBlock();
 	}
 
 	/// <summary>
