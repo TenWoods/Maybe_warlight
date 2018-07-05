@@ -43,13 +43,13 @@ public class PlayerStep
 	/// <summary>
 	/// 储存玩家指挥操作
 	/// </summary>
-	public void SaveCommamdSteps(Map map)
+	public void SaveCommamdSteps(Map startMap, Map endMap)
 	{
-		if (commandMaps.Contains(map))
+		if (commandMaps.Contains(startMap))
 		{
 			return;
 		}
-		commandMaps.Add(map);
+		commandMaps.Add(startMap);
 	}
 
 	public void SaveCardSteps(Map map)

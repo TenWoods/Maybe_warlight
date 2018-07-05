@@ -16,7 +16,7 @@ public class Operation
 	private int leaderPoint_current;
 	/*记录玩家行为步骤*/
 	private PlayerStep save_Steps;
-	/*玩家类*/
+	/*箭头预制体*/
 	private GameObject arrow;
 
 	/// <summary>
@@ -65,7 +65,6 @@ public class Operation
 			RaycastHit2D hitInfo = Physics2D.Raycast(mousPos, Vector2.zero);
 			if (hitInfo.collider != null)
 			{
-				Debug.Log("击中物体");
 				//TODO:每个case需要做的事
 				switch(state)
 				{
@@ -73,11 +72,12 @@ public class Operation
 					{
 						if (hitInfo.collider.tag == "Map")
 						{
-							Debug.Log("指挥");
+							Debug.Log("选中");
 							DrawArrows(hitInfo.collider.gameObject);	
 						}
 						if (hitInfo.collider.tag == "Arrow")
 						{
+							Debug.Log("指挥");
 							CommandSoilder(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
 						}
 						break;
@@ -87,7 +87,7 @@ public class Operation
 						if (hitInfo.collider.tag == "Map")
 						{
 							Debug.Log("增兵");
-							OperateMapSoldierNum(hitInfo.collider.gameObject);
+							AddMapSoldierNum(hitInfo.collider.gameObject);
 						}
 						break;
 					}
@@ -143,11 +143,14 @@ public class Operation
 			for (int i = 0; i < mapBlockData.NextMaps.Count; i++)
 			{
 				Debug.Log("画了个箭头");
-				//TODO:
+				//TODO:箭头大小缩放
 				nextPos = mapBlockData.NextMaps[i].transform.position;
 				dir = nextPos - mapBlock.transform.position;
 				angle = Vector3.Angle(Vector3.right, dir);
-				Debug.Log(angle);
+				if (Vector3.Cross(Vector3.right, dir).z < 0)  //修正旋转的方向 
+				{
+					angle *= -1;
+				} 
 				pos = (nextPos + mapBlock.transform.position) / 2;
 				mapBlockData.Arrows.Add(GameObject.Instantiate(arrow, pos, Quaternion.Euler(0, 0, angle)));
 			}
@@ -165,40 +168,29 @@ public class Operation
 	/// 控制士兵移动方向
 	/// </summary>
 	/// <param name="arrow">点击的箭头</param>
-	private void CommandSoilder(GameObject arrow, Map map)
+	private void CommandSoilder(GameObject arrow, Map startMap)
 	{
-		save_Steps.SaveCommamdSteps(map);
-		//TODO:记录此步操作
-	}
-
-	/// <summary>
-	/// 检测是否相邻
-	/// </summary>
-	/// <param name="firstMap">第一块地图块</param>
-	/// <param name="secondMap">第二块地图块</param>
-	/// <returns>检测结果</returns>
-	private bool CheckNeighbour(Map firstMap, Map secondMap)
-	{
-		foreach(Map m in firstMap.NextMaps)
+		int index = startMap.Arrows.IndexOf(arrow);
+		if (!startMap.MoveDirMap.Contains(startMap.NextMaps[index]))
 		{
-			if (m.MapID_MapManager == secondMap.MapID_MapManager && m.MapManagerID == secondMap.MapManagerID)
-			{
-				return true;
-			}
+			//增加移动目标
+			startMap.MoveDirMap.Add(startMap.NextMaps[index]);
 		}
-		return false;
+		//TODO:记录此步操作
+		save_Steps.SaveCommamdSteps(startMap, startMap.NextMaps[index]);
+		
 	}
 
 	/// <summary>
 	/// 增加选定地图块的兵力
 	/// </summary>
 	/// <param name="mapBlock">地图块</param>
-	private void OperateMapSoldierNum(GameObject mapBlock)
+	private void AddMapSoldierNum(GameObject mapBlock)
 	{
 		bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
 		if (!hasAuthority)
 		{
-			Debug.Log("没有权限");
+			//没有权限
 			return;
 		}
 		if (leaderPoint_current > 0)

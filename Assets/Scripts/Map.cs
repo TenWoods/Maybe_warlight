@@ -36,16 +36,23 @@ public class Map : MonoBehaviour
 	/*相邻的地图块*/
 	//自动获取
 	[SerializeField]
-	private List<Map> nextMaps = new List<Map>();
+	private List<Map> nextMaps;
 	/*指向相邻地图块的箭头*/
 	[SerializeField]
 	private List<GameObject> arrows;
+	/*移动目的地图块*/
+	public List<Map> MoveDirMap;
+	/*移动士兵数量*/
+	public List<int> MoveSoldierNum;
 
 	/// <summary>
 	/// 根据初始数据进行初始化
 	/// </summary>
 	public void Init_Start() 
 	{
+		MoveDirMap = new List<Map>();
+		MoveSoldierNum = new List<int>();
+		nextMaps = new List<Map>();
 		GetNextBlock();
 		arrows = new List<GameObject>();
 		InitMapUI();
@@ -109,17 +116,7 @@ public class Map : MonoBehaviour
 	/// </summary>
 	private void GetNextBlock()
 	{
-		Debug.Log("Turn On");
 		GetComponent<EdgeCollider2D>().enabled = true;
-	}
-
-	/// <summary>
-	/// 关闭相邻测试
-	/// </summary>
-	private void StopGetNextBlock()
-	{
-		Debug.Log("Turn Off");
-		GetComponent<EdgeCollider2D>().enabled = false;
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
