@@ -33,7 +33,6 @@ public class Operation
 		playerID = player.PlayerID;
 		state = player.OpState;
 		commandUI = player.commandUI;
-		commandUI.SetActive(false);
 		clickMap = null;
 		save_Steps = steps;
 	}

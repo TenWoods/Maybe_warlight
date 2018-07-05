@@ -8,9 +8,10 @@ public class CommandUIUpdate : MonoBehaviour
 	/*指挥人数*/
 	private int soldierNum = 0;
 	/*能指挥的总人数*/
+	[SerializeField]
 	private int commandMax = 0;
 	/*输入的数字*/
-	public Text inputNum;
+	public InputField inputNum;
 	/*用滑动条输入*/
 	public Slider inputSlider;
 
@@ -19,6 +20,7 @@ public class CommandUIUpdate : MonoBehaviour
 	/// </summary>
 	private void Update()
 	{
+		inputSlider.maxValue = commandMax;//调试用
 		
 	}
 
@@ -26,5 +28,6 @@ public class CommandUIUpdate : MonoBehaviour
 	{
 		commandMax = maxNum;
 		inputSlider.maxValue = commandMax;
+		soldierNum = 1;
 	}
 }
