@@ -8,7 +8,7 @@ public class Operation
 	private int playerID;
 	/*目前玩家处于的操作阶段*/
 	private OperateState state;
-	/*分配阶段选中地图块*/
+	/*分配阶、出牌段选中地图块*/
 	private GameObject clickMap;
 	/*卡牌使用阶段选择的卡牌*/
 	private GameObject clickCard;
@@ -104,11 +104,10 @@ public class Operation
 						{
 							Debug.Log("出牌");
 							ChooseCard(hitInfo.collider.gameObject);
-							//TODO:出牌操作;牌的效果、手牌List中相应牌去除
 						}
 						if (hitInfo.collider.tag == "Map")
 						{
-
+							ChooseTargetMap(hitInfo.collider.gameObject);
 						}
 						break;
 					}
@@ -219,8 +218,36 @@ public class Operation
 	/// <param name="card">选中的卡牌</param>
 	private void ChooseCard(GameObject card)
 	{
-		
+		if (clickCard == card)
+		{
+			return;
+		}
+		if (clickCard != null)
+		{
+			Debug.Log("Small1");
+			clickCard.transform.localScale /= 2;
+			clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
+		} 
+		clickCard = card;
+		clickCard.transform.localScale *= 2;
+		clickCard.GetComponent<SpriteRenderer>().sortingOrder = 2; //将卡片置顶
 		//TODO:使用卡牌
+	}
+
+	/// <summary>
+	/// 选择卡牌效果作用地图块
+	/// </summary>
+	/// <param name="targetMap"></param>
+	private void ChooseTargetMap(GameObject targetMap)
+	{
+		if (clickCard == null)
+		{
+			return;
+		}
+		clickMap = targetMap;
+		//TODO:调用卡牌类里的卡牌移动方法
+		clickCard.transform.localScale /= 2;
+		clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;
 	}
 
 	public int PlayerID

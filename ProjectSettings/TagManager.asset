@@ -4,11 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - 1
-  - 2
-  - start
   - Map
   - Arrow
+  - Card
+  - BackGround
   layers:
   - Default
   - TransparentFX
