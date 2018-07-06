@@ -86,51 +86,6 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	/// <summary>
-	/// 改变玩家至增兵状态
-	/// </summary>
-	public void ChangeToAdd()
-	{
-		foreach(Player p in players)
-		{
-			p.ChangerOperateState(OperateState.ADD_SOLDIER);
-		}
-	}
-
-	/// <summary>
-	/// 改变玩家至命令状态
-	/// </summary>
-	public void ChangeToCommand()
-	{
-		foreach(Player p in players)
-		{
-			p.ChangerOperateState(OperateState.COMMAND_SOLDIER);
-		}
-	}
-
-	/// <summary>
-	/// 改变玩家至使用卡牌状态
-	/// </summary>
-	public void ChangeToUseCard()
-	{
-		foreach(Player p in players)
-		{
-			p.ChangerOperateState(OperateState.USE_CARDS);
-		}
-	}
-
-	/// <summary>
-	/// 改变玩家至回合结束
-	/// </summary>
-	public void ChangeToEnd()
-	{
-		foreach(Player p in players)
-		{
-			p.ChangerOperateState(OperateState.OP_END);
-			p.OperateEnd = true;
-		}
-	}
-
 	public Player[] Players 
 	{
 		get

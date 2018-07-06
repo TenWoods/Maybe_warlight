@@ -43,13 +43,24 @@ public class PlayerStep
 	/// <summary>
 	/// 储存玩家指挥操作
 	/// </summary>
-	public void SaveCommamdSteps(Map startMap, Map endMap)
+	public void SaveCommamdSteps(Map startMap, Map endMap, int moveNum)
 	{
+		int index = 0;
 		if (commandMaps.Contains(startMap))
 		{
+			if (startMap.MoveDirMap.Contains(endMap))
+			{
+				index = startMap.MoveDirMap.IndexOf(endMap);
+				startMap.MoveSoldierNum[index] = moveNum;
+				return;
+			}
+			startMap.MoveDirMap.Add(endMap);
+			startMap.MoveSoldierNum.Add(moveNum);
 			return;
 		}
 		commandMaps.Add(startMap);
+		startMap.MoveDirMap.Add(endMap);
+		startMap.MoveSoldierNum.Add(moveNum);
 	}
 
 	public void SaveCardSteps(Map map)

@@ -593,7 +593,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4328193599364888, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
       propertyPath: m_Name
@@ -742,6 +742,11 @@ Prefab:
     - target: {fileID: 68509136820832258, guid: 3450adf9761cdd34cb135bf0193d5d1f,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
+        type: 2}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1112,7 +1117,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4328193599364888, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
       propertyPath: m_Name
@@ -1273,6 +1278,11 @@ Prefab:
       propertyPath: m_Points.Array.data[5].y
       value: 0.42488694
       objectReference: {fileID: 0}
+    - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -1323,7 +1333,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4328193599364888, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
       propertyPath: m_Name
@@ -1413,6 +1423,11 @@ Prefab:
         type: 2}
       propertyPath: m_Points.Array.data[0].y
       value: -0.18975353
+      objectReference: {fileID: 0}
+    - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
@@ -1653,6 +1668,11 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 669513822}
+    - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -1806,8 +1826,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1687945796}
-        m_MethodName: ChangeToEnd
+      - m_Target: {fileID: 594357112}
+        m_MethodName: ChangeOperateStateEnd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1928,8 +1948,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1687945796}
-        m_MethodName: ChangeToUseCard
+      - m_Target: {fileID: 594357112}
+        m_MethodName: ChangeOperateStateCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1974,6 +1994,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 461249970}
+--- !u!1 &500044047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 500044049}
+  - component: {fileID: 500044048}
+  m_Layer: 0
+  m_Name: Card
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &500044048
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 500044047}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+--- !u!4 &500044049
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 500044047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.57764417, y: -0.843531, z: 0.11596817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &571434001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,8 +2675,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1687945796}
-        m_MethodName: ChangeToCommand
+      - m_Target: {fileID: 594357112}
+        m_MethodName: ChangeOperateStateCommand
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2678,7 +2772,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4328193599364888, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
       propertyPath: m_Name
@@ -2807,6 +2901,11 @@ Prefab:
         type: 2}
       propertyPath: m_Points.Array.data[3].y
       value: 0.11897206
+      objectReference: {fileID: 0}
+    - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
@@ -3087,6 +3186,11 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 436068355}
+    - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3370,6 +3474,11 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1923827519}
+    - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3486,7 +3595,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1230258790}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388116706}
+        m_MethodName: Cancel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 594357112}
+        m_MethodName: DisabledArrows
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1230258790
@@ -3732,7 +3863,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4328193599364888, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
       propertyPath: m_Name
@@ -3884,6 +4015,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3902,7 +4038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1388116705
 Transform:
   m_ObjectHideFlags: 0
@@ -3933,7 +4069,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59a3a63a246fc34a88edb9939b036ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputNum: {fileID: 1459452845}
+  commandMax: 5
+  inputNum: {fileID: 141867555}
   inputSlider: {fileID: 1306295403}
 --- !u!1001 &1399779777
 Prefab:
@@ -4002,6 +4139,11 @@ Prefab:
         type: 2}
       propertyPath: m_Points.Array.data[1].y
       value: -0.9230516
+      objectReference: {fileID: 0}
+    - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
@@ -4082,8 +4224,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1687945796}
-        m_MethodName: ChangeToAdd
+      - m_Target: {fileID: 594357112}
+        m_MethodName: ChangeOperateStateAdd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4436,7 +4578,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1495121494}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388116706}
+        m_MethodName: Comfirm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 594357112}
+        m_MethodName: DisabledArrows
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1495121494
@@ -4682,7 +4846,7 @@ Prefab:
     - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
         type: 2}
       propertyPath: m_Radius
-      value: 0.22
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 68509136820832258, guid: 3450adf9761cdd34cb135bf0193d5d1f,
         type: 2}
@@ -4753,6 +4917,11 @@ Prefab:
         type: 2}
       propertyPath: m_Points.Array.data[3].x
       value: 0.5860214
+      objectReference: {fileID: 0}
+    - target: {fileID: 58861264169936248, guid: 3450adf9761cdd34cb135bf0193d5d1f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
@@ -4935,8 +5104,8 @@ RectTransform:
   m_Father: {fileID: 23451281}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5185,7 +5354,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5581,6 +5750,15 @@ Prefab:
       value: 
       objectReference: {fileID: 1103937669562196, guid: de4327f635262a744b0ce1de7a543c62,
         type: 2}
+    - target: {fileID: 114466356740687532, guid: 5b0b4395cbb174342975a0d1943c222a,
+        type: 2}
+      propertyPath: commandUI
+      value: 
+      objectReference: {fileID: 1388116704}
+    - target: {fileID: 1896587579093978, guid: 5b0b4395cbb174342975a0d1943c222a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b0b4395cbb174342975a0d1943c222a, type: 2}
   m_IsPrefabParent: 0

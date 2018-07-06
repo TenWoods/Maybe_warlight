@@ -208,4 +208,12 @@ public class Map : MonoBehaviour
 			return arrows;
 		}
 	}
+
+	public float BaseSoldierNum 
+	{
+		get
+		{
+			return baseSoldierNum;
+		}
+	}
 }

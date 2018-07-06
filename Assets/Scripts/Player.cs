@@ -74,12 +74,48 @@ public class Player : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 改变玩家操作状态
+	/// 变为增兵状态
 	/// </summary>
 	/// <param name="op">操作状态枚举变量</param>
-	public void ChangerOperateState(OperateState op)
+	public void ChangeOperateStateAdd()
 	{
-		opState = op;
+		if (opState == OperateState.COMMAND_SOLDIER)
+		{
+			DisabledArrows();
+			commandUI.SetActive(false);
+		}
+		opState = OperateState.ADD_SOLDIER;
+	}
+
+	/// <summary>
+	/// 变为指挥状态
+	/// </summary>
+	public void ChangeOperateStateCommand()
+	{
+		opState = OperateState.COMMAND_SOLDIER;
+	}
+
+	/// <summary>
+	/// 变为卡片使用状态
+	/// </summary>
+	public void ChangeOperateStateCard()
+	{
+		if (opState == OperateState.COMMAND_SOLDIER)
+		{
+			DisabledArrows();
+			commandUI.SetActive(false);
+		}
+		opState = OperateState.USE_CARDS;
+	}
+	
+	public void ChangeOperateStateEnd()
+	{
+		if (opState == OperateState.COMMAND_SOLDIER)
+		{
+			DisabledArrows();
+			commandUI.SetActive(false);
+		}
+		opState = OperateState.OP_END;
 	}
 
 	/// <summary>
@@ -93,6 +129,14 @@ public class Player : MonoBehaviour
 			return;
 		}
 		cards_in_hand.Add(cards[cards_index]);
+	}
+
+	/// <summary>
+	/// 让操作类隐藏箭头
+	/// </summary>
+	public void DisabledArrows()
+	{
+		selfOperate.DisabledArrows();
 	}
 
 	public List<Map> Maps 

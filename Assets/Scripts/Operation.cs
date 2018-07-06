@@ -11,7 +11,7 @@ public class Operation
 	/*分配阶段选中地图块*/
 	private GameObject clickMap;
 	/*卡牌使用阶段选择的卡牌*/
-	private Card usedCard;
+	private GameObject clickCard;
 	/*增兵阶段的目前统率值*/
 	private int leaderPoint_current;
 	/*记录玩家行为步骤*/
@@ -56,13 +56,13 @@ public class Operation
 	{
 		this.state = state;
 		//TODO:玩家所能进行的所有操作
-		ClickMapBlock();
+		Click();
 	}
 
 	/// <summary>
 	/// 对鼠标点击事件处理
 	/// </summary>
-	private void ClickMapBlock()
+	private void Click()
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -78,13 +78,14 @@ public class Operation
 						if (hitInfo.collider.tag == "Map")
 						{
 							Debug.Log("选中");
+							commandUI.SetActive(false);
 							DrawArrows(hitInfo.collider.gameObject);	
 						}
 						if (hitInfo.collider.tag == "Arrow")
 						{
 							Debug.Log("指挥");
 							//TODO:改为显示UI
-							CommandSoilder(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
+							CommandSoilderUI(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
 						}
 						break;
 					}
@@ -102,8 +103,12 @@ public class Operation
 						if (hitInfo.collider.tag == "Card")
 						{
 							Debug.Log("出牌");
-							UseCard();
+							ChooseCard(hitInfo.collider.gameObject);
 							//TODO:出牌操作;牌的效果、手牌List中相应牌去除
+						}
+						if (hitInfo.collider.tag == "Map")
+						{
+
 						}
 						break;
 					}
@@ -119,11 +124,6 @@ public class Operation
 	/// <param name="mapBlock">地图块</param>
 	private void DrawArrows(GameObject mapBlock)
 	{
-		if(clickMap == mapBlock)
-		{
-			//点击相同地图块
-			return;
-		}
 		bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
 		if (!hasAuthority)
 		{
@@ -140,6 +140,7 @@ public class Operation
 		clickMap = mapBlock;
 		Debug.Log("选择地图块");
 		Map mapBlockData = clickMap.GetComponent<Map>();
+		//生成箭头
 		if (mapBlockData.Arrows.Count == 0)
 		{
 			Vector3 nextPos;  //相邻方块位置
@@ -161,31 +162,34 @@ public class Operation
 				mapBlockData.Arrows.Add(GameObject.Instantiate(arrow, pos, Quaternion.Euler(0, 0, angle)));
 			}
 		}
-		else
+		//画箭头
+		for (int i = 0; i < mapBlockData.Arrows.Count; i++)
 		{
-			for (int i = 0; i < mapBlockData.Arrows.Count; i++)
-			{
-				mapBlockData.Arrows[i].SetActive(true);
-			}
+			mapBlockData.Arrows[i].SetActive(true);
 		}
 	}
 
 	/// <summary>
-	/// 控制士兵移动方向
+	/// 显示指挥UI
 	/// </summary>
 	/// <param name="arrow">点击的箭头</param>
-	private void CommandSoilder(GameObject arrow, Map startMap)
+	private void CommandSoilderUI(GameObject arrow, Map startMap)
 	{
 		int index = startMap.Arrows.IndexOf(arrow);
-		if (!startMap.MoveDirMap.Contains(startMap.NextMaps[index]))
+		commandUI.SetActive(true);
+		//把步骤储存交给UI控制类
+		commandUI.GetComponent<CommandUIUpdate>().SetCommandUI(startMap.BaseSoldierNum, startMap, startMap.NextMaps[index], save_Steps);
+	}
+
+	/// <summary>
+	/// 隐藏显示的箭头
+	/// </summary>
+	public void DisabledArrows()
+	{
+		for (int i = 0; i < clickMap.GetComponent<Map>().Arrows.Count; i++)
 		{
-			//增加移动目标
-			startMap.MoveDirMap.Add(startMap.NextMaps[index]);
-			startMap.MoveSoldierNum.Add(soldierNum);
+			clickMap.GetComponent<Map>().Arrows[i].SetActive(false);
 		}
-		//TODO:记录此步操作
-		save_Steps.SaveCommamdSteps(startMap, startMap.NextMaps[index]);
-		
 	}
 
 	/// <summary>
@@ -209,8 +213,13 @@ public class Operation
 		}
 	}
 
-	private void UseCard()
+	/// <summary>
+	/// 选择使用的卡牌
+	/// </summary>
+	/// <param name="card">选中的卡牌</param>
+	private void ChooseCard(GameObject card)
 	{
+		
 		//TODO:使用卡牌
 	}
 
