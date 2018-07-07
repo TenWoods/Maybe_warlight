@@ -73,6 +73,8 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	#region 玩家操作状态改变
+
 	/// <summary>
 	/// 变为增兵状态
 	/// </summary>
@@ -108,6 +110,9 @@ public class Player : MonoBehaviour
 		opState = OperateState.USE_CARDS;
 	}
 	
+	/// <summary>
+	/// 变为回合结束
+	/// </summary>
 	public void ChangeOperateStateEnd()
 	{
 		if (opState == OperateState.COMMAND_SOLDIER)
@@ -117,6 +122,8 @@ public class Player : MonoBehaviour
 		}
 		opState = OperateState.OP_END;
 	}
+
+	#endregion
 
 	/// <summary>
 	/// 玩家抽卡(由GameManager调用)

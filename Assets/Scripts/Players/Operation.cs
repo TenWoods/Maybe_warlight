@@ -12,6 +12,8 @@ public class Operation
 	private GameObject clickMap;
 	/*卡牌使用阶段选择的卡牌*/
 	private GameObject clickCard;
+	/*选中卡牌的操作类型*/
+	private CardOpKind opKind;
 	/*增兵阶段的目前统率值*/
 	private int leaderPoint_current;
 	/*记录玩家行为步骤*/
@@ -105,10 +107,11 @@ public class Operation
 							Debug.Log("出牌");
 							ChooseCard(hitInfo.collider.gameObject);
 						}
-						if (hitInfo.collider.tag == "Map")
+						if (clickCard == null)
 						{
-							ChooseTargetMap(hitInfo.collider.gameObject);
+							break;
 						}
+						
 						break;
 					}
 					default: break;
@@ -117,6 +120,8 @@ public class Operation
 		}
 	}
 	
+	#region 指挥阶段
+
 	/// <summary>
 	/// 画箭头，显示箭头
 	/// </summary>
@@ -191,6 +196,10 @@ public class Operation
 		}
 	}
 
+	#endregion
+
+	#region 增兵阶段
+
 	/// <summary>
 	/// 增加选定地图块的兵力
 	/// </summary>
@@ -212,6 +221,23 @@ public class Operation
 		}
 	}
 
+	#endregion
+
+	#region 使用卡牌阶段
+
+	/// <summary>
+	/// 选择卡牌作用目标
+	/// </summary>
+	private void ChooseTarget()
+	{
+		switch (opKind)
+		{
+			case CardOpKind.SingleMap : break;
+			case CardOpKind.MapArea : break;
+			case CardOpKind.EffectPlayer : break;
+		}
+	}
+
 	/// <summary>
 	/// 选择使用的卡牌
 	/// </summary>
@@ -229,6 +255,7 @@ public class Operation
 			clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
 		} 
 		clickCard = card;
+		opKind = clickCard.GetComponent<Card>().OpKind;
 		clickCard.transform.localScale *= 2;
 		clickCard.GetComponent<SpriteRenderer>().sortingOrder = 2; //将卡片置顶
 		//TODO:使用卡牌
@@ -249,6 +276,8 @@ public class Operation
 		clickCard.transform.localScale /= 2;
 		clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;
 	}
+
+	#endregion
 
 	public int PlayerID
 	{
