@@ -14,6 +14,10 @@ public class Operation
 	private GameObject clickCard;
 	/*选中卡牌的操作类型*/
 	private CardOpKind opKind;
+	/*选中单个目标*/
+	private GameObject singleObject = null;
+	/*选中多个目标*/
+	private GameObject[] multiObject = null;
 	/*增兵阶段的目前统率值*/
 	private int leaderPoint_current;
 	/*记录玩家行为步骤*/
@@ -57,7 +61,6 @@ public class Operation
 	public void Operate(Player player, OperateState state)
 	{
 		this.state = state;
-		//TODO:玩家所能进行的所有操作
 		Click();
 	}
 
@@ -75,6 +78,7 @@ public class Operation
 				//TODO:每个case需要做的事
 				switch(state)
 				{
+					//指挥士兵
 					case OperateState.COMMAND_SOLDIER:
 					{
 						if (hitInfo.collider.tag == "Map")
@@ -91,6 +95,7 @@ public class Operation
 						}
 						break;
 					}
+					//增兵
 					case OperateState.ADD_SOLDIER:
 					{
 						if (hitInfo.collider.tag == "Map")
@@ -100,21 +105,35 @@ public class Operation
 						}
 						break;
 					}
+					//使用卡牌
 					case OperateState.USE_CARDS:
 					{
 						if (hitInfo.collider.tag == "Card")
 						{
-							Debug.Log("出牌");
+							Debug.Log("选择卡牌");
 							ChooseCard(hitInfo.collider.gameObject);
+							break;
 						}
 						if (clickCard == null)
 						{
 							break;
 						}
-						
+						ChooseTarget(hitInfo.collider.gameObject);
 						break;
 					}
 					default: break;
+				}
+			}
+			else
+			{
+				if (state == OperateState.USE_CARDS)
+				{
+					if (clickCard != null)
+					{
+						clickCard.transform.localScale /= 2;    //还原卡牌大小
+						clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
+						clickCard = null;    //清空选中卡牌
+					}
 				}
 			}
 		}
@@ -161,7 +180,7 @@ public class Operation
 				if (Vector3.Cross(Vector3.right, dir).z < 0)  //修正旋转的方向 
 				{
 					angle *= -1;
-				} 
+				}
 				pos = (nextPos + mapBlock.transform.position) / 2;
 				mapBlockData.Arrows.Add(GameObject.Instantiate(arrow, pos, Quaternion.Euler(0, 0, angle)));
 			}
@@ -226,19 +245,6 @@ public class Operation
 	#region 使用卡牌阶段
 
 	/// <summary>
-	/// 选择卡牌作用目标
-	/// </summary>
-	private void ChooseTarget()
-	{
-		switch (opKind)
-		{
-			case CardOpKind.SingleMap : break;
-			case CardOpKind.MapArea : break;
-			case CardOpKind.EffectPlayer : break;
-		}
-	}
-
-	/// <summary>
 	/// 选择使用的卡牌
 	/// </summary>
 	/// <param name="card">选中的卡牌</param>
@@ -250,31 +256,52 @@ public class Operation
 		}
 		if (clickCard != null)
 		{
-			Debug.Log("Small1");
-			clickCard.transform.localScale /= 2;
+			clickCard.transform.localScale /= 2;    //还原卡牌大小
 			clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
 		} 
 		clickCard = card;
+		Debug.Log(clickCard.name);
 		opKind = clickCard.GetComponent<Card>().OpKind;
 		clickCard.transform.localScale *= 2;
 		clickCard.GetComponent<SpriteRenderer>().sortingOrder = 2; //将卡片置顶
-		//TODO:使用卡牌
 	}
 
 	/// <summary>
-	/// 选择卡牌效果作用地图块
+	/// 选择卡牌作用目标
 	/// </summary>
-	/// <param name="targetMap"></param>
-	private void ChooseTargetMap(GameObject targetMap)
+	private void ChooseTarget(GameObject target)
 	{
-		if (clickCard == null)
+		switch (opKind)
 		{
-			return;
+			case CardOpKind.SingleMap : 
+			case CardOpKind.MapArea :
+			{
+				Debug.Log("单个目标");
+				singleObject = target;
+				clickCard.transform.localScale /= 2;   //还原卡牌大小
+				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
+				clickCard.GetComponent<Card>().CardEffect(playerID, singleObject);
+				clickCard.GetComponent<Card>().SetCardMoveDir(singleObject.transform.position);
+				singleObject = null;	
+				break;
+			}
+			case CardOpKind.MultiMap : 
+			{
+				Debug.Log("多个目标");
+				if (multiObject == null)
+				{
+					multiObject = new GameObject[2];
+					multiObject[0] = target;
+					return;
+				}
+				multiObject[1] = target;
+				clickCard.transform.localScale /= 2;   //还原卡牌大小
+				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
+				clickCard.GetComponent<Card>().CardEffect(playerID, multiObject);
+				multiObject = null;
+				break;
+			}
 		}
-		clickMap = targetMap;
-		//TODO:调用卡牌类里的卡牌移动方法
-		clickCard.transform.localScale /= 2;
-		clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;
 	}
 
 	#endregion

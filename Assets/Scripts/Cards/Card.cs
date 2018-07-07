@@ -5,8 +5,8 @@ using UnityEngine;
 public enum CardOpKind
 {
 	SingleMap,
-	MapArea,
-	EffectPlayer
+	MultiMap,
+	MapArea
 };
 
 public class Card : MonoBehaviour 
@@ -14,10 +14,13 @@ public class Card : MonoBehaviour
 	/*使用玩家编号*/
 	protected int playerID;
 	/*卡牌的操作类型*/
+	[SerializeField]
 	protected CardOpKind opKind;
 	/*卡牌移动信号*/
+	[SerializeField]
 	private bool timeToGo = false;
 	/*卡牌移动目标*/
+	[SerializeField]
 	private Vector3 destination;
 	/*卡牌移动速度*/
 	[SerializeField]
@@ -32,9 +35,10 @@ public class Card : MonoBehaviour
 		}
 		if ((transform.position - destination).magnitude >= 0.1)
 		{
-			Vector3.Lerp(transform.position, destination, Time.deltaTime * moveSpeed);
+			transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * moveSpeed);
 			return;
 		}
+		Destroy(this.gameObject);
 	}
 	
 	/// <summary>
@@ -42,17 +46,18 @@ public class Card : MonoBehaviour
 	/// </summary>
 	/// <param name="player">选中的玩家</param>
 	/// <param name="map">选中的地图</param>
-	public void CardEffect(Player player, Map map)
+	public void CardEffect(int playerID, GameObject target)
 	{
 		//TODO:卡牌的操作
 	}
 
 	/// <summary>
-	/// 
+	/// 卡牌效果   
 	/// </summary>
 	/// <param name="player"></param>
-	public void CardEffect(Player player)
+	public void CardEffect(int playerID, GameObject[] targets)
 	{
+		
 		//TODO:卡牌的操作
 	}
 
