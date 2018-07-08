@@ -80,4 +80,20 @@ public class PlayerStep
 		//TODO:还没想好怎么做
 	}
 	
+	public List<Map> AddMaps 
+	{
+		get
+		{
+			return addMaps;
+		}
+	}
+
+	public List<int> AddNums 
+	{
+		get
+		{
+			return addNums;
+		}
+	}
+
 }
