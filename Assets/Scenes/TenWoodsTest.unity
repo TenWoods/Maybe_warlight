@@ -3327,7 +3327,7 @@ Prefab:
     - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
         type: 2}
       propertyPath: playerID
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
         type: 2}
@@ -5199,6 +5199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
+  - {fileID: 594357112}
   - {fileID: 594357112}
   mapManagerNum: 1
   mapManagers:

@@ -201,4 +201,12 @@ public class Player : MonoBehaviour
 			gameStart = value;
 		}
 	}
+
+	public PlayerStep Steps
+	{
+		get
+		{
+			return steps;
+		}
+	}
 }

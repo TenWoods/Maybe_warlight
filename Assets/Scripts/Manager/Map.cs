@@ -102,6 +102,14 @@ public class Map : MonoBehaviour
 	}
 
 	/// <summary>
+	/// 更新UI显示
+	/// </summary>
+	public void UpadteMapUI()
+	{
+		baseSoldierNum_UI.text = baseSoldierNum.ToString();
+	}
+
+	/// <summary>
 	/// 初始化地图块UI显示
 	/// </summary>
 	private void InitMapUI()
@@ -214,6 +222,10 @@ public class Map : MonoBehaviour
 		get
 		{
 			return baseSoldierNum;
+		}
+		set
+		{
+			baseSoldierNum = value;
 		}
 	}
 }

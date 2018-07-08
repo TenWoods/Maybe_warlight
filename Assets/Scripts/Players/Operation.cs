@@ -83,14 +83,11 @@ public class Operation
 					{
 						if (hitInfo.collider.tag == "Map")
 						{
-							Debug.Log("选中");
 							commandUI.SetActive(false);
 							DrawArrows(hitInfo.collider.gameObject);	
 						}
 						if (hitInfo.collider.tag == "Arrow")
 						{
-							Debug.Log("指挥");
-							//TODO:改为显示UI
 							CommandSoilderUI(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
 						}
 						break;
@@ -100,7 +97,6 @@ public class Operation
 					{
 						if (hitInfo.collider.tag == "Map")
 						{
-							Debug.Log("增兵");
 							AddMapSoldierNum(hitInfo.collider.gameObject);
 						}
 						break;
@@ -110,7 +106,6 @@ public class Operation
 					{
 						if (hitInfo.collider.tag == "Card")
 						{
-							Debug.Log("选择卡牌");
 							ChooseCard(hitInfo.collider.gameObject);
 							break;
 						}
@@ -138,6 +133,31 @@ public class Operation
 			}
 		}
 	}
+
+	#region 增兵阶段
+
+	/// <summary>
+	/// 增加选定地图块的兵力
+	/// </summary>
+	/// <param name="mapBlock">地图块</param>
+	private void AddMapSoldierNum(GameObject mapBlock)
+	{
+		bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
+		if (!hasAuthority)
+		{
+			//没有权限
+			return;
+		}
+		if (leaderPoint_current > 0)
+		{
+			Debug.Log("增兵");
+			save_Steps.SaveAddSteps(1, mapBlock.GetComponent<Map>());
+			mapBlock.GetComponent<Map>().AddSoldier();
+			leaderPoint_current -= 1;
+		}
+	}
+
+	#endregion
 	
 	#region 指挥阶段
 
@@ -217,31 +237,6 @@ public class Operation
 
 	#endregion
 
-	#region 增兵阶段
-
-	/// <summary>
-	/// 增加选定地图块的兵力
-	/// </summary>
-	/// <param name="mapBlock">地图块</param>
-	private void AddMapSoldierNum(GameObject mapBlock)
-	{
-		bool hasAuthority = mapBlock.GetComponent<Map>().CheckAuthority(playerID);
-		if (!hasAuthority)
-		{
-			//没有权限
-			return;
-		}
-		if (leaderPoint_current > 0)
-		{
-			Debug.Log("增兵");
-			save_Steps.SaveAddSteps(1, mapBlock.GetComponent<Map>());
-			mapBlock.GetComponent<Map>().AddSoldier();
-			leaderPoint_current -= 1;
-		}
-	}
-
-	#endregion
-
 	#region 使用卡牌阶段
 
 	/// <summary>
@@ -276,7 +271,6 @@ public class Operation
 			case CardOpKind.SingleMap : 
 			case CardOpKind.MapArea :
 			{
-				Debug.Log("单个目标");
 				singleObject = target;
 				clickCard.transform.localScale /= 2;   //还原卡牌大小
 				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
@@ -287,17 +281,19 @@ public class Operation
 			}
 			case CardOpKind.MultiMap : 
 			{
-				Debug.Log("多个目标");
 				if (multiObject == null)
 				{
+					Debug.Log("选择第一个");
 					multiObject = new GameObject[2];
 					multiObject[0] = target;
 					return;
 				}
+				Debug.Log("选择第二个");
 				multiObject[1] = target;
 				clickCard.transform.localScale /= 2;   //还原卡牌大小
 				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
 				clickCard.GetComponent<Card>().CardEffect(playerID, multiObject);
+				clickCard.GetComponent<Card>().SetCardMoveDir((multiObject[0].transform.position + multiObject[1].transform.position) / 2);
 				multiObject = null;
 				break;
 			}

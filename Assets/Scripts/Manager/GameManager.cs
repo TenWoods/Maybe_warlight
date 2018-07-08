@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 	/*游戏是否开始*/
 	[SerializeField]
 	private bool gameStart = false;
+	/*是否开始结算*/
+	private bool startCaculate = false;
 	/*所有玩家的行为步骤*/
 	private PlayerStep[] all_Steps; 
 	
@@ -30,6 +32,11 @@ public class GameManager : MonoBehaviour
 	private void Update()
 	{
 		if (!gameStart)
+		{
+			return;
+		}
+		CheckCaculation();
+		if (!startCaculate)
 		{
 			return;
 		}
@@ -56,6 +63,52 @@ public class GameManager : MonoBehaviour
 		{
 			players[i].PlayerID = i + 1;
 			//TODO:生成玩家之后对玩家进行初始化
+		}
+	}
+
+	/// <summary>
+	/// 检测是否开始结算
+	/// </summary>
+	private void CheckCaculation()
+	{
+		foreach(Player p in players)
+		{
+			if (p.OpState != OperateState.OP_END)
+			{
+				return;
+			}
+		}
+		startCaculate = true;
+	}
+
+	/// <summary>
+	/// 回合结束开始结算
+	/// </summary>
+	private void Caculation()
+	{
+		int i;
+		//还原地图状态
+		foreach(Player p in players)
+		{
+			for (i = 0; i < p.Steps.AddMaps.Count; i++)
+			{
+				p.Steps.AddMaps[i].BaseSoldierNum -= p.Steps.AddNums[i];
+				p.Steps.AddMaps[i].UpadteMapUI();
+			}
+		}
+		//增兵过程
+		foreach(Player p in players)
+		{
+			for (i = 0; i < p.Steps.AddMaps.Count; i++)
+			{
+				p.Steps.AddMaps[i].BaseSoldierNum += p.Steps.AddNums[i];
+				p.Steps.AddMaps[i].UpadteMapUI();
+			}
+		}
+		//指挥过程
+		foreach(Player p in players)
+		{
+			
 		}
 	}
 
