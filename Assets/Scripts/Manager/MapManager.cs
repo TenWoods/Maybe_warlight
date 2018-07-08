@@ -6,7 +6,7 @@ public class MapManager : MonoBehaviour
 {
 	/*管理的地图方块的地形*/
 	[SerializeField]
-	private int terrain;
+	private Terrain terrain;
 	/*管理的地图块*/
 	[SerializeField]
 	private Map[] m_mapBlocks;

@@ -96,4 +96,12 @@ public class PlayerStep
 		}
 	}
 
+	public List<Map> CommandMaps
+	{
+		get
+		{
+			return commandMaps;
+		}
+	}
+
 }

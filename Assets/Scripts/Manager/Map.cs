@@ -3,10 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Terrain
+{
+	HIGHLAND,
+	FLATLAND,
+	FOREST,
+	DESERT,
+	VALLY
+};
+
 public class Map : MonoBehaviour
 {
 	/*地图的地形属性*/
-	private int terrain;
+	private Terrain terrain;
 	/*地图在玩家处的索引，-1为错误*/
 	[SerializeField]//调试用
 	private int mapID_player;
@@ -189,7 +198,7 @@ public class Map : MonoBehaviour
 		}
 	}
 
-	public int Terrain 
+	public Terrain Terrain 
 	{
 		get
 		{

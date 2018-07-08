@@ -108,8 +108,14 @@ public class GameManager : MonoBehaviour
 		//指挥过程
 		foreach(Player p in players)
 		{
-			
+
 		}
+	}
+
+	private void ActackCaculation(Map startMap)
+	{
+		List<Map> targetMaps = startMap.MoveDirMap;
+		
 	}
 
 	/// <summary>
