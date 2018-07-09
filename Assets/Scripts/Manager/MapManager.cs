@@ -21,7 +21,7 @@ public class MapManager : MonoBehaviour
 	private MapManager[] nextManager;
 
 	/// <summary>
-	/// 对地图上所有的地图块
+	/// 对地图上所有的地图块初始化数据
 	/// </summary>
 	/// <param name="gm"></param>
 	public void InitBlocksData(GameManager gm)
@@ -34,7 +34,6 @@ public class MapManager : MonoBehaviour
 			m_mapBlocks[i].PlayerID = playerID; //所属玩家的ID
 			m_mapBlocks[i].Init_Start(); //开始初始化地图
 			gm.Players[playerID].Maps.Add(m_mapBlocks[i]);
-			//TODO:可能会有其他的数据初始化
 		}
 	}
 

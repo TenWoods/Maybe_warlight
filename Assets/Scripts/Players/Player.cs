@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*操作进行的阶段(枚举)定义*/
-public enum OperateState{ADD_SOLDIER, COMMAND_SOLDIER, USE_CARDS, OP_END};
+public enum OperateState
+{
+	OP_START,
+	ADD_SOLDIER,
+ 	COMMAND_SOLDIER, 
+	USE_CARDS, 
+	OP_END
+};
 public class Player : MonoBehaviour 
 {
 	/*玩家所拥有的地图格*/
 	[SerializeField]//调试用
 	private List<Map> maps;
-	/*玩家在GameManager处的索引*/
+	/*玩家在GameManager处的索引(-1为错误)*/
 	[SerializeField]
 	private int playerID = 0;
 	/*玩家当前操作*/
 	[SerializeField]//调试用
 	private OperateState opState;
-	/*玩家当前操作结束*/
+	/*玩家当前是否操作结束*/
 	[SerializeField]//调试用
 	private bool operateEnd = true;
 	/*玩家操作类*/
@@ -48,7 +55,7 @@ public class Player : MonoBehaviour
 		maps = new List<Map>();
 		cards_in_hand = new List<int>();
 		steps = new PlayerStep();
-		opState = OperateState.OP_END;
+		opState = OperateState.OP_START;
 		selfOperate = new Operation(this, steps);
 	}
 
@@ -74,19 +81,26 @@ public class Player : MonoBehaviour
 	}
 
 	#region 玩家操作状态改变
+	
+	/// <summary>
+	/// 变为开始状态
+	/// </summary>
+	public void ChangeOperateStateStart()
+	{
+		opState = OperateState.OP_START;
+	}
 
 	/// <summary>
 	/// 变为增兵状态
 	/// </summary>
-	/// <param name="op">操作状态枚举变量</param>
 	public void ChangeOperateStateAdd()
 	{
+		opState = OperateState.ADD_SOLDIER;
 		if (opState == OperateState.COMMAND_SOLDIER)
 		{
 			DisabledArrows();
 			commandUI.SetActive(false);
 		}
-		opState = OperateState.ADD_SOLDIER;
 	}
 
 	/// <summary>
@@ -102,12 +116,12 @@ public class Player : MonoBehaviour
 	/// </summary>
 	public void ChangeOperateStateCard()
 	{
+		opState = OperateState.USE_CARDS;
 		if (opState == OperateState.COMMAND_SOLDIER)
 		{
 			DisabledArrows();
 			commandUI.SetActive(false);
 		}
-		opState = OperateState.USE_CARDS;
 	}
 	
 	/// <summary>
@@ -115,15 +129,31 @@ public class Player : MonoBehaviour
 	/// </summary>
 	public void ChangeOperateStateEnd()
 	{
+		opState = OperateState.OP_END;
 		if (opState == OperateState.COMMAND_SOLDIER)
 		{
 			DisabledArrows();
 			commandUI.SetActive(false);
 		}
-		opState = OperateState.OP_END;
 	}
 
 	#endregion
+
+	/// <summary>
+	/// 新的回合开始更新统帅值
+	/// </summary>
+	public void UpdateLeaderPoint()
+	{
+		leaderPoint = maps.Count;
+	}
+
+	/// <summary>
+	/// 清除上个回合的步骤
+	/// </summary>
+	public void CleanSteps()
+	{
+		//TODO:清除上个回合的步骤
+	}
 
 	/// <summary>
 	/// 玩家抽卡(由GameManager调用)

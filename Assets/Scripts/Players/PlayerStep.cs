@@ -51,16 +51,20 @@ public class PlayerStep
 			if (startMap.MoveDirMap.Contains(endMap))
 			{
 				index = startMap.MoveDirMap.IndexOf(endMap);
+				startMap.BaseSoldierNum += startMap.MoveSoldierNum[index];
 				startMap.MoveSoldierNum[index] = moveNum;
+				startMap.BaseSoldierNum -= moveNum;
 				return;
 			}
 			startMap.MoveDirMap.Add(endMap);
 			startMap.MoveSoldierNum.Add(moveNum);
+			startMap.BaseSoldierNum -= moveNum;
 			return;
 		}
 		commandMaps.Add(startMap);
 		startMap.MoveDirMap.Add(endMap);
 		startMap.MoveSoldierNum.Add(moveNum);
+		startMap.BaseSoldierNum -= moveNum;
 	}
 
 	public void SaveCardSteps(Map map)

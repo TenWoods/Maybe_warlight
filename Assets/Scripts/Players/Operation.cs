@@ -78,6 +78,15 @@ public class Operation
 				//TODO:每个case需要做的事
 				switch(state)
 				{
+					//增兵
+					case OperateState.ADD_SOLDIER:
+					{
+						if (hitInfo.collider.tag == "Map")
+						{
+							AddMapSoldierNum(hitInfo.collider.gameObject);
+						}
+						break;
+					}
 					//指挥士兵
 					case OperateState.COMMAND_SOLDIER:
 					{
@@ -89,15 +98,6 @@ public class Operation
 						if (hitInfo.collider.tag == "Arrow")
 						{
 							CommandSoilderUI(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
-						}
-						break;
-					}
-					//增兵
-					case OperateState.ADD_SOLDIER:
-					{
-						if (hitInfo.collider.tag == "Map")
-						{
-							AddMapSoldierNum(hitInfo.collider.gameObject);
 						}
 						break;
 					}

@@ -15,6 +15,7 @@ public enum Terrain
 public class Map : MonoBehaviour
 {
 	/*地图的地形属性*/
+	[SerializeField]//调试用
 	private Terrain terrain;
 	/*地图在玩家处的索引，-1为错误*/
 	[SerializeField]//调试用
@@ -39,7 +40,7 @@ public class Map : MonoBehaviour
 	private Player owner;
 	/*该格实际人数*/
 	//人数在计算时向上取整
-	private float baseSoldierNum = 1;
+	private int baseSoldierNum = 1;
 	/*该格有效人数*/
 	private float effectSoldierNum = 1;
 	/*相邻的地图块*/
@@ -226,7 +227,7 @@ public class Map : MonoBehaviour
 		}
 	}
 
-	public float BaseSoldierNum 
+	public int BaseSoldierNum 
 	{
 		get
 		{
