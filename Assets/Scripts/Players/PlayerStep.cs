@@ -12,8 +12,6 @@ public class PlayerStep
 	private List<Map> commandMaps;
 	/*卡牌使用集合*/
 	private List<Map> cardMaps;
-	/*读取步骤指针*/
-	private int step_Pointer = 0;
 
 	public PlayerStep()
 	{
@@ -67,6 +65,10 @@ public class PlayerStep
 		startMap.BaseSoldierNum -= moveNum;
 	}
 
+	/// <summary>
+	/// 储存卡牌操作阶段
+	/// </summary>
+	/// <param name="map">作用的卡牌</param>
 	public void SaveCardSteps(Map map)
 	{
 		if (cardMaps.Contains(map))
@@ -76,14 +78,14 @@ public class PlayerStep
 		cardMaps.Add(map);
 	}
 
-	/// <summary>
-	/// 读取储存的步骤并播放效果
-	/// </summary>
-	public void LoadSteps()
+	public void CleanSteps()
 	{
-		//TODO:还没想好怎么做
+		addMaps.Clear();
+		addNums.Clear();
+		commandMaps.Clear();
+		cardMaps.Clear();
 	}
-	
+
 	public List<Map> AddMaps 
 	{
 		get

@@ -74,10 +74,6 @@ public class Player : MonoBehaviour
 			}
 			selfOperate.Operate(this, opState);
 		}
-		else
-		{
-			//TODO:记录玩家行动的步骤，并反馈给GameManager
-		}
 	}
 
 	#region 玩家操作状态改变
@@ -145,6 +141,7 @@ public class Player : MonoBehaviour
 	public void UpdateLeaderPoint()
 	{
 		leaderPoint = maps.Count;
+		hasUpdated = false;
 	}
 
 	/// <summary>
@@ -152,7 +149,7 @@ public class Player : MonoBehaviour
 	/// </summary>
 	public void CleanSteps()
 	{
-		//TODO:清除上个回合的步骤
+		steps.CleanSteps();
 	}
 
 	/// <summary>

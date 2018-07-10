@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
 		//还原操作状态
 		foreach(Player p in players)
 		{
+			p.CleanSteps();
 			p.ChangeOperateStateStart();
 			p.UpdateLeaderPoint();
 		}

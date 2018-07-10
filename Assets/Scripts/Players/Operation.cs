@@ -192,7 +192,6 @@ public class Operation
 			float angle;
 			for (int i = 0; i < mapBlockData.NextMaps.Count; i++)
 			{
-				Debug.Log("画了个箭头");
 				//TODO:箭头大小缩放
 				nextPos = mapBlockData.NextMaps[i].transform.position;
 				dir = nextPos - mapBlock.transform.position;
@@ -205,7 +204,7 @@ public class Operation
 				mapBlockData.Arrows.Add(GameObject.Instantiate(arrow, pos, Quaternion.Euler(0, 0, angle)));
 			}
 		}
-		//画箭头
+		//显示箭头
 		for (int i = 0; i < mapBlockData.Arrows.Count; i++)
 		{
 			mapBlockData.Arrows[i].SetActive(true);
