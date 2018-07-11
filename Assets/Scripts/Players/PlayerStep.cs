@@ -10,6 +10,8 @@ public class PlayerStep
 	private List<int> addNums;
 	/*指挥地图块集合*/
 	private List<Map> commandMaps;
+	/*指挥所用的箭头*/
+	private List<GameObject> arrows;
 	/*卡牌使用集合*/
 	private List<Map> cardMaps;
 
@@ -18,6 +20,7 @@ public class PlayerStep
 		addMaps = new List<Map>();
 		addNums = new List<int>();
 		commandMaps = new List<Map>();
+		arrows = new List<GameObject>();
 		cardMaps = new List<Map>();
 	}
 
@@ -41,7 +44,7 @@ public class PlayerStep
 	/// <summary>
 	/// 储存玩家指挥操作
 	/// </summary>
-	public void SaveCommamdSteps(Map startMap, Map endMap, int moveNum)
+	public void SaveCommamdSteps(Map startMap, Map endMap, int moveNum, GameObject arrow)
 	{
 		int index = 0;
 		if (commandMaps.Contains(startMap))
@@ -60,6 +63,7 @@ public class PlayerStep
 			return;
 		}
 		commandMaps.Add(startMap);
+		arrows.Add(arrow);
 		startMap.MoveDirMap.Add(endMap);
 		startMap.MoveSoldierNum.Add(moveNum);
 		startMap.BaseSoldierNum -= moveNum;
@@ -110,4 +114,11 @@ public class PlayerStep
 		}
 	}
 
+	public List<GameObject> Arrows 
+	{
+		get
+		{
+			return arrows;
+		}
+	}
 }

@@ -220,7 +220,7 @@ public class Operation
 		int index = startMap.Arrows.IndexOf(arrow);
 		commandUI.SetActive(true);
 		//把步骤储存交给UI控制类
-		commandUI.GetComponent<CommandUIUpdate>().SetCommandUI(startMap.BaseSoldierNum, startMap, startMap.NextMaps[index], save_Steps);
+		commandUI.GetComponent<CommandUIUpdate>().SetCommandUI(startMap.BaseSoldierNum, startMap, startMap.NextMaps[index], save_Steps, arrow);
 	}
 
 	/// <summary>
@@ -228,9 +228,15 @@ public class Operation
 	/// </summary>
 	public void DisabledArrows()
 	{
-		for (int i = 0; i < clickMap.GetComponent<Map>().Arrows.Count; i++)
+		int i;
+		Map arrowMap = clickMap.GetComponent<Map>();
+		for (i = 0; i < arrowMap.Arrows.Count; i++)
 		{
-			clickMap.GetComponent<Map>().Arrows[i].SetActive(false);
+			if (save_Steps.Arrows.Contains(arrowMap.Arrows[i]))
+			{
+				continue;
+			}
+			arrowMap.Arrows[i].SetActive(false);
 		}
 	}
 
