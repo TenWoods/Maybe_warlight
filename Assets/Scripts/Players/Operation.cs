@@ -49,7 +49,7 @@ public class Operation
 	/// <param name="player"></param>
 	public void UpdateData(Player player)
 	{
-		leaderPoint_current = player.LeaderPoint;
+		leaderPoint_current = player.SoldierNum;
 		//TODO:可能会有其他的更新
 	}
 
@@ -281,6 +281,7 @@ public class Operation
 				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
 				clickCard.GetComponent<Card>().CardEffect(playerID, singleObject);
 				clickCard.GetComponent<Card>().SetCardMoveDir(singleObject.transform.position);
+				clickCard.GetComponent<Card>().HasUsed = true;
 				singleObject = null;	
 				break;
 			}
@@ -299,6 +300,7 @@ public class Operation
 				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
 				clickCard.GetComponent<Card>().CardEffect(playerID, multiObject);
 				clickCard.GetComponent<Card>().SetCardMoveDir((multiObject[0].transform.position + multiObject[1].transform.position) / 2);
+				clickCard.GetComponent<Card>().HasUsed = true;
 				multiObject = null;
 				break;
 			}

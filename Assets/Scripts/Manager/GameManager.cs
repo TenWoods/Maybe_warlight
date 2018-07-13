@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
 		for (int i = 0; i < players.Length; i++)
 		{
 			players[i].PlayerID = i + 1;
+			players[i].GetCard(players[i].GetCardNum);
 			//TODO:生成玩家之后对玩家进行初始化
 		}
 	}
@@ -140,8 +141,6 @@ public class GameManager : MonoBehaviour
 	{
 		List<Map> targetMaps = startMap.MoveDirMap;
 		List<int> moveNums = startMap.MoveSoldierNum;
-		float power;
-		float defend;
 		float result;
 		Debug.Log(targetMaps.Count);
 		for(int i = 0; i < targetMaps.Count; i++)
@@ -155,15 +154,10 @@ public class GameManager : MonoBehaviour
 			{
 				targetMaps[i].BaseSoldierNum += moveNums[i];
 			}
-			if (targetMaps[i].Terrain == Terrain.DESERT)
+			if (targetMaps[i].Terrain != Terrain.DESERT)
 			{
-				defend = 1.0f;
+				startMap.DefendPower += 0.1f;
 			}
-			else
-			{
-				defend = 1.1f;
-			}
-			power = 1;
 			//攻击力根据地形改变
 			//高度:高地>平地=森林=荒漠>谷地
 			switch (startMap.Terrain)
@@ -172,7 +166,7 @@ public class GameManager : MonoBehaviour
 				{
 					if (targetMaps[i].Terrain != Terrain.HIGHLAND)
 					{
-						power += 0.2f;
+						startMap.AttackPower += 0.2f;
 					}
 					break;
 				}
@@ -180,37 +174,37 @@ public class GameManager : MonoBehaviour
 				{
 					if (targetMaps[i].Terrain == Terrain.VALLY)
 					{
-						power += 0.2f;
+						startMap.AttackPower += 0.2f;
 					}
 					else if (targetMaps[i].Terrain == Terrain.HIGHLAND)
 					{
-						power -= 0.2f;
+						startMap.AttackPower -= 0.2f;
 					}
-					power += 0.1f; 
+					startMap.AttackPower += 0.1f; 
 					break;
 				} 
 				case Terrain.DESERT : 
 				{
 					if (targetMaps[i].Terrain == Terrain.VALLY)
 					{
-						power += 0.2f;
+						startMap.AttackPower += 0.2f;
 					}
 					else if (targetMaps[i].Terrain == Terrain.HIGHLAND)
 					{
-						power -= 0.2f;
+						startMap.AttackPower -= 0.2f;
 					}
-					power -= 0.1f; 
+					startMap.AttackPower -= 0.1f; 
 					break;
 				}
 				case Terrain.FLATLAND :
 				{
 					if (targetMaps[i].Terrain == Terrain.VALLY)
 					{
-						power += 0.2f;
+						startMap.AttackPower += 0.2f;
 					}
 					else if (targetMaps[i].Terrain == Terrain.HIGHLAND)
 					{
-						power -= 0.2f;
+						startMap.AttackPower -= 0.2f;
 					}
 					break;
 				}
@@ -218,7 +212,7 @@ public class GameManager : MonoBehaviour
 				{
 					if (targetMaps[i].Terrain != Terrain.VALLY)
 					{
-						power -= 0.2f;
+						startMap.AttackPower -= 0.2f;
 					}
 					break;
 				}
@@ -226,7 +220,7 @@ public class GameManager : MonoBehaviour
 			}
 			//结算结果
 			//攻击人数*攻击力 - 防御人数*防御力
-			result = moveNums[i] * power - targetMaps[i].BaseSoldierNum * defend;
+			result = moveNums[i] * startMap.AttackPower - targetMaps[i].BaseSoldierNum * startMap.DefendPower;
 			// Debug.Log("攻击力" + power);
 			// Debug.Log("防御力" + defend);
 			Debug.Log("结算结果" + result);

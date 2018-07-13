@@ -58,13 +58,16 @@ public class PlayerStep
 				return;
 			}
 			startMap.MoveDirMap.Add(endMap);
+			arrows.Add(arrow); //保存留在地图上的箭头
+			arrow.GetComponent<BoxCollider2D>().enabled = false; //设置为不可点击
 			startMap.MoveSoldierNum.Add(moveNum);
 			startMap.BaseSoldierNum -= moveNum;
 			return;
 		}
 		commandMaps.Add(startMap);
-		arrows.Add(arrow);
 		startMap.MoveDirMap.Add(endMap);
+		arrows.Add(arrow); //保存留在地图上的箭头
+		arrow.GetComponent<BoxCollider2D>().enabled = false; //设置为不可点击
 		startMap.MoveSoldierNum.Add(moveNum);
 		startMap.BaseSoldierNum -= moveNum;
 	}
@@ -88,6 +91,12 @@ public class PlayerStep
 		addNums.Clear();
 		commandMaps.Clear();
 		cardMaps.Clear();
+		foreach(GameObject arrow in arrows)
+		{
+			arrow.SetActive(false);
+			arrow.GetComponent<BoxCollider2D>().enabled = true;
+		}
+		arrows.Clear();
 	}
 
 	public List<Map> AddMaps 

@@ -50,6 +50,10 @@ public class Map : MonoBehaviour
 	/*指向相邻地图块的箭头*/
 	[SerializeField]
 	private List<GameObject> arrows;
+	/*地图块攻击力*/
+	private float attackPower = 1.0f;
+	/*地图块防御力*/
+	private float defendPower = 1.0f;
 	/*移动目的地图块*/
 	public List<Map> MoveDirMap;
 	/*移动士兵数量*/
@@ -236,6 +240,30 @@ public class Map : MonoBehaviour
 		set
 		{
 			baseSoldierNum = value;
+		}
+	}
+
+	public float AttackPower
+	{
+		get 
+		{
+			return attackPower;
+		}
+		set
+		{
+			attackPower = value;
+		}
+	}
+
+	public float DefendPower 
+	{
+		get
+		{
+			return defendPower;
+		}
+		set
+		{
+			defendPower = value;
 		}
 	}
 }

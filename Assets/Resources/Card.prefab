@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4474698643443964}
   - component: {fileID: 212061477229699176}
   - component: {fileID: 61012405060698584}
+  - component: {fileID: 114358619790586418}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -66,6 +67,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.96, y: 1.96}
   m_EdgeRadius: 0
+--- !u!114 &114358619790586418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1070364692973150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5fdcbc4563d5e4e87acfefabb4ff07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opKind: 0
+  timeToGo: 0
+  destination: {x: 0, y: 0, z: 0}
+  moveSpeed: 1
 --- !u!212 &212061477229699176
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -100,7 +116,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 9eaa788c35d3cb942930fac44aeeb299, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
