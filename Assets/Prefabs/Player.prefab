@@ -51,3 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb75ea89cdce514f9512f3ef770ac49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maps: []
+  playerID: 0
+  opState: 0
+  operateEnd: 1
+  soldierNum: 0
+  cards_Num_Max: 0
+  arrow_Prefab: {fileID: 1103937669562196, guid: de4327f635262a744b0ce1de7a543c62,
+    type: 2}
+  commandUI: {fileID: 1305279929097364, guid: d6861cf200ea5d7448efc3899f63ba05, type: 2}

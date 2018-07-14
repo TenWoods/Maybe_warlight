@@ -49,7 +49,7 @@ public class Operation
 	/// <param name="player"></param>
 	public void UpdateData(Player player)
 	{
-		leaderPoint_current = player.LeaderPoint;
+		leaderPoint_current = player.SoldierNum;
 		//TODO:可能会有其他的更新
 	}
 
@@ -78,6 +78,15 @@ public class Operation
 				//TODO:每个case需要做的事
 				switch(state)
 				{
+					//增兵
+					case OperateState.ADD_SOLDIER:
+					{
+						if (hitInfo.collider.tag == "Map")
+						{
+							AddMapSoldierNum(hitInfo.collider.gameObject);
+						}
+						break;
+					}
 					//指挥士兵
 					case OperateState.COMMAND_SOLDIER:
 					{
@@ -89,15 +98,6 @@ public class Operation
 						if (hitInfo.collider.tag == "Arrow")
 						{
 							CommandSoilderUI(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
-						}
-						break;
-					}
-					//增兵
-					case OperateState.ADD_SOLDIER:
-					{
-						if (hitInfo.collider.tag == "Map")
-						{
-							AddMapSoldierNum(hitInfo.collider.gameObject);
 						}
 						break;
 					}
@@ -192,7 +192,6 @@ public class Operation
 			float angle;
 			for (int i = 0; i < mapBlockData.NextMaps.Count; i++)
 			{
-				Debug.Log("画了个箭头");
 				//TODO:箭头大小缩放
 				nextPos = mapBlockData.NextMaps[i].transform.position;
 				dir = nextPos - mapBlock.transform.position;
@@ -205,7 +204,7 @@ public class Operation
 				mapBlockData.Arrows.Add(GameObject.Instantiate(arrow, pos, Quaternion.Euler(0, 0, angle)));
 			}
 		}
-		//画箭头
+		//显示箭头
 		for (int i = 0; i < mapBlockData.Arrows.Count; i++)
 		{
 			mapBlockData.Arrows[i].SetActive(true);
@@ -221,7 +220,7 @@ public class Operation
 		int index = startMap.Arrows.IndexOf(arrow);
 		commandUI.SetActive(true);
 		//把步骤储存交给UI控制类
-		commandUI.GetComponent<CommandUIUpdate>().SetCommandUI(startMap.BaseSoldierNum, startMap, startMap.NextMaps[index], save_Steps);
+		commandUI.GetComponent<CommandUIUpdate>().SetCommandUI(startMap.BaseSoldierNum, startMap, startMap.NextMaps[index], save_Steps, arrow);
 	}
 
 	/// <summary>
@@ -229,9 +228,15 @@ public class Operation
 	/// </summary>
 	public void DisabledArrows()
 	{
-		for (int i = 0; i < clickMap.GetComponent<Map>().Arrows.Count; i++)
+		int i;
+		Map arrowMap = clickMap.GetComponent<Map>();
+		for (i = 0; i < arrowMap.Arrows.Count; i++)
 		{
-			clickMap.GetComponent<Map>().Arrows[i].SetActive(false);
+			if (save_Steps.Arrows.Contains(arrowMap.Arrows[i]))
+			{
+				continue;
+			}
+			arrowMap.Arrows[i].SetActive(false);
 		}
 	}
 
@@ -276,6 +281,7 @@ public class Operation
 				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
 				clickCard.GetComponent<Card>().CardEffect(playerID, singleObject);
 				clickCard.GetComponent<Card>().SetCardMoveDir(singleObject.transform.position);
+				clickCard.GetComponent<Card>().HasUsed = true;
 				singleObject = null;	
 				break;
 			}
@@ -294,6 +300,7 @@ public class Operation
 				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
 				clickCard.GetComponent<Card>().CardEffect(playerID, multiObject);
 				clickCard.GetComponent<Card>().SetCardMoveDir((multiObject[0].transform.position + multiObject[1].transform.position) / 2);
+				clickCard.GetComponent<Card>().HasUsed = true;
 				multiObject = null;
 				break;
 			}
