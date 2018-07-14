@@ -21,7 +21,7 @@ public class Card : MonoBehaviour
 	private bool timeToGo = false;
 	/*卡牌移动目标*/
 	[SerializeField]
-	private Vector3 destination;
+	protected Vector3 destination;//将private改为了protected
 	/*卡牌移动速度*/
 	[SerializeField]
 	private float moveSpeed = 1;

@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 	private void Start() 
 	{
 		mapManagerNum = mapManagers.Length;
-		all_Steps = new PlayerStep[players.Length];
+		all_Steps = new PlayerStep[players.Length];//？？
 		InitMapBlocks();
 		InitPlayers();
 	}
@@ -35,11 +35,11 @@ public class GameManager : MonoBehaviour
 		{
 			return;
 		}
-		CheckCaculation();
-		if (!startCaculate)
-		{
-			return;
-		}
+		//CheckCaculation();
+		//if (!startCaculate)
+		//{
+		//	return;
+		//}
 
 	}
 
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 	{
 		for (int i = 0; i < mapManagerNum; i++)
 		{
-			mapManagers[i].InitBlocksData(this);
+			mapManagers[i].InitBlocksData(this);//?
 		}
 	}
 
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 	{
 		for (int i = 0; i < players.Length; i++)
 		{
-			players[i].PlayerID = i + 1;
+			players[i].PlayerID = i + 1;//?不该就是i吗
 			//TODO:生成玩家之后对玩家进行初始化
 		}
 	}
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 				p.Steps.AddMaps[i].BaseSoldierNum -= p.Steps.AddNums[i];
 				p.Steps.AddMaps[i].UpadteMapUI();
 			}
-		}
+		}//感觉不够吧
 		//增兵过程
 		foreach(Player p in players)
 		{

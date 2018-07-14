@@ -83,12 +83,12 @@ public class Map : MonoBehaviour
 	{
 		if (playerID != -1)
 		{
-			this.owner.Maps.Remove(this);
+			this.owner.Maps.Remove(this);//??
 		}
 		this.owner = owner;
 		this.owner.Maps.Add(this);
-		playerID = this.owner.PlayerID;
-		mapID_player = this.owner.Maps.IndexOf(this);
+		playerID = this.owner.PlayerID;//?赋值方向
+		mapID_player = this.owner.Maps.IndexOf(this);//?赋值方向
 	}
 
 	/// <summary>
@@ -123,7 +123,7 @@ public class Map : MonoBehaviour
 	/// </summary>
 	private void GetNextBlock()
 	{
-		GetComponent<EdgeCollider2D>().enabled = true;
+		GetComponent<EdgeCollider2D>().enabled = true;//干嘛用
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)

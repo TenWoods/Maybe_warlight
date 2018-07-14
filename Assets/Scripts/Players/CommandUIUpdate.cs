@@ -50,7 +50,7 @@ public class CommandUIUpdate : MonoBehaviour
 	public void Comfirm()
 	{
 		save_Step.SaveCommamdSteps(commandMap, targetMap, lastNum);
-		this.gameObject.SetActive(false);
+		this.gameObject.SetActive(false);//不应该是true吗
 	}
 
 	/// <summary>
@@ -64,7 +64,7 @@ public class CommandUIUpdate : MonoBehaviour
 
 	public void SetCommandUI(float maxNum, Map startMap, Map targetMap, PlayerStep saver)
 	{
-		commandMax = (int)(maxNum + 0.5);
+		commandMax = (int)(maxNum + 0.5);//？
 		inputSlider.maxValue = commandMax;
 		commandMap = startMap;
 		this.targetMap = targetMap;

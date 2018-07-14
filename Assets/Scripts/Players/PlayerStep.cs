@@ -31,7 +31,7 @@ public class PlayerStep
 	{
 		if (addMaps.Contains(map))
 		{
-			addNums[addMaps.IndexOf(map)] += addNum;
+			addNums[addMaps.IndexOf(map)] += addNum;//indexof有什么用，这一行什么意思
 		}
 		else
 		{
@@ -50,7 +50,7 @@ public class PlayerStep
 		{
 			if (startMap.MoveDirMap.Contains(endMap))
 			{
-				index = startMap.MoveDirMap.IndexOf(endMap);
+				index = startMap.MoveDirMap.IndexOf(endMap);//后面直接点动态数组数组名
 				startMap.MoveSoldierNum[index] = moveNum;
 				return;
 			}

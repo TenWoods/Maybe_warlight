@@ -49,7 +49,7 @@ public class Operation
 	/// <param name="player"></param>
 	public void UpdateData(Player player)
 	{
-		leaderPoint_current = player.LeaderPoint;
+		leaderPoint_current = player.LeaderPoint;//统率值
 		//TODO:可能会有其他的更新
 	}
 
@@ -91,7 +91,7 @@ public class Operation
 							CommandSoilderUI(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
 						}
 						break;
-					}
+					}//
 					//增兵
 					case OperateState.ADD_SOLDIER:
 					{
@@ -130,7 +130,7 @@ public class Operation
 						clickCard = null;    //清空选中卡牌
 					}
 				}
-			}
+			}//这什么情况？？
 		}
 	}
 
@@ -196,7 +196,7 @@ public class Operation
 				//TODO:箭头大小缩放
 				nextPos = mapBlockData.NextMaps[i].transform.position;
 				dir = nextPos - mapBlock.transform.position;
-				angle = Vector3.Angle(Vector3.right, dir);
+				angle = Vector3.Angle(Vector3.right, dir);//计算与x正半轴角度
 				if (Vector3.Cross(Vector3.right, dir).z < 0)  //修正旋转的方向 
 				{
 					angle *= -1;
@@ -218,7 +218,7 @@ public class Operation
 	/// <param name="arrow">点击的箭头</param>
 	private void CommandSoilderUI(GameObject arrow, Map startMap)
 	{
-		int index = startMap.Arrows.IndexOf(arrow);
+		int index = startMap.Arrows.IndexOf(arrow);//indexof？？
 		commandUI.SetActive(true);
 		//把步骤储存交给UI控制类
 		commandUI.GetComponent<CommandUIUpdate>().SetCommandUI(startMap.BaseSoldierNum, startMap, startMap.NextMaps[index], save_Steps);

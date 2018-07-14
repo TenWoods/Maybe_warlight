@@ -62,10 +62,10 @@ public class Player : MonoBehaviour
 		{
 			if (!hasUpdated)
 			{
-				selfOperate.UpdateData(this);
+				selfOperate.UpdateData(this);//可能是更新数据
 				hasUpdated = true;
 			}
-			selfOperate.Operate(this, opState);
+			selfOperate.Operate(this, opState);//得看Operation脚本
 		}
 		else
 		{
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
 			//TODO:抽完牌后弃牌
 			return;
 		}
-		cards_in_hand.Add(cards[cards_index]);
+		cards_in_hand.Add(cards[cards_index]);//add里面加的是什么类型的
 	}
 
 	/// <summary>
