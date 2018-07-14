@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour 
 {
-	/*游戏玩家*/
+	/*游戏玩家(目前只有一个玩家)*/
 	[SerializeField]
 	private Player[] players;
 	/*地图管理者数量*/
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private bool gameStart = false;
 	/*是否开始结算*/
+	[SerializeField]
 	private bool startCaculate = false;
 	/*所有玩家的行为步骤*/
 	private PlayerStep[] all_Steps; 
@@ -35,12 +36,21 @@ public class GameManager : MonoBehaviour
 		{
 			return;
 		}
+<<<<<<< HEAD
 		//CheckCaculation();
 		//if (!startCaculate)
 		//{
 		//	return;
 		//}
 
+=======
+		CheckCaculation();
+		if (!startCaculate)
+		{
+			return;
+		}
+		Caculation();
+>>>>>>> 5fbded97ccda4bfc261f31dfd925208ab53a024c
 	}
 
 	/// <summary>
@@ -61,7 +71,12 @@ public class GameManager : MonoBehaviour
 	{
 		for (int i = 0; i < players.Length; i++)
 		{
+<<<<<<< HEAD
 			players[i].PlayerID = i + 1;//?不该就是i吗
+=======
+			players[i].PlayerID = i + 1;
+			players[i].GetCard(players[i].GetCardNum);
+>>>>>>> 5fbded97ccda4bfc261f31dfd925208ab53a024c
 			//TODO:生成玩家之后对玩家进行初始化
 		}
 	}
@@ -75,6 +90,7 @@ public class GameManager : MonoBehaviour
 		{
 			if (p.OpState != OperateState.OP_END)
 			{
+				startCaculate = false;
 				return;
 			}
 		}
@@ -95,7 +111,18 @@ public class GameManager : MonoBehaviour
 				p.Steps.AddMaps[i].BaseSoldierNum -= p.Steps.AddNums[i];
 				p.Steps.AddMaps[i].UpadteMapUI();
 			}
+<<<<<<< HEAD
 		}//感觉不够吧
+=======
+			for (i = 0; i < p.Steps.CommandMaps.Count; i++)
+			{
+				foreach (int n in p.Steps.CommandMaps[i].MoveSoldierNum)
+				{
+					p.Steps.CommandMaps[i].BaseSoldierNum += n;
+				}
+			}
+		}
+>>>>>>> 5fbded97ccda4bfc261f31dfd925208ab53a024c
 		//增兵过程
 		foreach(Player p in players)
 		{
@@ -108,7 +135,127 @@ public class GameManager : MonoBehaviour
 		//指挥过程
 		foreach(Player p in players)
 		{
-			
+			foreach(Map m in p.Steps.CommandMaps)
+			{
+				AttackCaculation(m);
+			}
+		}
+		//还原操作状态
+		foreach(Player p in players)
+		{
+			p.CleanSteps();
+			p.ChangeOperateStateStart();
+			p.UpdateLeaderPoint();
+		}
+		startCaculate = false;
+	}
+
+	/// <summary>
+	/// 攻击计算
+	/// </summary>
+	/// <param name="startMap">攻击方地图块</param>
+	private void AttackCaculation(Map startMap)
+	{
+		List<Map> targetMaps = startMap.MoveDirMap;
+		List<int> moveNums = startMap.MoveSoldierNum;
+		float result;
+		Debug.Log(targetMaps.Count);
+		for(int i = 0; i < targetMaps.Count; i++)
+		{
+			if (startMap.BaseSoldierNum < moveNums[i])
+			{
+				//如果地图块上的人数不足，调增出兵人数
+				moveNums[i] = startMap.BaseSoldierNum - 1;
+			}
+			if (startMap.PlayerID == targetMaps[i].PlayerID)
+			{
+				targetMaps[i].BaseSoldierNum += moveNums[i];
+			}
+			if (targetMaps[i].Terrain != Terrain.DESERT)
+			{
+				startMap.DefendPower += 0.1f;
+			}
+			//攻击力根据地形改变
+			//高度:高地>平地=森林=荒漠>谷地
+			switch (startMap.Terrain)
+			{
+				case Terrain.HIGHLAND :
+				{
+					if (targetMaps[i].Terrain != Terrain.HIGHLAND)
+					{
+						startMap.AttackPower += 0.2f;
+					}
+					break;
+				}
+				case Terrain.FOREST :
+				{
+					if (targetMaps[i].Terrain == Terrain.VALLY)
+					{
+						startMap.AttackPower += 0.2f;
+					}
+					else if (targetMaps[i].Terrain == Terrain.HIGHLAND)
+					{
+						startMap.AttackPower -= 0.2f;
+					}
+					startMap.AttackPower += 0.1f; 
+					break;
+				} 
+				case Terrain.DESERT : 
+				{
+					if (targetMaps[i].Terrain == Terrain.VALLY)
+					{
+						startMap.AttackPower += 0.2f;
+					}
+					else if (targetMaps[i].Terrain == Terrain.HIGHLAND)
+					{
+						startMap.AttackPower -= 0.2f;
+					}
+					startMap.AttackPower -= 0.1f; 
+					break;
+				}
+				case Terrain.FLATLAND :
+				{
+					if (targetMaps[i].Terrain == Terrain.VALLY)
+					{
+						startMap.AttackPower += 0.2f;
+					}
+					else if (targetMaps[i].Terrain == Terrain.HIGHLAND)
+					{
+						startMap.AttackPower -= 0.2f;
+					}
+					break;
+				}
+				case Terrain.VALLY : 
+				{
+					if (targetMaps[i].Terrain != Terrain.VALLY)
+					{
+						startMap.AttackPower -= 0.2f;
+					}
+					break;
+				}
+				default : break;
+			}
+			//结算结果
+			//攻击人数*攻击力 - 防御人数*防御力
+			result = moveNums[i] * startMap.AttackPower - targetMaps[i].BaseSoldierNum * startMap.DefendPower;
+			// Debug.Log("攻击力" + power);
+			// Debug.Log("防御力" + defend);
+			Debug.Log("结算结果" + result);
+			if (result > 0)
+			{
+				targetMaps[i].BaseSoldierNum = (int)(result + 0.9f);
+				if (targetMaps[i].PlayerID != -1)
+				{
+					players[targetMaps[i].PlayerID].Maps.Remove(targetMaps[i]);
+				}
+				targetMaps[i].PlayerID = startMap.PlayerID;
+				players[startMap.PlayerID].Maps.Add(targetMaps[i]);
+			}
+			Debug.Log(moveNums[i]);
+			startMap.BaseSoldierNum -= moveNums[i];
+			//更新UI显示
+			startMap.UpadteMapUI();
+			targetMaps[i].UpadteMapUI();
 		}
 	}
 

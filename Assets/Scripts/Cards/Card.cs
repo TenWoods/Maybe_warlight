@@ -25,7 +25,8 @@ public class Card : MonoBehaviour
 	/*卡牌移动速度*/
 	[SerializeField]
 	private float moveSpeed = 1;
-	
+	/*卡牌使用信号*/
+	private bool hasUsed = false;
 
 	private void Update() 
 	{
@@ -36,6 +37,10 @@ public class Card : MonoBehaviour
 		if ((transform.position - destination).magnitude >= 0.1)
 		{
 			transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * moveSpeed);
+			return;
+		}
+		if (!hasUsed)
+		{
 			return;
 		}
 		Destroy(this.gameObject);
@@ -78,4 +83,17 @@ public class Card : MonoBehaviour
 			return opKind;
 		}
 	}
+
+	public bool HasUsed
+	{
+		get
+		{
+			return hasUsed;
+		}
+		set
+		{
+			hasUsed = value;
+		}
+	}
+
 }

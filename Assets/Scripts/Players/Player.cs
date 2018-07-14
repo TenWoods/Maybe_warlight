@@ -2,53 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*操作进行的阶段(枚举)定义*/
-public enum OperateState{ADD_SOLDIER, COMMAND_SOLDIER, USE_CARDS, OP_END};
-public class Player : MonoBehaviour 
+public class Player : Operator 
 {
-	/*玩家所拥有的地图格*/
-	[SerializeField]//调试用
-	private List<Map> maps;
-	/*玩家在GameManager处的索引*/
-	[SerializeField]
-	private int playerID = 0;
-	/*玩家当前操作*/
-	[SerializeField]//调试用
-	private OperateState opState;
-	/*玩家当前操作结束*/
-	[SerializeField]//调试用
-	private bool operateEnd = true;
-	/*玩家操作类*/
-	private Operation selfOperate;
-	/*玩家统帅值(每回合实时更新)*/
-	[SerializeField] //设定初始值
-	private int leaderPoint;
-	/*手牌最大的数量*/
-	[SerializeField]
-	private int cards_Num_Max = 0;
-	/*手中的卡牌,-1为空*/
-	private List<int> cards_in_hand;
-	/*牌库*/
-	private int[] cards = {0};
-	/*抽牌指针在牌库位置*/
-	private int cards_index = 0;
-	/*每回合开始是否为操作类更新数据*/
-	private bool hasUpdated = false;
-	/*游戏开始*/
-	private bool gameStart = false;
-	/*玩家操作记录*/
-	private PlayerStep steps;
-	/*需要生成的箭头*/
-	public GameObject arrow_Prefab;
-	/*指挥所用UI*/
-	public GameObject commandUI;
-
+	/*卡牌生成的位置*/
+	public Transform CardSpawnPoint;
 	private void Start() 
 	{
 		maps = new List<Map>();
 		cards_in_hand = new List<int>();
 		steps = new PlayerStep();
-		opState = OperateState.OP_END;
+		opState = OperateState.OP_START;
 		selfOperate = new Operation(this, steps);
 	}
 
@@ -67,26 +30,29 @@ public class Player : MonoBehaviour
 			}
 			selfOperate.Operate(this, opState);//得看Operation脚本
 		}
-		else
-		{
-			//TODO:记录玩家行动的步骤，并反馈给GameManager
-		}
 	}
 
 	#region 玩家操作状态改变
+	
+	/// <summary>
+	/// 变为开始状态
+	/// </summary>
+	public void ChangeOperateStateStart()
+	{
+		opState = OperateState.OP_START;
+	}
 
 	/// <summary>
 	/// 变为增兵状态
 	/// </summary>
-	/// <param name="op">操作状态枚举变量</param>
 	public void ChangeOperateStateAdd()
 	{
+		opState = OperateState.ADD_SOLDIER;
 		if (opState == OperateState.COMMAND_SOLDIER)
 		{
 			DisabledArrows();
 			commandUI.SetActive(false);
 		}
-		opState = OperateState.ADD_SOLDIER;
 	}
 
 	/// <summary>
@@ -102,12 +68,12 @@ public class Player : MonoBehaviour
 	/// </summary>
 	public void ChangeOperateStateCard()
 	{
+		opState = OperateState.USE_CARDS;
 		if (opState == OperateState.COMMAND_SOLDIER)
 		{
 			DisabledArrows();
 			commandUI.SetActive(false);
 		}
-		opState = OperateState.USE_CARDS;
 	}
 	
 	/// <summary>
@@ -115,27 +81,71 @@ public class Player : MonoBehaviour
 	/// </summary>
 	public void ChangeOperateStateEnd()
 	{
+		opState = OperateState.OP_END;
 		if (opState == OperateState.COMMAND_SOLDIER)
 		{
 			DisabledArrows();
 			commandUI.SetActive(false);
 		}
-		opState = OperateState.OP_END;
 	}
 
 	#endregion
 
 	/// <summary>
-	/// 玩家抽卡(由GameManager调用)
+	/// 新的回合开始更新统帅值
 	/// </summary>
-	public void GetCard()
+	public void UpdateLeaderPoint()
 	{
+<<<<<<< HEAD
 		if (cards_in_hand.Count >= cards_Num_Max)
 		{
 			//TODO:抽完牌后弃牌
 			return;
 		}
 		cards_in_hand.Add(cards[cards_index]);//add里面加的是什么类型的
+=======
+		soldierNum = maps.Count;
+		hasUpdated = false;
+>>>>>>> 5fbded97ccda4bfc261f31dfd925208ab53a024c
+	}
+
+	/// <summary>
+	/// 清除上个回合的步骤
+	/// </summary>
+	public void CleanSteps()
+	{
+		steps.CleanSteps();
+	}
+
+	/// <summary>
+	/// 玩家抽卡(由GameManager调用)
+	/// </summary>
+	public void GetCard(int num)
+	{
+		//初始化数组
+		if (cards_in_hand == null)
+		{
+			cards_in_hand = new List<int>();
+		}
+		//判断是否抽完牌
+		if ((cards_index + 1) > cards.Length)
+		{
+			Debug.Log("牌库空了");
+			return;
+		}
+		if (cards_in_hand.Count == cards_Num_Max)
+		{
+			cards_index++;
+			return;
+		}
+		//根据抽牌次数抽牌
+		for (int i = 0; i < num; i++)
+		{
+			cards_in_hand.Add(cards[cards_index]);
+			cards_index++;
+			Debug.Log("抽牌");
+			Instantiate(Resources.Load("Card"), transform.position, transform.rotation);
+		}
 	}
 
 	/// <summary>
@@ -144,69 +154,5 @@ public class Player : MonoBehaviour
 	public void DisabledArrows()
 	{
 		selfOperate.DisabledArrows();
-	}
-
-	public List<Map> Maps 
-	{
-		get
-		{
-			return maps;
-		}
-	}
-
-	public bool OperateEnd 
-	{
-		set 
-		{
-			operateEnd = value;
-		}
-	}
-
-	public int PlayerID 
-	{
-		get
-		{
-			return playerID;
-		}
-		set
-		{
-			playerID = value;
-		}
-	}
-
-	public OperateState OpState 
-	{
-		get
-		{
-			return opState;
-		}
-		set
-		{
-			opState = value;
-		}
-	}
-
-	public int LeaderPoint
-	{
-		get
-		{
-			return leaderPoint;
-		}
-	}
-
-	public bool GameStart 
-	{
-		set
-		{
-			gameStart = value;
-		}
-	}
-
-	public PlayerStep Steps
-	{
-		get
-		{
-			return steps;
-		}
 	}
 }

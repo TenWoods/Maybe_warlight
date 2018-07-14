@@ -18,6 +18,8 @@ public class CommandUIUpdate : MonoBehaviour
 	private Map commandMap;
 	/*移动目标地图块*/
 	private Map targetMap;
+	/*被点击的箭头*/
+	private GameObject arrow;
 	/*玩家步骤储存*/
 	private PlayerStep save_Step;
 
@@ -49,8 +51,18 @@ public class CommandUIUpdate : MonoBehaviour
 	/// </summary>
 	public void Comfirm()
 	{
+<<<<<<< HEAD
 		save_Step.SaveCommamdSteps(commandMap, targetMap, lastNum);
 		this.gameObject.SetActive(false);//不应该是true吗
+=======
+		if (lastNum == 0)
+		{
+			this.gameObject.SetActive(false);
+			return;
+		}
+		save_Step.SaveCommamdSteps(commandMap, targetMap, lastNum, arrow);
+		this.gameObject.SetActive(false);
+>>>>>>> 5fbded97ccda4bfc261f31dfd925208ab53a024c
 	}
 
 	/// <summary>
@@ -62,12 +74,17 @@ public class CommandUIUpdate : MonoBehaviour
 		this.gameObject.SetActive(false);
 	}
 
-	public void SetCommandUI(float maxNum, Map startMap, Map targetMap, PlayerStep saver)
+	public void SetCommandUI(int maxNum, Map startMap, Map targetMap, PlayerStep saver, GameObject arrow)
 	{
+<<<<<<< HEAD
 		commandMax = (int)(maxNum + 0.5);//？
+=======
+		commandMax = maxNum - 1;
+>>>>>>> 5fbded97ccda4bfc261f31dfd925208ab53a024c
 		inputSlider.maxValue = commandMax;
 		commandMap = startMap;
 		this.targetMap = targetMap;
+		this.arrow = arrow;
 		save_Step = saver;
 		inputSlider.value = 0;
 	}

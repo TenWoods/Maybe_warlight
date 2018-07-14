@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Terrain
+{
+	HIGHLAND,
+	FLATLAND,
+	FOREST,
+	DESERT,
+	VALLY
+};
+
 public class Map : MonoBehaviour
 {
 	/*地图的地形属性*/
-	private int terrain;
+	[SerializeField]//调试用
+	private Terrain terrain;
 	/*地图在玩家处的索引，-1为错误*/
 	[SerializeField]//调试用
 	private int mapID_player;
@@ -30,7 +40,7 @@ public class Map : MonoBehaviour
 	private Player owner;
 	/*该格实际人数*/
 	//人数在计算时向上取整
-	private float baseSoldierNum = 1;
+	private int baseSoldierNum = 1;
 	/*该格有效人数*/
 	private float effectSoldierNum = 1;
 	/*相邻的地图块*/
@@ -40,6 +50,10 @@ public class Map : MonoBehaviour
 	/*指向相邻地图块的箭头*/
 	[SerializeField]
 	private List<GameObject> arrows;
+	/*地图块攻击力*/
+	private float attackPower = 1.0f;
+	/*地图块防御力*/
+	private float defendPower = 1.0f;
 	/*移动目的地图块*/
 	public List<Map> MoveDirMap;
 	/*移动士兵数量*/
@@ -189,7 +203,7 @@ public class Map : MonoBehaviour
 		}
 	}
 
-	public int Terrain 
+	public Terrain Terrain 
 	{
 		get
 		{
@@ -217,7 +231,7 @@ public class Map : MonoBehaviour
 		}
 	}
 
-	public float BaseSoldierNum 
+	public int BaseSoldierNum 
 	{
 		get
 		{
@@ -226,6 +240,30 @@ public class Map : MonoBehaviour
 		set
 		{
 			baseSoldierNum = value;
+		}
+	}
+
+	public float AttackPower
+	{
+		get 
+		{
+			return attackPower;
+		}
+		set
+		{
+			attackPower = value;
+		}
+	}
+
+	public float DefendPower 
+	{
+		get
+		{
+			return defendPower;
+		}
+		set
+		{
+			defendPower = value;
 		}
 	}
 }
