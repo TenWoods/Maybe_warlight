@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 	{
 		for (int i = 0; i < players.Length; i++)
 		{
-			players[i].PlayerID = i + 1;
+			players[i].PlayerID = i;
 			players[i].GetCard(players[i].GetCardNum);
 			//TODO:生成玩家之后对玩家进行初始化
 		}
