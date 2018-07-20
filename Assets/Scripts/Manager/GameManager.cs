@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 	/*游戏玩家(目前只有一个玩家)*/
 	[SerializeField]
-	private Player[] players;
+	private Operator[] players;
 	/*地图管理者数量*/
 	[SerializeField]
 	private int mapManagerNum;
@@ -21,6 +21,20 @@ public class GameManager : MonoBehaviour
 	private bool startCaculate = false;
 	/*所有玩家的行为步骤*/
 	private PlayerStep[] all_Steps; 
+
+	private static GameManager _instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
+	private void Awake()
+	{
+		_instance = this;
+	}
 	
 	private void Start() 
 	{
@@ -63,7 +77,6 @@ public class GameManager : MonoBehaviour
 		for (int i = 0; i < players.Length; i++)
 		{
 			players[i].PlayerID = i;
-			players[i].GetCard(players[i].GetCardNum);
 			//TODO:生成玩家之后对玩家进行初始化
 		}
 	}
@@ -251,8 +264,8 @@ public class GameManager : MonoBehaviour
 		gameStart = true;
 		foreach (Player p in players)
 		{
-			p.GameStart = gameStart;
-			p.OperateEnd = false;
+			p.ChangeOperateStateStart();
+			p.GameStart = true;
 		}
 	}
 
@@ -269,7 +282,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public Player[] Players 
+	public Operator[] Players 
 	{
 		get
 		{

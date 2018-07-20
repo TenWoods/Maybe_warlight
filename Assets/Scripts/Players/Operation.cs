@@ -146,6 +146,7 @@ public class Operation
 		if (!hasAuthority)
 		{
 			//没有权限
+			Debug.Log("没有权限");
 			return;
 		}
 		if (leaderPoint_current > 0)
@@ -171,6 +172,7 @@ public class Operation
 		if (!hasAuthority)
 		{
 			//没有权限
+			Debug.Log("没有权限");
 			return;
 		}
 		if (clickMap != null)
@@ -282,7 +284,8 @@ public class Operation
 				clickCard.GetComponent<Card>().CardEffect(playerID, singleObject);
 				clickCard.GetComponent<Card>().SetCardMoveDir(singleObject.transform.position);
 				clickCard.GetComponent<Card>().HasUsed = true;
-				singleObject = null;	
+				singleObject = null;
+				GameManager.Instance.Players[playerID].CardObjects.Remove(clickCard.GetComponent<Card>());
 				break;
 			}
 			case CardOpKind.MultiMap : 
@@ -302,6 +305,7 @@ public class Operation
 				clickCard.GetComponent<Card>().SetCardMoveDir((multiObject[0].transform.position + multiObject[1].transform.position) / 2);
 				clickCard.GetComponent<Card>().HasUsed = true;
 				multiObject = null;
+				GameManager.Instance.Players[playerID].CardObjects.Remove(clickCard.GetComponent<Card>());
 				break;
 			}
 		}

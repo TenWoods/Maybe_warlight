@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Player : Operator 
 {
+	/*玩家操作类*/
+	private Operation selfOperate;
+	/*卡牌的大小*/
+	[SerializeField]
+	private float cardSize = 1.5f;
 	/*卡牌生成的位置*/
 	public Transform CardSpawnPoint;
+	
 	private void Start() 
 	{
-		maps = new List<Map>();
-		cards_in_hand = new List<int>();
-		steps = new PlayerStep();
-		opState = OperateState.OP_START;
+		base.Start();
 		selfOperate = new Operation(this, steps);
 	}
 
@@ -21,7 +24,7 @@ public class Player : Operator
 		{
 			return;
 		}
-		if (!operateEnd)
+		if (opState != OperateState.OP_END)
 		{
 			if (!hasUpdated)
 			{
@@ -40,6 +43,9 @@ public class Player : Operator
 	public void ChangeOperateStateStart()
 	{
 		opState = OperateState.OP_START;
+		GetCard(getCardNum);
+		getCardNum = 1;   //重置每回合的抽牌数量
+		//TODO:每回合刚开始的初始化
 	}
 
 	/// <summary>
@@ -113,18 +119,19 @@ public class Player : Operator
 	/// </summary>
 	public void GetCard(int num)
 	{
+		Debug.Log("抽牌");
 		//初始化数组
-		if (cards_in_hand == null)
+		if (cardObjects == null)
 		{
-			cards_in_hand = new List<int>();
+			cardObjects = new List<Card>();
 		}
 		//判断是否抽完牌
-		if ((cards_index + 1) > cards.Length)
+		if ((cards_index + 1) > allCards.Length)
 		{
 			Debug.Log("牌库空了");
 			return;
 		}
-		if (cards_in_hand.Count == cards_Num_Max)
+		if (cardObjects.Count == cards_Num_Max)
 		{
 			cards_index++;
 			return;
@@ -132,10 +139,27 @@ public class Player : Operator
 		//根据抽牌次数抽牌
 		for (int i = 0; i < num; i++)
 		{
-			cards_in_hand.Add(cards[cards_index]);
 			cards_index++;
-			Debug.Log("抽牌");
-			Instantiate(Resources.Load("Card"), transform.position, transform.rotation);
+			GameObject card = Instantiate((GameObject)Resources.Load("Card"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+			cardObjects.Add(card.GetComponent<Card>());
+		}
+		SortCardObject();
+	}
+
+	/// <summary>
+	/// 整理手牌(计算每张牌应在的位置)
+	/// </summary>
+	public void SortCardObject()
+	{
+		int half = cardObjects.Count / 2;
+		Vector3 screenPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+		Vector3 cardPos = new Vector3(-half * cardSize, -(screenPoint.y * 11 / 13), 0);
+		//Debug.Log(cardPosY);
+		int i;
+		for (i = 0; i < cardObjects.Count; i++)
+		{
+			cardObjects[i].SetCardMoveDir(cardPos);
+			cardPos += new Vector3(cardSize, 0, 0);
 		}
 	}
 

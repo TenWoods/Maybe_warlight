@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114358619790586418}
   m_Layer: 0
   m_Name: Card
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
   opKind: 0
   timeToGo: 0
   destination: {x: 0, y: 0, z: 0}
-  moveSpeed: 1
+  moveSpeed: 15
 --- !u!212 &212061477229699176
 SpriteRenderer:
   m_ObjectHideFlags: 1

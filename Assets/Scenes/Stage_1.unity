@@ -4763,6 +4763,28 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 353138727}
   m_Script: {fileID: 11500000, guid: 2c474c1bab0b8034fbb24c593ff7b711, type: 3}
+--- !u!1 &366547800 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1312939845797770, guid: 599c312acd813be449963758c8bb05f3,
+    type: 2}
+  m_PrefabInternal: {fileID: 832219397}
+--- !u!114 &366547801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 366547800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac3ae0f8b57892468cc44f60d6eed64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maps: []
+  playerID: 1
+  opState: 0
+  soldierNum: 0
+  arrow_Prefab: {fileID: 0}
+  commandUI: {fileID: 0}
 --- !u!1001 &375617534
 Prefab:
   m_ObjectHideFlags: 0
@@ -5789,7 +5811,7 @@ RectTransform:
   - {fileID: 1293456558}
   - {fileID: 318222352}
   m_Father: {fileID: 796944565}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7389,6 +7411,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &651655875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 651655876}
+  m_Layer: 0
+  m_Name: CardSpwanPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &651655876
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 651655875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.12, y: -9.22, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &655138775
 Prefab:
   m_ObjectHideFlags: 0
@@ -8849,7 +8899,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4598026289912892, guid: d6861cf200ea5d7448efc3899f63ba05, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224613796794448664, guid: d6861cf200ea5d7448efc3899f63ba05,
         type: 2}
@@ -9293,9 +9343,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 486608873}
   - {fileID: 1882302230}
   - {fileID: 1114305786}
-  - {fileID: 486608873}
   - {fileID: 1090077409}
   - {fileID: 253608403}
   m_Father: {fileID: 0}
@@ -9525,6 +9575,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
         type: 2}
+      propertyPath: players.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
       propertyPath: mapManagers.Array.size
       value: 16
       objectReference: {fileID: 0}
@@ -9665,7 +9720,33 @@ Prefab:
       propertyPath: soldierNum
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114340932265297304, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
+      propertyPath: players.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114652835081117424, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
+      propertyPath: CardSpawnPoint
+      value: 
+      objectReference: {fileID: 651655876}
+    - target: {fileID: 114652835081117424, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
+      propertyPath: cards_Num_Max
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114340932265297304, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
+      propertyPath: CardSpawnPoint
+      value: 
+      objectReference: {fileID: 651655876}
+    m_RemovedComponents:
+    - {fileID: 114340932265297304, guid: 599c312acd813be449963758c8bb05f3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 599c312acd813be449963758c8bb05f3, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &838631948 stripped
@@ -17074,7 +17155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4216977690416002, guid: a3ceff2392172944fb95393b0ea0e8d6, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114334003314470926, guid: a3ceff2392172944fb95393b0ea0e8d6,
         type: 2}

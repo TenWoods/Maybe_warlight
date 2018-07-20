@@ -36,7 +36,8 @@ public class Card : MonoBehaviour
 		}
 		if ((transform.position - destination).magnitude >= 0.1)
 		{
-			transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * moveSpeed);
+			//transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * moveSpeed);
+			transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
 			return;
 		}
 		if (!hasUsed)

@@ -20,26 +20,21 @@ public class Operator : MonoBehaviour
 	/*玩家在GameManager处的索引(-1为错误)*/
 	[SerializeField]
 	protected int playerID = 0;
-	/*玩家当前操作*/
+	/*玩家当前操作状态*/
 	[SerializeField]//调试用
 	protected OperateState opState;
-	/*玩家当前是否操作结束*/
-	[SerializeField]//调试用
-	protected bool operateEnd = true;
-	/*玩家操作类*/
-	protected Operation selfOperate;
+
 	/*玩家兵力数(每回合实时更新)*/
 	[SerializeField] //设定初始值
 	protected int soldierNum;
 	/*手牌最大的数量*/
-	[SerializeField]
-	protected int cards_Num_Max = 0;
+	protected static int cards_Num_Max = 20;
 	/*本回合抽牌的数量*/
-	private int getCardNum = 1;
-	/*手中的卡牌,-1为空*/
-	protected List<int> cards_in_hand;
+	protected int getCardNum = 1;
+	/*手牌实体*/
+	protected List<Card> cardObjects;
 	/*牌库*/
-	protected int[] cards = {0};
+	protected int[] allCards = new int[cards_Num_Max];
 	/*抽牌指针在牌库位置*/
 	protected int cards_index = 0;
 	/*每回合开始是否为操作类更新数据*/
@@ -53,20 +48,19 @@ public class Operator : MonoBehaviour
 	/*指挥所用UI*/
 	public GameObject commandUI;
 
-	
+	protected void Start() 
+	{
+		maps = new List<Map>();
+		cardObjects = new List<Card>();
+		steps = new PlayerStep();
+		opState = OperateState.OP_START;
+	}
+
 	public List<Map> Maps 
 	{
 		get
 		{
 			return maps;
-		}
-	}
-
-	public bool OperateEnd 
-	{
-		set 
-		{
-			operateEnd = value;
 		}
 	}
 
@@ -127,6 +121,14 @@ public class Operator : MonoBehaviour
 		set
 		{
 			getCardNum = value;
+		}
+	}
+
+	public List<Card> CardObjects 
+	{
+		get
+		{
+			return cardObjects;
 		}
 	}
 }
