@@ -12,7 +12,7 @@ public enum OperateState
 	OP_END
 };
 
-public class Operator : MonoBehaviour 
+public abstract class Operator : MonoBehaviour 
 {
 	/*玩家所拥有的地图格*/
 	[SerializeField]//调试用
@@ -43,10 +43,6 @@ public class Operator : MonoBehaviour
 	protected bool gameStart = false;
 	/*玩家操作记录*/
 	protected PlayerStep steps;
-	/*需要生成的箭头*/
-	public GameObject arrow_Prefab;
-	/*指挥所用UI*/
-	public GameObject commandUI;
 
 	protected void Start() 
 	{
@@ -55,6 +51,35 @@ public class Operator : MonoBehaviour
 		steps = new PlayerStep();
 		opState = OperateState.OP_START;
 	}
+
+	/// <summary>
+	/// 清除上个回合的步骤
+	/// </summary>
+	public void CleanSteps()
+	{
+		steps.CleanSteps();
+	}
+
+	/// <summary>
+	/// 新的回合开始更新统帅值
+	/// </summary>
+	public void UpdateSoldierNum()
+	{
+		//TODO:更改统帅值更新数值
+		hasUpdated = false;
+	}
+
+	/// <summary>
+	/// 变为开始状态
+	/// </summary>
+	public abstract void ChangeOperateStateStart();
+
+	/// <summary>
+	/// 玩家抽卡(由GameManager调用)
+	/// </summary>
+	public abstract void GetCard(int num);
+
+
 
 	public List<Map> Maps 
 	{
@@ -93,6 +118,10 @@ public class Operator : MonoBehaviour
 		get
 		{
 			return soldierNum;
+		}
+		set
+		{
+			soldierNum = value;
 		}
 	}
 

@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	private void CheckCaculation()
 	{
-		foreach(Player p in players)
+		foreach(Operator p in players)
 		{
 			if (p.OpState != OperateState.OP_END)
 			{
@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
 	{
 		int i;
 		//还原地图状态
-		foreach(Player p in players)
+		foreach(Operator p in players)
 		{
 			for (i = 0; i < p.Steps.AddMaps.Count; i++)
 			{
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
 			}
 		}
 		//增兵过程
-		foreach(Player p in players)
+		foreach(Operator p in players)
 		{
 			for (i = 0; i < p.Steps.AddMaps.Count; i++)
 			{
@@ -129,19 +129,24 @@ public class GameManager : MonoBehaviour
 			}
 		}
 		//指挥过程
-		foreach(Player p in players)
+		foreach(Operator p in players)
 		{
 			foreach(Map m in p.Steps.CommandMaps)
 			{
 				AttackCaculation(m);
 			}
 		}
+		//每个地图管理检查士兵数的增加
+		foreach(MapManager mm in mapManagers)
+		{
+			mm.CheckUpdateAdd();
+		}
 		//还原操作状态
-		foreach(Player p in players)
+		foreach(Operator p in players)
 		{
 			p.CleanSteps();
 			p.ChangeOperateStateStart();
-			p.UpdateLeaderPoint();
+			p.UpdateSoldierNum();
 		}
 		startCaculate = false;
 	}
@@ -262,7 +267,7 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log("开始");
 		gameStart = true;
-		foreach (Player p in players)
+		foreach (Operator p in players)
 		{
 			p.ChangeOperateStateStart();
 			p.GameStart = true;
@@ -276,7 +281,7 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log("结束");
 		gameStart = false;
-		foreach (Player p in players)
+		foreach (Operator p in players)
 		{
 			p.GameStart = gameStart;
 		}

@@ -10,15 +10,30 @@ public class MapManager : MonoBehaviour
 	/*管理的地图块*/
 	[SerializeField]
 	private Map[] m_mapBlocks;
+	/*士兵数收益*/
+	[SerializeField]
+	[Header("士兵数收益")]
+	private int addSoldierNum = 1;
 	/*初始时所属玩家ID*/
 	[SerializeField]
 	private int playerID = -1;
 	/*在GameManager处的ID*/
 	[SerializeField]
 	private int mapManagerID = -1;
-	/*相邻的大地图块(MapManager)*/
-	[SerializeField]
-	private MapManager[] nextManager;
+
+	public void CheckUpdateAdd()
+	{
+		int playerID = m_mapBlocks[0].PlayerID;
+		foreach(Map m in m_mapBlocks)
+		{
+			if (m.PlayerID != playerID)
+			{
+				return;
+			}
+		}
+		Debug.Log("增加兵力数");
+		GameManager.Instance.Players[playerID].SoldierNum += addSoldierNum;
+	}
 
 	/// <summary>
 	/// 对地图上所有的地图块初始化数据
@@ -42,6 +57,22 @@ public class MapManager : MonoBehaviour
 		get
 		{
 			return m_mapBlocks;
+		}
+	}
+
+	public int MapManagerID
+	{
+		set
+		{
+			mapManagerID = value;
+		}
+	}
+
+	public int AddSoldierNum 
+	{
+		get
+		{
+			return addSoldierNum;
 		}
 	}
 }

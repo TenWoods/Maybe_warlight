@@ -11,6 +11,10 @@ public class Player : Operator
 	private float cardSize = 1.5f;
 	/*卡牌生成的位置*/
 	public Transform CardSpawnPoint;
+	/*需要生成的箭头*/
+	public GameObject arrow_Prefab;
+	/*指挥所用UI*/
+	public GameObject commandUI;
 	
 	private void Start() 
 	{
@@ -36,11 +40,11 @@ public class Player : Operator
 	}
 
 	#region 玩家操作状态改变
-	
+
 	/// <summary>
 	/// 变为开始状态
 	/// </summary>
-	public void ChangeOperateStateStart()
+	public override void ChangeOperateStateStart()
 	{
 		opState = OperateState.OP_START;
 		GetCard(getCardNum);
@@ -98,26 +102,9 @@ public class Player : Operator
 	#endregion
 
 	/// <summary>
-	/// 新的回合开始更新统帅值
-	/// </summary>
-	public void UpdateLeaderPoint()
-	{
-		soldierNum = maps.Count;
-		hasUpdated = false;
-	}
-
-	/// <summary>
-	/// 清除上个回合的步骤
-	/// </summary>
-	public void CleanSteps()
-	{
-		steps.CleanSteps();
-	}
-
-	/// <summary>
 	/// 玩家抽卡(由GameManager调用)
 	/// </summary>
-	public void GetCard(int num)
+	public override void GetCard(int num)
 	{
 		Debug.Log("抽牌");
 		//初始化数组
@@ -126,10 +113,14 @@ public class Player : Operator
 			cardObjects = new List<Card>();
 		}
 		//判断是否抽完牌
-		if ((cards_index + 1) > allCards.Length)
+		if ((cards_index + num) > allCards.Length)
 		{
-			Debug.Log("牌库空了");
-			return;
+			num = (cards_index + num) - allCards.Length;
+			if (num == 0)
+			{
+				Debug.Log("牌库空了");
+				return;
+			}
 		}
 		if (cardObjects.Count == cards_Num_Max)
 		{

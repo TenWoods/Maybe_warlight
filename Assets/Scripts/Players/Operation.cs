@@ -18,8 +18,8 @@ public class Operation
 	private GameObject singleObject = null;
 	/*选中多个目标*/
 	private GameObject[] multiObject = null;
-	/*增兵阶段的目前统率值*/
-	private int leaderPoint_current;
+	/*增兵阶段的目前士兵数*/
+	private int soldierNum_current;
 	/*记录玩家行为步骤*/
 	private PlayerStep save_Steps;
 	/*箭头预制体*/
@@ -49,7 +49,7 @@ public class Operation
 	/// <param name="player"></param>
 	public void UpdateData(Player player)
 	{
-		leaderPoint_current = player.SoldierNum;
+		soldierNum_current = player.SoldierNum;
 		//TODO:可能会有其他的更新
 	}
 
@@ -149,12 +149,12 @@ public class Operation
 			Debug.Log("没有权限");
 			return;
 		}
-		if (leaderPoint_current > 0)
+		if (soldierNum_current > 0)
 		{
 			Debug.Log("增兵");
 			save_Steps.SaveAddSteps(1, mapBlock.GetComponent<Map>());
 			mapBlock.GetComponent<Map>().AddSoldier();
-			leaderPoint_current -= 1;
+			soldierNum_current -= 1;
 		}
 	}
 
