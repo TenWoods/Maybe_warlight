@@ -40,6 +40,7 @@ public abstract class Operator : MonoBehaviour
 	/*每回合开始是否为操作类更新数据*/
 	protected bool hasUpdated = false;
 	/*游戏开始*/
+	[SerializeField]//调试用
 	protected bool gameStart = false;
 	/*玩家操作记录*/
 	protected PlayerStep steps;

@@ -42,7 +42,7 @@ public class PlayerStep
 	} 
 
 	/// <summary>
-	/// 储存玩家指挥操作
+	/// 储存玩家指挥操作(玩家)
 	/// </summary>
 	public void SaveCommamdSteps(Map startMap, Map endMap, int moveNum, GameObject arrow)
 	{
@@ -70,6 +70,16 @@ public class PlayerStep
 		arrow.GetComponent<BoxCollider2D>().enabled = false; //设置为不可点击
 		startMap.MoveSoldierNum.Add(moveNum);
 		startMap.BaseSoldierNum -= moveNum;
+	}
+
+	/// <summary>
+	/// 储存玩家操作(AI)
+	/// </summary>
+	public void SaveCommamdSteps(Map startMap, int moveNum)
+	{
+		commandMaps.Add(startMap);
+		Debug.Log(commandMaps.Count);
+		startMap.MoveSoldierNum.Add(moveNum);
 	}
 
 	/// <summary>

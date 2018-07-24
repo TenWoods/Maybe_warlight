@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour
 	{
 		mapManagerNum = mapManagers.Length;
 		all_Steps = new PlayerStep[players.Length];
-		InitMapBlocks();
 		InitPlayers();
+		InitMapBlocks();
 	}
 
 	private void Update()
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 	{
 		for (int i = 0; i < mapManagerNum; i++)
 		{
-			mapManagers[i].InitBlocksData(this);
+			mapManagers[i].InitBlocksData();
 		}
 	}
 
@@ -106,6 +106,10 @@ public class GameManager : MonoBehaviour
 		//还原地图状态
 		foreach(Operator p in players)
 		{
+			if (p.gameObject.gameObject.tag != "Player")
+			{
+				continue;
+			}
 			for (i = 0; i < p.Steps.AddMaps.Count; i++)
 			{
 				p.Steps.AddMaps[i].BaseSoldierNum -= p.Steps.AddNums[i];
@@ -131,6 +135,7 @@ public class GameManager : MonoBehaviour
 		//指挥过程
 		foreach(Operator p in players)
 		{
+			Debug.Log(p.gameObject.name + ":" + p.Steps.CommandMaps.Count);
 			foreach(Map m in p.Steps.CommandMaps)
 			{
 				AttackCaculation(m);
@@ -157,24 +162,33 @@ public class GameManager : MonoBehaviour
 	/// <param name="startMap">攻击方地图块</param>
 	private void AttackCaculation(Map startMap)
 	{
+		Debug.Log("进攻结算:" + startMap.gameObject.name);
 		List<Map> targetMaps = startMap.MoveDirMap;
 		List<int> moveNums = startMap.MoveSoldierNum;
 		float result;
-		Debug.Log(targetMaps.Count);
+		float attackPower = 0;
+		float defendPower = 0;
 		for(int i = 0; i < targetMaps.Count; i++)
 		{
+			attackPower = startMap.AttackPower;
+			defendPower = targetMaps[i].DefendPower;
 			if (startMap.BaseSoldierNum < moveNums[i])
 			{
+				Debug.Log(startMap.gameObject.name);
 				//如果地图块上的人数不足，调增出兵人数
 				moveNums[i] = startMap.BaseSoldierNum - 1;
 			}
 			if (startMap.PlayerID == targetMaps[i].PlayerID)
 			{
+				startMap.BaseSoldierNum -= moveNums[i];
 				targetMaps[i].BaseSoldierNum += moveNums[i];
+				startMap.UpadteMapUI();
+				targetMaps[i].UpadteMapUI();
+				return;
 			}
 			if (targetMaps[i].Terrain != Terrain.DESERT)
 			{
-				startMap.DefendPower += 0.1f;
+				defendPower += 0.1f;
 			}
 			//攻击力根据地形改变
 			//高度:高地>平地=森林=荒漠>谷地
@@ -184,7 +198,7 @@ public class GameManager : MonoBehaviour
 				{
 					if (targetMaps[i].Terrain != Terrain.HIGHLAND)
 					{
-						startMap.AttackPower += 0.2f;
+						attackPower += 0.2f;
 					}
 					break;
 				}
@@ -192,37 +206,37 @@ public class GameManager : MonoBehaviour
 				{
 					if (targetMaps[i].Terrain == Terrain.VALLY)
 					{
-						startMap.AttackPower += 0.2f;
+						attackPower += 0.2f;
 					}
 					else if (targetMaps[i].Terrain == Terrain.HIGHLAND)
 					{
-						startMap.AttackPower -= 0.2f;
+						attackPower -= 0.2f;
 					}
-					startMap.AttackPower += 0.1f; 
+					attackPower += 0.1f; 
 					break;
 				} 
 				case Terrain.DESERT : 
 				{
 					if (targetMaps[i].Terrain == Terrain.VALLY)
 					{
-						startMap.AttackPower += 0.2f;
+						attackPower += 0.2f;
 					}
 					else if (targetMaps[i].Terrain == Terrain.HIGHLAND)
 					{
-						startMap.AttackPower -= 0.2f;
+						attackPower -= 0.2f;
 					}
-					startMap.AttackPower -= 0.1f; 
+					attackPower -= 0.1f; 
 					break;
 				}
 				case Terrain.FLATLAND :
 				{
 					if (targetMaps[i].Terrain == Terrain.VALLY)
 					{
-						startMap.AttackPower += 0.2f;
+						attackPower += 0.2f;
 					}
 					else if (targetMaps[i].Terrain == Terrain.HIGHLAND)
 					{
-						startMap.AttackPower -= 0.2f;
+						attackPower -= 0.2f;
 					}
 					break;
 				}
@@ -230,7 +244,7 @@ public class GameManager : MonoBehaviour
 				{
 					if (targetMaps[i].Terrain != Terrain.VALLY)
 					{
-						startMap.AttackPower -= 0.2f;
+						attackPower -= 0.2f;
 					}
 					break;
 				}
@@ -238,10 +252,11 @@ public class GameManager : MonoBehaviour
 			}
 			//结算结果
 			//攻击人数*攻击力 - 防御人数*防御力
-			result = moveNums[i] * startMap.AttackPower - targetMaps[i].BaseSoldierNum * startMap.DefendPower;
+			result = moveNums[i] * attackPower - targetMaps[i].BaseSoldierNum * defendPower;
 			// Debug.Log("攻击力" + power);
 			// Debug.Log("防御力" + defend);
 			Debug.Log("结算结果" + result);
+			//结算后占领土地
 			if (result > 0)
 			{
 				targetMaps[i].BaseSoldierNum = (int)(result + 0.9f);

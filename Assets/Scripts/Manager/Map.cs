@@ -40,6 +40,7 @@ public class Map : MonoBehaviour
 	private Player owner;
 	/*该格实际人数*/
 	//人数在计算时向上取整
+	[SerializeField]//调试用
 	private int baseSoldierNum = 1;
 	/*该格有效人数*/
 	private float effectSoldierNum = 1;

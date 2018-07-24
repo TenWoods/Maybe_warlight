@@ -20,7 +20,7 @@ public class AIController : Operator
 		{
 			return;
 		}
-		
+		Operation();
 	}
 
 	/// <summary>
@@ -28,13 +28,12 @@ public class AIController : Operator
 	/// </summary>
 	private void Operation()
 	{
-
 		switch (opState)
 		{
 			case OperateState.OP_START : break;
 			case OperateState.ADD_SOLDIER :
 			{
-				ADD_AI();
+				Attack_AI();
 				break;
 			}
 			case OperateState.COMMAND_SOLDIER :
@@ -58,11 +57,12 @@ public class AIController : Operator
 		GetCard(getCardNum);
 		getCardNum = 1;   //重置每回合的抽牌数量
 		GetAddMap();
+		opState = OperateState.ADD_SOLDIER;
 		//TODO:每回合刚开始的初始化
 	}
 
 	/// <summary>
-	/// 变为开始状态
+	/// 抽牌
 	/// </summary>
 	public override void GetCard(int num)
 	{
@@ -102,6 +102,7 @@ public class AIController : Operator
 	/// </summary>
 	private void GetAddMap() 
 	{
+		Debug.Log("获取地图");
 		commandMap.Clear();
 		List<Map> outMaps = new List<Map>();
 		bool isChosen;
@@ -128,52 +129,146 @@ public class AIController : Operator
 		foreach(Map m in outMaps)
 		{
 			temp = 0;
+			//寻找进攻目标
 			foreach(Map nm in m.NextMaps)
 			{
 				if (GameManager.Instance.MapManagers[nm.MapManagerID].AddSoldierNum > temp)
 				{
 					temp = GameManager.Instance.MapManagers[nm.MapManagerID].AddSoldierNum;
+					m.MoveDirMap.Clear();
+					m.MoveDirMap.Add(nm);
+				}
+				else if (GameManager.Instance.MapManagers[nm.MapManagerID].AddSoldierNum == temp)
+				{
+					m.MoveDirMap.Add(nm);
 				}
 			}
+			//确定用于指挥的地图
 			if (temp > max)
 			{
 				max = temp;
 				commandMap.Clear();
 				commandMap.Add(m);
-				Debug.Log(m.gameObject.name);
 			}
 			else if (temp == max)
 			{
-				Debug.Log(m.gameObject.name + "==");
 				commandMap.Add(m);
 			}
+			else
+			{
+				m.MoveDirMap.Clear();
+			}
 		}
-		Debug.Log(max);
 	}
 
 	/// <summary>
-	/// 增兵(AI)
+	/// 增兵同时选定进攻方向(AI)
 	/// </summary>
-	private void ADD_AI()
+	private void Attack_AI()
 	{
 		float attackPower = 0;
 		float defendPower = 0;
-		foreach(Map m in commandMap)
+		int addNum;
+		if (commandMap.Count == 1)
 		{
-			attackPower = m.AttackPower;
-			foreach(Map nm in m.NextMaps)
+			addNum = soldierNum;
+			steps.SaveAddSteps(addNum, commandMap[0]);
+			steps.SaveCommamdSteps(commandMap[0], addNum);
+			opState = OperateState.OP_END;
+			return;
+		}
+		foreach(Map m in commandMap)
+		{	
+			for(int i = 0; i < m.MoveDirMap.Count; i++)
 			{
-				
+				addNum = 0;
+				attackPower = m.AttackPower;
+				defendPower = m.MoveDirMap[i].DefendPower;
+				#region 获取攻击力
+				switch (m.Terrain)
+				{
+					case Terrain.HIGHLAND :
+					{
+						if (m.MoveDirMap[i].Terrain != Terrain.HIGHLAND)
+						{
+							attackPower += 0.2f;
+						}
+						break;
+					}
+					case Terrain.FOREST :
+					{
+						if (m.MoveDirMap[i].Terrain == Terrain.VALLY)
+						{
+							attackPower += 0.2f;
+						}
+						else if (m.MoveDirMap[i].Terrain == Terrain.HIGHLAND)
+						{
+							attackPower -= 0.2f;
+						}
+						attackPower += 0.1f; 
+						break;
+					} 
+					case Terrain.DESERT : 
+					{
+						if (m.MoveDirMap[i].Terrain == Terrain.VALLY)
+						{
+							attackPower += 0.2f;
+						}
+						else if (m.MoveDirMap[i].Terrain == Terrain.HIGHLAND)
+						{
+							attackPower -= 0.2f;
+						}
+						attackPower -= 0.1f; 
+						break;
+					}
+					case Terrain.FLATLAND :
+					{
+						if (m.MoveDirMap[i].Terrain == Terrain.VALLY)
+						{
+							attackPower += 0.2f;
+						}
+						else if (m.MoveDirMap[i].Terrain == Terrain.HIGHLAND)
+						{
+							attackPower -= 0.2f;
+						}
+						break;
+					}
+					case Terrain.VALLY : 
+					{
+						if (m.MoveDirMap[i].Terrain != Terrain.VALLY)
+						{
+							attackPower -= 0.2f;
+						}
+						break;
+					}
+					default : break;
+				}
+				#endregion
+				#region 获取防御力
+				if (m.MoveDirMap[i].Terrain != Terrain.DESERT)
+				{
+					defendPower += 0.1f;
+				}
+				#endregion
+				//所需兵力
+				addNum = (int)(m.MoveDirMap[i].BaseSoldierNum * defendPower / attackPower + 0.5f);
+				Debug.Log(addNum);
+				//TODO:测试
+				if ((soldierNum - addNum) <= 0)
+				{
+					Debug.Log("数量不够");
+					m.MoveDirMap.Remove(m.MoveDirMap[i]);
+				}
+				else
+				{
+					Debug.Log("AI增兵");
+					steps.SaveAddSteps(addNum, m);
+					steps.SaveCommamdSteps(m, addNum);
+				}
 			}
 		}
-	}
-
-	/// <summary>
-	/// 指挥(AI)
-	/// </summary>
-	private void COMMAND_AI()
-	{
-
+		//结束回合
+		opState = OperateState.OP_END;
 	}
 
 	/// <summary>

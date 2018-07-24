@@ -31,15 +31,13 @@ public class MapManager : MonoBehaviour
 				return;
 			}
 		}
-		Debug.Log("增加兵力数");
 		GameManager.Instance.Players[playerID].SoldierNum += addSoldierNum;
 	}
 
 	/// <summary>
 	/// 对地图上所有的地图块初始化数据
 	/// </summary>
-	/// <param name="gm"></param>
-	public void InitBlocksData(GameManager gm)
+	public void InitBlocksData()
 	{
 		for(int i = 0; i < m_mapBlocks.Length; i++)
 		{
@@ -48,7 +46,7 @@ public class MapManager : MonoBehaviour
 			m_mapBlocks[i].MapManagerID = mapManagerID; //manager的编号
 			m_mapBlocks[i].PlayerID = playerID; //所属玩家的ID
 			m_mapBlocks[i].Init_Start(); //开始初始化地图
-			gm.Players[playerID].Maps.Add(m_mapBlocks[i]);
+			GameManager.Instance.Players[playerID].Maps.Add(m_mapBlocks[i]);
 		}
 	}
 

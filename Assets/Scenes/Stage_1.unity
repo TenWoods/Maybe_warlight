@@ -128,7 +128,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &3653883
 RectTransform:
@@ -299,7 +299,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &9053991
 RectTransform:
@@ -442,6 +442,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1391278636}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -585,6 +589,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 829449132}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -722,6 +730,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 2051188135}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -844,6 +856,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1566585698}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -971,6 +987,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 394223410}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -1088,6 +1108,15 @@ Prefab:
       propertyPath: mapManagerID
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -1189,6 +1218,15 @@ Prefab:
         type: 2}
       propertyPath: mapManagerID
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
@@ -1352,6 +1390,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 952830124}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -1507,6 +1549,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 601890615}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -1594,6 +1640,15 @@ Prefab:
       propertyPath: mapManagerID
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -1629,7 +1684,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &115345231
 RectTransform:
@@ -1803,6 +1858,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 2141920391}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -1946,6 +2005,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 973168833}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -1976,7 +2039,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &137521806
 RectTransform:
@@ -2179,6 +2242,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1548469218}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -2289,6 +2356,10 @@ Prefab:
       propertyPath: m_Name
       value: 62
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -2397,6 +2468,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -2513,6 +2588,10 @@ Prefab:
       propertyPath: m_Name
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -2594,6 +2673,15 @@ Prefab:
       propertyPath: mapManagerID
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -2621,7 +2709,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &198015042
 RectTransform:
@@ -2747,6 +2835,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 142
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -2900,6 +2992,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 72236872}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3037,6 +3133,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 838796161}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3174,6 +3274,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1852383078}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3198,7 +3302,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &238233356
 RectTransform:
@@ -3372,6 +3476,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 898107676}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3514,6 +3622,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1937100129}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3626,6 +3738,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1267590977}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3763,6 +3879,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 858397471}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3936,6 +4056,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 147206134}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -3958,7 +4082,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &306999824
 RectTransform:
@@ -4102,6 +4226,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 721453018}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -4124,7 +4252,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &318222352
 RectTransform:
@@ -4276,6 +4404,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 728080686}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -4423,6 +4555,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 983137847}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -4533,6 +4669,10 @@ Prefab:
       propertyPath: m_Name
       value: 135
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -4628,6 +4768,15 @@ Prefab:
         type: 2}
       propertyPath: mapManagerID
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
@@ -4749,6 +4898,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 136
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -4876,6 +5029,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1861827342}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -4885,27 +5042,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 353138727}
   m_Script: {fileID: 11500000, guid: 2c474c1bab0b8034fbb24c593ff7b711, type: 3}
---- !u!1 &366547800 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1312939845797770, guid: 599c312acd813be449963758c8bb05f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 832219397}
---- !u!114 &366547801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 366547800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac3ae0f8b57892468cc44f60d6eed64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maps: []
-  playerID: 0
-  opState: 0
-  soldierNum: 5
-  commandMap: []
 --- !u!1001 &375617534
 Prefab:
   m_ObjectHideFlags: 0
@@ -5028,6 +5164,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1125694882}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -5137,6 +5277,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 134
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -5274,6 +5418,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 671619827}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -5384,6 +5532,10 @@ Prefab:
       propertyPath: m_Name
       value: 72
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -5413,7 +5565,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &436030524
 RectTransform:
@@ -5575,6 +5727,10 @@ Prefab:
       propertyPath: m_Name
       value: 86
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -5598,7 +5754,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &443534635
 RectTransform:
@@ -5674,7 +5830,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &457803976
 RectTransform:
@@ -5836,6 +5992,10 @@ Prefab:
       propertyPath: m_Name
       value: 73
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -5863,7 +6023,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &476107842
 RectTransform:
@@ -5903,7 +6063,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &486608873
 RectTransform:
@@ -6079,7 +6239,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &496381970
 RectTransform:
@@ -6241,6 +6401,10 @@ Prefab:
       propertyPath: m_Name
       value: 156
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -6349,6 +6513,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 121
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -6476,6 +6644,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1985508182}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -6585,6 +6757,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -6722,6 +6898,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1487794497}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -6880,6 +7060,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 496381971}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -7021,6 +7205,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 703652882}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -7152,6 +7340,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1119792097}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -7267,6 +7459,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -7389,6 +7585,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1515303038}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -7499,6 +7699,10 @@ Prefab:
       propertyPath: m_Name
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -7520,7 +7724,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &633846597
 RectTransform:
@@ -7713,6 +7917,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 340936025}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -7850,6 +8058,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1111912873}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -7960,6 +8172,10 @@ Prefab:
       propertyPath: m_Name
       value: 111
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -7983,7 +8199,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &671619826
 RectTransform:
@@ -8145,6 +8361,10 @@ Prefab:
       propertyPath: m_Name
       value: 164
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -8276,6 +8496,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1689647499}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -8298,7 +8522,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &683547369
 RectTransform:
@@ -8457,6 +8681,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 114284954}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -8566,6 +8794,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -8682,6 +8914,10 @@ Prefab:
       propertyPath: m_Name
       value: 81
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -8705,7 +8941,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &728080685
 RectTransform:
@@ -8781,7 +9017,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &734501850
 RectTransform:
@@ -8937,7 +9173,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &749740806
 RectTransform:
@@ -9116,7 +9352,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &778220062
 RectTransform:
@@ -9305,6 +9541,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1078032012}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -9396,6 +9636,15 @@ Prefab:
         type: 2}
       propertyPath: mapManagerID
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
@@ -9526,7 +9775,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &819625204
 RectTransform:
@@ -9700,6 +9949,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 238233357}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -9722,16 +9975,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: players.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: mapManagers.Array.size
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 4987108252319428, guid: 599c312acd813be449963758c8bb05f3, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.7823101
@@ -9764,11 +10007,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
+    - target: {fileID: 114652835081117424, guid: 599c312acd813be449963758c8bb05f3,
         type: 2}
-      propertyPath: mapManagerNum
-      value: 16
-      objectReference: {fileID: 0}
+      propertyPath: CardSpawnPoint
+      value: 
+      objectReference: {fileID: 651655876}
+    - target: {fileID: 114652835081117424, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
+      propertyPath: commandUI
+      value: 
+      objectReference: {fileID: 1882302229}
     - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
         type: 2}
       propertyPath: mapManagers.Array.data[0]
@@ -9811,14 +10059,14 @@ Prefab:
       objectReference: {fileID: 329738235}
     - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
         type: 2}
-      propertyPath: mapManagers.Array.data[9]
-      value: 
-      objectReference: {fileID: 1928823471}
-    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
       propertyPath: mapManagers.Array.data[8]
       value: 
       objectReference: {fileID: 1542815788}
+    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
+      propertyPath: mapManagers.Array.data[9]
+      value: 
+      objectReference: {fileID: 1928823471}
     - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
         type: 2}
       propertyPath: mapManagers.Array.data[10]
@@ -9826,14 +10074,14 @@ Prefab:
       objectReference: {fileID: 1321750830}
     - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
         type: 2}
-      propertyPath: mapManagers.Array.data[12]
-      value: 
-      objectReference: {fileID: 978049428}
-    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
       propertyPath: mapManagers.Array.data[11]
       value: 
       objectReference: {fileID: 55847749}
+    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
+      propertyPath: mapManagers.Array.data[12]
+      value: 
+      objectReference: {fileID: 978049428}
     - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
         type: 2}
       propertyPath: mapManagers.Array.data[13]
@@ -9849,53 +10097,15 @@ Prefab:
       propertyPath: mapManagers.Array.data[15]
       value: 
       objectReference: {fileID: 197768695}
-    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: gameStart
-      value: 0
+    - target: {fileID: 1047408508607072, guid: 599c312acd813be449963758c8bb05f3, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 114340932265297304, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: playerID
-      value: 1
+    - target: {fileID: 1312939845797770, guid: 599c312acd813be449963758c8bb05f3, type: 2}
+      propertyPath: m_TagString
+      value: AI
       objectReference: {fileID: 0}
-    - target: {fileID: 114652835081117424, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: commandUI
-      value: 
-      objectReference: {fileID: 1882302229}
-    - target: {fileID: 114652835081117424, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: soldierNum
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114340932265297304, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: players.Array.data[1]
-      value: 
-      objectReference: {fileID: 366547801}
-    - target: {fileID: 114652835081117424, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: CardSpawnPoint
-      value: 
-      objectReference: {fileID: 651655876}
-    - target: {fileID: 114652835081117424, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: cards_Num_Max
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114340932265297304, guid: 599c312acd813be449963758c8bb05f3,
-        type: 2}
-      propertyPath: CardSpawnPoint
-      value: 
-      objectReference: {fileID: 651655876}
-    m_RemovedComponents:
-    - {fileID: 114340932265297304, guid: 599c312acd813be449963758c8bb05f3, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 599c312acd813be449963758c8bb05f3, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &838631948 stripped
@@ -9919,7 +10129,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &838796160
 RectTransform:
@@ -10005,7 +10215,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &862508983
 RectTransform:
@@ -10046,7 +10256,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &872142006
 RectTransform:
@@ -10225,6 +10435,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 778220063}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -10352,6 +10566,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 2041649933}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -10462,6 +10680,10 @@ Prefab:
       propertyPath: m_Name
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -10570,6 +10792,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -10686,6 +10912,10 @@ Prefab:
       propertyPath: m_Name
       value: 101
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -10794,6 +11024,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -10916,6 +11150,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1966502308}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -11061,6 +11299,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 747232801}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -11153,6 +11395,15 @@ Prefab:
       propertyPath: mapManagerID
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -11188,7 +11439,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &996588955
 RectTransform:
@@ -11264,7 +11515,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1012814589
 RectTransform:
@@ -11438,6 +11689,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1881881995}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -11548,6 +11803,10 @@ Prefab:
       propertyPath: m_Name
       value: 93
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -11656,6 +11915,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -11789,6 +12052,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1390084085}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -11936,6 +12203,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 147504577}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -12073,6 +12344,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 858809802}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -12194,6 +12469,10 @@ Prefab:
       propertyPath: m_Name
       value: 155
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -12302,6 +12581,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 71
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -12445,6 +12728,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 75560921}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -12553,6 +12840,15 @@ Prefab:
       propertyPath: playerID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -12644,6 +12940,15 @@ Prefab:
         type: 2}
       propertyPath: mapManagerID
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
@@ -12742,6 +13047,15 @@ Prefab:
         type: 2}
       propertyPath: mapManagerID
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
@@ -12885,6 +13199,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1953383468}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -13022,6 +13340,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 193257697}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -13131,6 +13453,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 113
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -13253,6 +13579,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1524986643}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -13380,6 +13710,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1223130334}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -13537,6 +13871,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 802187043}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -13647,6 +13985,10 @@ Prefab:
       propertyPath: m_Name
       value: 163
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -13665,7 +14007,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1223130333
 RectTransform:
@@ -13953,6 +14295,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1263234601}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -13975,7 +14321,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1293456558
 RectTransform:
@@ -14084,6 +14430,15 @@ Prefab:
         type: 2}
       propertyPath: mapManagerID
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
@@ -14217,6 +14572,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 22954085}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -14322,6 +14681,15 @@ Prefab:
     - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
         type: 2}
       propertyPath: mapManagerID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14438,6 +14806,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -14565,6 +14937,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 2112729719}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -14587,7 +14963,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1350780986
 RectTransform:
@@ -14788,6 +15164,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1732695263}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -14935,6 +15315,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 301225565}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -14976,7 +15360,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1393451221
 RectTransform:
@@ -15217,6 +15601,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1317751469}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -15344,6 +15732,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 137521807}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -15481,6 +15873,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 144349975}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -15590,6 +15986,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -15727,6 +16127,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 967638438}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -15837,6 +16241,10 @@ Prefab:
       propertyPath: m_Name
       value: 133
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -15945,6 +16353,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 102
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -16055,6 +16467,10 @@ Prefab:
       propertyPath: m_Name
       value: 74
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -16163,6 +16579,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 141
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -16285,6 +16705,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 80893552}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -16309,7 +16733,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1487794496
 RectTransform:
@@ -16498,6 +16922,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1531740865}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -16635,6 +17063,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1099158089}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -16778,6 +17210,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 128367588}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -16802,7 +17238,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1531740864
 RectTransform:
@@ -16941,6 +17377,15 @@ Prefab:
       propertyPath: mapManagerID
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -17061,6 +17506,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -17188,6 +17637,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 436030525}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -17297,6 +17750,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 144
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -17507,6 +17964,10 @@ Prefab:
       propertyPath: m_Name
       value: 162
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -17628,6 +18089,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 115345232}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -17750,6 +18215,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 3653884}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -17887,6 +18356,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1236748805}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -17973,6 +18446,20 @@ Prefab:
         type: 2}
       propertyPath: mapManagerID
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: playerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
@@ -18088,6 +18575,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 131
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -18227,6 +18718,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 443534636}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -18336,6 +18831,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 143
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -18463,6 +18962,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1707860267}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -18579,6 +19082,10 @@ Prefab:
       propertyPath: m_Name
       value: 152
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -18687,6 +19194,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -18803,6 +19314,10 @@ Prefab:
       propertyPath: m_Name
       value: 63
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -18904,6 +19419,15 @@ Prefab:
         type: 2}
       propertyPath: mapManagerID
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
@@ -19043,6 +19567,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 2037869659}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -19180,6 +19708,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1741190637}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -19290,6 +19822,10 @@ Prefab:
       propertyPath: m_Name
       value: 92
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -19398,6 +19934,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -19529,6 +20069,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1835408497}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -19638,6 +20182,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 124
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -19765,6 +20313,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 819625205}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -19883,6 +20435,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1764742245}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -20010,6 +20566,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 838631948}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -20040,7 +20600,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1861827341
 RectTransform:
@@ -20239,6 +20799,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 580472913}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -20349,6 +20913,10 @@ Prefab:
       propertyPath: m_Name
       value: 161
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -20452,6 +21020,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -20561,6 +21133,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -20687,6 +21263,10 @@ Prefab:
       propertyPath: m_Name
       value: 94
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -20796,6 +21376,10 @@ Prefab:
       propertyPath: m_Name
       value: 151
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -20817,7 +21401,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1898518380
 RectTransform:
@@ -20970,6 +21554,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 749740807}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -21097,6 +21685,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1012814590}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -21183,6 +21775,15 @@ Prefab:
         type: 2}
       propertyPath: mapManagerID
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188916091667908, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 61086633715685396, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
@@ -21298,6 +21899,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -21446,6 +22051,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 457803977}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -21583,6 +22192,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1683317742}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -21699,6 +22312,10 @@ Prefab:
       propertyPath: m_Name
       value: 82
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -21726,7 +22343,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1974115139
 RectTransform:
@@ -21850,6 +22467,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -21977,6 +22598,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 996588956}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -22086,6 +22711,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 132
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -22218,6 +22847,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 226106515}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -22328,6 +22961,10 @@ Prefab:
       propertyPath: m_Name
       value: 103
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -22349,7 +22986,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2023577898
 RectTransform:
@@ -22475,6 +23112,10 @@ Prefab:
     - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
       propertyPath: m_Name
       value: 153
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
@@ -22602,6 +23243,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 1393451222}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -22624,7 +23269,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2030098473
 RectTransform:
@@ -22664,7 +23309,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2037869658
 RectTransform:
@@ -22865,7 +23510,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2041649932
 RectTransform:
@@ -23027,6 +23672,10 @@ Prefab:
       propertyPath: m_Name
       value: 154
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -23173,6 +23822,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 475411993}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -23300,6 +23953,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 734501851}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -23471,6 +24128,10 @@ Prefab:
       propertyPath: effectSoldierNum_UI
       value: 
       objectReference: {fileID: 872142007}
+    - target: {fileID: 1500594843301722, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3450adf9761cdd34cb135bf0193d5d1f, type: 2}
   m_IsPrefabParent: 0
@@ -23493,7 +24154,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2109653725
 RectTransform:
@@ -23534,7 +24195,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2112729718
 RectTransform:
@@ -23608,7 +24269,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2129612042
 RectTransform:
@@ -23734,6 +24395,10 @@ Prefab:
       propertyPath: m_Name
       value: 51
       objectReference: {fileID: 0}
+    - target: {fileID: 1585293968622878, guid: fb592b589bff57145b05ccd904e62788, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb592b589bff57145b05ccd904e62788, type: 2}
   m_IsPrefabParent: 0
@@ -23757,7 +24422,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2141920390
 RectTransform:
