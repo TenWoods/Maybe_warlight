@@ -16,9 +16,13 @@ public class Player : Operator
 	/*指挥所用UI*/
 	public GameObject commandUI;
 	
-	private void Start() 
+	protected override void Start() 
 	{
 		base.Start();
+		for (int i = 0; i < cards_Num_Max; i++)
+		{
+			allCards[i] = i + 1;
+		}
 		selfOperate = new Operation(this, steps);
 	}
 
@@ -130,9 +134,24 @@ public class Player : Operator
 		//根据抽牌次数抽牌
 		for (int i = 0; i < num; i++)
 		{
-			cards_index++;
-			GameObject card = Instantiate((GameObject)Resources.Load("Card"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+			GameObject card = null;
+			switch(allCards[cards_index])
+			{
+				case 1: card = Instantiate((GameObject)Resources.Load("Card_1"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+						break;
+				case 2: card = Instantiate((GameObject)Resources.Load("Card_2"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+						break;
+				case 3: card = Instantiate((GameObject)Resources.Load("Card_3"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+						break;
+				case 4: card = Instantiate((GameObject)Resources.Load("Card_4"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+						break;
+				case 5: card = Instantiate((GameObject)Resources.Load("Card_5"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+						break;
+				case 6: card = Instantiate((GameObject)Resources.Load("Card_6"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+						break;
+			}
 			cardObjects.Add(card.GetComponent<Card>());
+			cards_index++;
 		}
 		SortCardObject();
 	}

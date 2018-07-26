@@ -37,9 +37,8 @@ public class CameraController : MonoBehaviour
 			Camera.main.orthographicSize = 4.5f;
 		}
 		//更新屏幕范围
-		Vector3 screenPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-		edge_width = 24.0f - screenPoint.x;
-		edge_height = 13.5f - screenPoint.y;
+		edge_width = 24.0f - Camera.main.orthographicSize * 24.0f / 13.5f;
+		edge_height = 13.5f - Camera.main.orthographicSize;
 		//控制拖拽
 		if (Input.GetMouseButton(1))
 		{
@@ -49,7 +48,7 @@ public class CameraController : MonoBehaviour
 			{
 				targetPos.x = edge_width;
 			}
-			if (targetPos.x < -edge_width)
+			else if (targetPos.x < -edge_width)
 			{
 				targetPos.x = -edge_width;
 			}
@@ -57,7 +56,7 @@ public class CameraController : MonoBehaviour
 			{
 				targetPos.y = edge_height;
 			}
-			if (targetPos.y < -edge_height)
+			else if (targetPos.y < -edge_height)
 			{
 				targetPos.y = -edge_height;
 			} 

@@ -20,6 +20,8 @@ public class Operation
 	private GameObject[] multiObject = null;
 	/*增兵阶段的目前士兵数*/
 	private int soldierNum_current;
+	/*卡牌使用阶段统帅值*/
+	private int leaderPoint_current;
 	/*记录玩家行为步骤*/
 	private PlayerStep save_Steps;
 	/*箭头预制体*/
@@ -50,6 +52,7 @@ public class Operation
 	public void UpdateData(Player player)
 	{
 		soldierNum_current = player.SoldierNum;
+		leaderPoint_current = player.LeaderPoint;
 		//TODO:可能会有其他的更新
 	}
 
@@ -273,6 +276,7 @@ public class Operation
 	/// </summary>
 	private void ChooseTarget(GameObject target)
 	{
+		Card card = clickCard.GetComponent<Card>();
 		switch (opKind)
 		{
 			case CardOpKind.SingleMap : 
@@ -281,11 +285,18 @@ public class Operation
 				singleObject = target;
 				clickCard.transform.localScale /= 2;   //还原卡牌大小
 				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
-				clickCard.GetComponent<Card>().CardEffect(playerID, singleObject);
-				clickCard.GetComponent<Card>().SetCardMoveDir(singleObject.transform.position);
-				clickCard.GetComponent<Card>().HasUsed = true;
-				singleObject = null;
-				GameManager.Instance.Players[playerID].CardObjects.Remove(clickCard.GetComponent<Card>());
+				if(leaderPoint_current - card.LeaderPoint <= 0)
+				{
+					Debug.Log("统帅值不足");
+					return;
+				}
+				if (card.CardEffect(playerID, singleObject))
+				{
+					card.SetCardMoveDir(singleObject.transform.position);
+					card.HasUsed = true;
+					singleObject = null;
+					GameManager.Instance.Players[playerID].CardObjects.Remove(clickCard.GetComponent<Card>());
+				}
 				break;
 			}
 			case CardOpKind.MultiMap : 
@@ -301,11 +312,18 @@ public class Operation
 				multiObject[1] = target;
 				clickCard.transform.localScale /= 2;   //还原卡牌大小
 				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
-				clickCard.GetComponent<Card>().CardEffect(playerID, multiObject);
-				clickCard.GetComponent<Card>().SetCardMoveDir((multiObject[0].transform.position + multiObject[1].transform.position) / 2);
-				clickCard.GetComponent<Card>().HasUsed = true;
-				multiObject = null;
-				GameManager.Instance.Players[playerID].CardObjects.Remove(clickCard.GetComponent<Card>());
+				if(leaderPoint_current - card.LeaderPoint <= 0)
+				{
+					Debug.Log("统帅值不足");
+					return;
+				}
+				if (card.CardEffect(playerID, multiObject))
+				{
+					card.SetCardMoveDir((multiObject[0].transform.position + multiObject[1].transform.position) / 2);
+					card.HasUsed = true;
+					multiObject = null;
+					GameManager.Instance.Players[playerID].CardObjects.Remove(clickCard.GetComponent<Card>());
+				}				
 				break;
 			}
 		}

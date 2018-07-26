@@ -10105,6 +10105,11 @@ Prefab:
       propertyPath: m_TagString
       value: AI
       objectReference: {fileID: 0}
+    - target: {fileID: 114652835081117424, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
+      propertyPath: leaderPoint
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 599c312acd813be449963758c8bb05f3, type: 2}
   m_IsPrefabParent: 0
@@ -14180,6 +14185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scroll_Sensitivty: 4
+  mouseMove_Sensitivty: 1
 --- !u!1001 &1290194685
 Prefab:
   m_ObjectHideFlags: 0

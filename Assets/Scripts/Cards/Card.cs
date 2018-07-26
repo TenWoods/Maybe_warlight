@@ -16,6 +16,11 @@ public class Card : MonoBehaviour
 	/*卡牌的操作类型*/
 	[SerializeField]
 	protected CardOpKind opKind;
+	/*是否进阶*/
+	protected bool upgrade = false;
+	/*所需统帅值*/
+	[SerializeField]//调试用
+	protected int leaderPoint = 1;
 	/*卡牌移动信号*/
 	[SerializeField]
 	private bool timeToGo = false;
@@ -52,8 +57,9 @@ public class Card : MonoBehaviour
 	/// </summary>
 	/// <param name="player">选中的玩家</param>
 	/// <param name="map">选中的地图</param>
-	public void CardEffect(int playerID, GameObject target)
+	public virtual bool CardEffect(int playerID, GameObject target)
 	{
+		return true;
 		//TODO:卡牌的操作
 	}
 
@@ -61,12 +67,20 @@ public class Card : MonoBehaviour
 	/// 卡牌效果   
 	/// </summary>
 	/// <param name="player"></param>
-	public void CardEffect(int playerID, GameObject[] targets)
+	public virtual bool CardEffect(int playerID, GameObject[] targets)
 	{
-		
+		return true;
 		//TODO:卡牌的操作
 	}
 
+	/// <summary>
+	/// 卡牌进阶
+	/// </summary>
+	public virtual void UpGrade()
+	{
+
+	}
+	
 	/// <summary>
 	/// 设置卡牌移动方向并开启移动
 	/// </summary>
@@ -94,6 +108,14 @@ public class Card : MonoBehaviour
 		set
 		{
 			hasUsed = value;
+		}
+	}
+
+	public int LeaderPoint
+	{
+		get
+		{
+			return leaderPoint;
 		}
 	}
 

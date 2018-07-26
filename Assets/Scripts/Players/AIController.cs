@@ -8,7 +8,7 @@ public class AIController : Operator
 	[SerializeField]//调试用
 	private List<Map> commandMap;
 	
-	private void Start() 
+	protected override void Start() 
 	{
 		base.Start();
 		commandMap = new List<Map>();

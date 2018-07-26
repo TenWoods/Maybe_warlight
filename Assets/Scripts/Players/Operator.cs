@@ -23,10 +23,12 @@ public abstract class Operator : MonoBehaviour
 	/*玩家当前操作状态*/
 	[SerializeField]//调试用
 	protected OperateState opState;
-
 	/*玩家兵力数(每回合实时更新)*/
-	[SerializeField] //设定初始值
+	[SerializeField]
 	protected int soldierNum;
+	/*玩家统帅值*/
+	[SerializeField]
+	protected int leaderPoint;
 	/*手牌最大的数量*/
 	protected static int cards_Num_Max = 20;
 	/*本回合抽牌的数量*/
@@ -45,7 +47,7 @@ public abstract class Operator : MonoBehaviour
 	/*玩家操作记录*/
 	protected PlayerStep steps;
 
-	protected void Start() 
+	protected virtual void Start() 
 	{
 		maps = new List<Map>();
 		cardObjects = new List<Card>();
@@ -125,6 +127,18 @@ public abstract class Operator : MonoBehaviour
 			soldierNum = value;
 		}
 	}
+
+	public int LeaderPoint 
+	{
+		get
+		{
+			return leaderPoint;
+		}
+		set
+		{
+			leaderPoint = value;
+		}
+	} 
 
 	public bool GameStart 
 	{
