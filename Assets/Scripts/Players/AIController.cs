@@ -7,11 +7,14 @@ public class AIController : Operator
 	/*选择操作的地图*/
 	[SerializeField]//调试用
 	private List<Map> commandMap;
+	/*AI手中的卡牌*/
+	private List<int> cards_in_hand;
 	
 	protected override void Start() 
 	{
 		base.Start();
 		commandMap = new List<Map>();
+		cards_in_hand = new List<int>();
 	}
 
 	private void Update() 
@@ -90,10 +93,8 @@ public class AIController : Operator
 		//根据抽牌次数抽牌
 		for (int i = 0; i < num; i++)
 		{
+			cards_in_hand.Add(allCards[cards_index]);
 			cards_index++;
-			GameObject card = Instantiate((GameObject)Resources.Load("Card"), this.transform.position, this.transform.rotation);
-			card.SetActive(false);
-			cardObjects.Add(card.GetComponent<Card>());
 		}
 	}
 

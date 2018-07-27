@@ -137,17 +137,17 @@ public class Player : Operator
 			GameObject card = null;
 			switch(allCards[cards_index])
 			{
-				case 1: card = Instantiate((GameObject)Resources.Load("Card_1"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+				case 1: card = Instantiate((GameObject)Resources.Load("Card 1"), CardSpawnPoint.position, CardSpawnPoint.rotation);
 						break;
-				case 2: card = Instantiate((GameObject)Resources.Load("Card_2"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+				case 2: card = Instantiate((GameObject)Resources.Load("Card 2"), CardSpawnPoint.position, CardSpawnPoint.rotation);
 						break;
-				case 3: card = Instantiate((GameObject)Resources.Load("Card_3"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+				case 3: card = Instantiate((GameObject)Resources.Load("Card 3"), CardSpawnPoint.position, CardSpawnPoint.rotation);
 						break;
-				case 4: card = Instantiate((GameObject)Resources.Load("Card_4"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+				case 4: card = Instantiate((GameObject)Resources.Load("Card 4"), CardSpawnPoint.position, CardSpawnPoint.rotation);
 						break;
-				case 5: card = Instantiate((GameObject)Resources.Load("Card_5"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+				case 5: card = Instantiate((GameObject)Resources.Load("Card 5"), CardSpawnPoint.position, CardSpawnPoint.rotation);
 						break;
-				case 6: card = Instantiate((GameObject)Resources.Load("Card_6"), CardSpawnPoint.position, CardSpawnPoint.rotation);
+				case 6: card = Instantiate((GameObject)Resources.Load("Card6"), CardSpawnPoint.position, CardSpawnPoint.rotation);
 						break;
 			}
 			cardObjects.Add(card.GetComponent<Card>());

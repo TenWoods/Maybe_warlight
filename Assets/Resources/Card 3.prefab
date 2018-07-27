@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4474698643443964}
   - component: {fileID: 212061477229699176}
   - component: {fileID: 61012405060698584}
-  - component: {fileID: 114577984480720332}
+  - component: {fileID: 114964236535230854}
+  - component: {fileID: 114669263048378382}
   m_Layer: 0
-  m_Name: Card
+  m_Name: Card 3
   m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +68,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.96, y: 1.96}
   m_EdgeRadius: 0
---- !u!114 &114577984480720332
+--- !u!114 &114669263048378382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1070364692973150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cffb54ab8f8f1a4fb66689de1329757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opKind: 0
+  leaderPoint: 1
+  timeToGo: 0
+  destination: {x: 0, y: 0, z: 0}
+  moveSpeed: 1
+--- !u!114 &114964236535230854
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -82,7 +99,7 @@ MonoBehaviour:
   leaderPoint: 2
   timeToGo: 0
   destination: {x: 0, y: 0, z: 0}
-  moveSpeed: 10
+  moveSpeed: 1
   addSoldierNum: 10
 --- !u!212 &212061477229699176
 SpriteRenderer:
