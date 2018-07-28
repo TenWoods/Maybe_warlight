@@ -64,7 +64,7 @@ public class Player : Operator
 		opState = OperateState.ADD_SOLDIER;
 		if (opState == OperateState.COMMAND_SOLDIER)
 		{
-			DisabledArrows();
+			ArrowManager.Instance.DisabledArrows();
 			commandUI.SetActive(false);
 		}
 	}
@@ -85,7 +85,7 @@ public class Player : Operator
 		opState = OperateState.USE_CARDS;
 		if (opState == OperateState.COMMAND_SOLDIER)
 		{
-			DisabledArrows();
+			ArrowManager.Instance.DisabledArrows();
 			commandUI.SetActive(false);
 		}
 	}
@@ -98,7 +98,7 @@ public class Player : Operator
 		opState = OperateState.OP_END;
 		if (opState == OperateState.COMMAND_SOLDIER)
 		{
-			DisabledArrows();
+			ArrowManager.Instance.DisabledArrows();
 			commandUI.SetActive(false);
 		}
 	}
@@ -171,13 +171,5 @@ public class Player : Operator
 			cardObjects[i].SetCardMoveDir(cardPos);
 			cardPos += new Vector3(cardSize, 0, 0);
 		}
-	}
-
-	/// <summary>
-	/// 让操作类隐藏箭头
-	/// </summary>
-	public void DisabledArrows()
-	{
-		selfOperate.DisabledArrows();
 	}
 }

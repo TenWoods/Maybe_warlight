@@ -57,6 +57,14 @@ public class CommandUIUpdate : MonoBehaviour
 			return;
 		}
 		save_Step.SaveCommamdSteps(commandMap, targetMap, lastNum, arrow);
+		foreach(GameObject a in ArrowManager.Instance.Arrows_Able)
+		{
+			if (ArrowManager.Instance.Arrows_Remain.Contains(a))
+			{
+				continue;
+			}
+			a.SetActive(false);
+		}
 		this.gameObject.SetActive(false);
 	}
 
@@ -66,6 +74,14 @@ public class CommandUIUpdate : MonoBehaviour
 	public void Cancel()
 	{
 		lastNum = 0;
+		foreach(GameObject a in ArrowManager.Instance.Arrows_Able)
+		{
+			if (ArrowManager.Instance.Arrows_Remain.Contains(a))
+			{
+				continue;
+			}
+			a.SetActive(false);
+		}
 		this.gameObject.SetActive(false);
 	}
 

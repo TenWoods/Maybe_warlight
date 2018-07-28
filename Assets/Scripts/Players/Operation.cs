@@ -180,39 +180,43 @@ public class Operation
 		}
 		if (clickMap != null)
 		{
-			for (int i = 0; i < clickMap.GetComponent<Map>().Arrows.Count; i++)
+			for (int i = 0; i < ArrowManager.Instance.Arrows_Able.Count; i++)
 			{
-				clickMap.GetComponent<Map>().Arrows[i].SetActive(false);
+				if (ArrowManager.Instance.Arrows_Remain.Contains(ArrowManager.Instance.Arrows_Able[i]))
+				{
+					continue;
+				}
+				ArrowManager.Instance.Arrows_Able[i].SetActive(false);
 			}
 		}
 		clickMap = mapBlock;
 		Debug.Log("选择地图块");
 		Map mapBlockData = clickMap.GetComponent<Map>();
 		//生成箭头
-		if (mapBlockData.Arrows.Count == 0)
+		if (mapBlockData.Arrows_Red.Count == 0)
 		{
-			Vector3 nextPos;  //相邻方块位置
-			Vector3 dir;   //箭头方向
-			Vector3 pos;   //箭头的位置
-			float angle;
+			GameObject arrow = null;
 			for (int i = 0; i < mapBlockData.NextMaps.Count; i++)
 			{
-				//TODO:箭头大小缩放
-				nextPos = mapBlockData.NextMaps[i].transform.position;
-				dir = nextPos - mapBlock.transform.position;
-				angle = Vector3.Angle(Vector3.right, dir);
-				if (Vector3.Cross(Vector3.right, dir).z < 0)  //修正旋转的方向 
-				{
-					angle *= -1;
-				}
-				pos = (nextPos + mapBlock.transform.position) / 2;
-				mapBlockData.Arrows.Add(GameObject.Instantiate(arrow, pos, Quaternion.Euler(0, 0, angle)));
+				arrow = ArrowManager.Instance.InitArrow(mapBlockData.transform.position, mapBlockData.NextMaps[i].transform.position, 0);
+				mapBlockData.Arrows_Red.Add(arrow);
+				arrow = ArrowManager.Instance.InitArrow(mapBlockData.transform.position, mapBlockData.NextMaps[i].transform.position, 1);
+				mapBlockData.Arrows_Green.Add(arrow);
 			}
 		}
 		//显示箭头
-		for (int i = 0; i < mapBlockData.Arrows.Count; i++)
+		for (int i = 0; i < mapBlockData.NextMaps.Count; i++)
 		{
-			mapBlockData.Arrows[i].SetActive(true);
+			if (mapBlockData.NextMaps[i].PlayerID != mapBlockData.PlayerID)
+			{
+				mapBlockData.Arrows_Red[i].SetActive(true);
+				ArrowManager.Instance.Arrows_Able.Add(mapBlockData.Arrows_Red[i]);
+			}
+			else
+			{
+				mapBlockData.Arrows_Green[i].SetActive(true);
+				ArrowManager.Instance.Arrows_Able.Add(mapBlockData.Arrows_Green[i]);
+			}
 		}
 	}
 
@@ -222,27 +226,18 @@ public class Operation
 	/// <param name="arrow">点击的箭头</param>
 	private void CommandSoilderUI(GameObject arrow, Map startMap)
 	{
-		int index = startMap.Arrows.IndexOf(arrow);
+		int index;
+		if (startMap.Arrows_Green.Contains(arrow))
+		{
+			index = startMap.Arrows_Green.IndexOf(arrow);
+		}
+		else
+		{
+			index = startMap.Arrows_Red.IndexOf(arrow);
+		}
 		commandUI.SetActive(true);
 		//把步骤储存交给UI控制类
 		commandUI.GetComponent<CommandUIUpdate>().SetCommandUI(startMap.BaseSoldierNum, startMap, startMap.NextMaps[index], save_Steps, arrow);
-	}
-
-	/// <summary>
-	/// 隐藏显示的箭头
-	/// </summary>
-	public void DisabledArrows()
-	{
-		int i;
-		Map arrowMap = clickMap.GetComponent<Map>();
-		for (i = 0; i < arrowMap.Arrows.Count; i++)
-		{
-			if (save_Steps.Arrows.Contains(arrowMap.Arrows[i]))
-			{
-				continue;
-			}
-			arrowMap.Arrows[i].SetActive(false);
-		}
 	}
 
 	#endregion

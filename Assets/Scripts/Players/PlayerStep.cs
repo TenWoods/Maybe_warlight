@@ -10,8 +10,6 @@ public class PlayerStep
 	private List<int> addNums;
 	/*指挥地图块集合*/
 	private List<Map> commandMaps;
-	/*指挥所用的箭头*/
-	private List<GameObject> arrows;
 	/*卡牌使用集合*/
 	private List<Map> cardMaps;
 
@@ -20,7 +18,6 @@ public class PlayerStep
 		addMaps = new List<Map>();
 		addNums = new List<int>();
 		commandMaps = new List<Map>();
-		arrows = new List<GameObject>();
 		cardMaps = new List<Map>();
 	}
 
@@ -58,7 +55,7 @@ public class PlayerStep
 				return;
 			}
 			startMap.MoveDirMap.Add(endMap);
-			arrows.Add(arrow); //保存留在地图上的箭头
+			ArrowManager.Instance.Arrows_Remain.Add(arrow); //保存留在地图上的箭头
 			arrow.GetComponent<BoxCollider2D>().enabled = false; //设置为不可点击
 			startMap.MoveSoldierNum.Add(moveNum);
 			startMap.BaseSoldierNum -= moveNum;
@@ -66,14 +63,14 @@ public class PlayerStep
 		}
 		commandMaps.Add(startMap);
 		startMap.MoveDirMap.Add(endMap);
-		arrows.Add(arrow); //保存留在地图上的箭头
+		ArrowManager.Instance.Arrows_Remain.Add(arrow); //保存留在地图上的箭头
 		arrow.GetComponent<BoxCollider2D>().enabled = false; //设置为不可点击
 		startMap.MoveSoldierNum.Add(moveNum);
 		startMap.BaseSoldierNum -= moveNum;
 	}
 
 	/// <summary>
-	/// 储存玩家操作(AI)
+	/// 储存玩家指挥操作(AI)
 	/// </summary>
 	public void SaveCommamdSteps(Map startMap, int moveNum)
 	{
@@ -101,12 +98,7 @@ public class PlayerStep
 		addNums.Clear();
 		commandMaps.Clear();
 		cardMaps.Clear();
-		foreach(GameObject arrow in arrows)
-		{
-			arrow.SetActive(false);
-			arrow.GetComponent<BoxCollider2D>().enabled = true;
-		}
-		arrows.Clear();
+		ArrowManager.Instance.CleanRemainArrow();
 	}
 
 	public List<Map> AddMaps 
@@ -130,14 +122,6 @@ public class PlayerStep
 		get
 		{
 			return commandMaps;
-		}
-	}
-
-	public List<GameObject> Arrows 
-	{
-		get
-		{
-			return arrows;
 		}
 	}
 }

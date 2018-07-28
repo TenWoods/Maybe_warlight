@@ -50,7 +50,10 @@ public class Map : MonoBehaviour
 	private List<Map> nextMaps;
 	/*指向相邻地图块的箭头*/
 	[SerializeField]
-	private List<GameObject> arrows;
+	private List<GameObject> arrows_Green;
+	/*指向相邻地图块的箭头*/
+	[SerializeField]
+	private List<GameObject> arrows_Red;
 	/*地图块攻击力*/
 	private float attackPower = 1.0f;
 	/*地图块防御力*/
@@ -69,7 +72,8 @@ public class Map : MonoBehaviour
 		MoveSoldierNum = new List<int>();
 		nextMaps = new List<Map>();
 		GetNextBlock();
-		arrows = new List<GameObject>();
+		arrows_Green = new List<GameObject>();
+		arrows_Red = new List<GameObject>();
 		InitMapUI();
 	}
 
@@ -224,11 +228,19 @@ public class Map : MonoBehaviour
 		}
 	}
 
-	public List<GameObject> Arrows
+	public List<GameObject> Arrows_Green
 	{
 		get
 		{
-			return arrows;
+			return arrows_Green;
+		}
+	}
+
+	public List<GameObject> Arrows_Red
+	{
+		get
+		{
+			return arrows_Red;
 		}
 	}
 
