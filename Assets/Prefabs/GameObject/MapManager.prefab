@@ -85,10 +85,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  addSoldierNum: 1
   playerID: 0
   mapManagerID: 0
-  nextManager:
-  - {fileID: 0}
 --- !u!212 &212035735182380930
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 			for (i = 0; i < p.Steps.AddMaps.Count; i++)
 			{
 				p.Steps.AddMaps[i].BaseSoldierNum -= p.Steps.AddNums[i];
-				p.Steps.AddMaps[i].UpadteMapUI();
+				p.Steps.AddMaps[i].UpdateMapUI();
 			}
 			for (i = 0; i < p.Steps.CommandMaps.Count; i++)
 			{
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
 			for (i = 0; i < p.Steps.AddMaps.Count; i++)
 			{
 				p.Steps.AddMaps[i].BaseSoldierNum += p.Steps.AddNums[i];
-				p.Steps.AddMaps[i].UpadteMapUI();
+				p.Steps.AddMaps[i].UpdateMapUI();
 			}
 		}
 		//指挥过程
@@ -182,8 +182,8 @@ public class GameManager : MonoBehaviour
 			{
 				startMap.BaseSoldierNum -= moveNums[i];
 				targetMaps[i].BaseSoldierNum += moveNums[i];
-				startMap.UpadteMapUI();
-				targetMaps[i].UpadteMapUI();
+				startMap.UpdateMapUI();
+				targetMaps[i].UpdateMapUI();
 				return;
 			}
 			if (targetMaps[i].Terrain != Terrain.DESERT)
@@ -270,8 +270,8 @@ public class GameManager : MonoBehaviour
 			Debug.Log(moveNums[i]);
 			startMap.BaseSoldierNum -= moveNums[i];
 			//更新UI显示
-			startMap.UpadteMapUI();
-			targetMaps[i].UpadteMapUI();
+			startMap.UpdateMapUI();
+			targetMaps[i].UpdateMapUI();
 		}
 	}
 

@@ -149,6 +149,8 @@ MonoBehaviour:
   playerID: 0
   opState: 0
   soldierNum: 5
+  leaderPoint: 0
+  gameStart: 0
   commandMap: []
 --- !u!114 &114652835081117424
 MonoBehaviour:
@@ -165,8 +167,8 @@ MonoBehaviour:
   playerID: 0
   opState: 0
   soldierNum: 5
+  leaderPoint: 0
+  gameStart: 0
   cardSize: 1.5
   CardSpawnPoint: {fileID: 0}
-  arrow_Prefab: {fileID: 1103937669562196, guid: de4327f635262a744b0ce1de7a543c62,
-    type: 2}
   commandUI: {fileID: 0}

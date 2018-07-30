@@ -27,7 +27,7 @@ public class Card_1 : Card
 		{
 			targetMap.BaseSoldierNum += addSoldierNum;
 		}
-		targetMap.UpadteMapUI();
+		targetMap.UpdateMapUI();
 		GameManager.Instance.Players[playerID].LeaderPoint -= leaderPoint;
 		return true;
 	}

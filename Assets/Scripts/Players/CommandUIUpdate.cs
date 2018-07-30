@@ -5,15 +5,22 @@ using UnityEngine.UI;
 
 public class CommandUIUpdate : MonoBehaviour 
 {
-	/*上一帧的人数*/
-	private int lastNum = 0;
+	/*移动数量*/
+	[SerializeField]
+	private float addNum = 0;
 	/*能指挥的总人数*/
 	[SerializeField]
 	private int commandMax = 0;
 	/*输入的数字*/
-	public InputField inputNum;
+	public Text numUI;
 	/*用滑动条输入*/
 	public Slider inputSlider;
+	/*起始地图地形*/
+	public Image startTerrain;
+	/*目标地图地形*/
+	public Image endTerrain;
+	/*地形图片*/
+	public Sprite[] terrainSprites;
 	/*控制的地图块*/
 	private Map commandMap;
 	/*移动目标地图块*/
@@ -25,8 +32,8 @@ public class CommandUIUpdate : MonoBehaviour
 
 	private void Start() 
 	{
-		inputSlider.value = lastNum;
-		inputNum.text = lastNum.ToString();
+		inputSlider.value = addNum;
+		numUI.text = addNum.ToString();
 	}
 
 	/// <summary>
@@ -34,16 +41,34 @@ public class CommandUIUpdate : MonoBehaviour
 	/// </summary>
 	private void Update()
 	{
-		if (string.Compare(inputNum.text, lastNum.ToString()) != 0)
+		addNum = inputSlider.value;
+		numUI.text = addNum.ToString();
+	}
+	
+	/// <summary>
+	/// 增加按钮
+	/// </summary>
+	public void UpButton()
+	{
+		if (addNum + 1 > commandMax)
 		{
-			int.TryParse(inputNum.text, out lastNum);
-			inputSlider.value = lastNum;
+			return;
 		}
-		else if ((int)inputSlider.value != lastNum)
+		addNum += 1;
+		inputSlider.value = addNum;
+	}
+
+	/// <summary>
+	/// 减少按钮
+	/// </summary>
+	public void DownButton()
+	{
+		if (addNum - 1 < 0)
 		{
-			lastNum = (int)inputSlider.value;
-			inputNum.text = lastNum.ToString();
+			return;
 		}
+		addNum -= 1;
+		inputSlider.value = addNum;
 	}
 
 	/// <summary>
@@ -51,12 +76,12 @@ public class CommandUIUpdate : MonoBehaviour
 	/// </summary>
 	public void Comfirm()
 	{
-		if (lastNum == 0)
+		if (addNum == 0)
 		{
 			this.gameObject.SetActive(false);
 			return;
 		}
-		save_Step.SaveCommamdSteps(commandMap, targetMap, lastNum, arrow);
+		save_Step.SaveCommamdSteps(commandMap, targetMap, (int)addNum, arrow);
 		foreach(GameObject a in ArrowManager.Instance.Arrows_Able)
 		{
 			if (ArrowManager.Instance.Arrows_Remain.Contains(a))
@@ -73,7 +98,7 @@ public class CommandUIUpdate : MonoBehaviour
 	/// </summary>
 	public void Cancel()
 	{
-		lastNum = 0;
+		addNum = 0;
 		foreach(GameObject a in ArrowManager.Instance.Arrows_Able)
 		{
 			if (ArrowManager.Instance.Arrows_Remain.Contains(a))
@@ -85,6 +110,14 @@ public class CommandUIUpdate : MonoBehaviour
 		this.gameObject.SetActive(false);
 	}
 
+	/// <summary>
+	/// 设置指挥UI
+	/// </summary>
+	/// <param name="maxNum">最大士兵数</param>
+	/// <param name="startMap">起始地图</param>
+	/// <param name="targetMap">目标地图</param>
+	/// <param name="saver">玩家步骤</param>
+	/// <param name="arrow">箭头</param>
 	public void SetCommandUI(int maxNum, Map startMap, Map targetMap, PlayerStep saver, GameObject arrow)
 	{
 		commandMax = maxNum - 1;
@@ -94,5 +127,61 @@ public class CommandUIUpdate : MonoBehaviour
 		this.arrow = arrow;
 		save_Step = saver;
 		inputSlider.value = 0;
+		switch (startMap.Terrain)
+		{
+			case Terrain.HIGHLAND:
+			{
+				startTerrain.sprite = terrainSprites[0];
+				break;
+			}
+			case Terrain.FLATLAND:
+			{
+				startTerrain.sprite = terrainSprites[1];
+				break;
+			}
+			case Terrain.FOREST:
+			{
+				startTerrain.sprite = terrainSprites[2];
+				break;
+			}
+			case Terrain.VALLY:
+			{
+				startTerrain.sprite = terrainSprites[3];
+				break;
+			}
+			case Terrain.DESERT:
+			{
+				startTerrain.sprite = terrainSprites[4];
+				break;
+			}
+		}
+		switch (targetMap.Terrain)
+		{
+			case Terrain.HIGHLAND:
+			{
+				endTerrain.sprite = terrainSprites[0];
+				break;
+			}
+			case Terrain.FLATLAND:
+			{
+				endTerrain.sprite = terrainSprites[1];
+				break;
+			}
+			case Terrain.FOREST:
+			{
+				endTerrain.sprite = terrainSprites[2];
+				break;
+			}
+			case Terrain.VALLY:
+			{
+				endTerrain.sprite = terrainSprites[3];
+				break;
+			}
+			case Terrain.DESERT:
+			{
+				endTerrain.sprite = terrainSprites[4];
+				break;
+			}
+		}
 	}
 }

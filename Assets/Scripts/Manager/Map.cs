@@ -62,6 +62,10 @@ public class Map : MonoBehaviour
 	public List<Map> MoveDirMap;
 	/*移动士兵数量*/
 	public List<int> MoveSoldierNum;
+	/*旗子UI*/
+	public Image flagUI;
+	/*旗子图片*/
+	public Sprite[] flag_Sprite;
 
 	/// <summary>
 	/// 根据初始数据进行初始化
@@ -111,6 +115,34 @@ public class Map : MonoBehaviour
 	}
 
 	/// <summary>
+	/// 更新地图显示UI
+	/// </summary>
+	public void UpdateFlagUI()
+	{
+		if (playerID == -1)
+		{
+			flagUI.enabled = false;
+		}
+		else
+		{
+			flagUI.enabled = true;
+			switch (playerID)
+			{
+				case 0:
+				{
+					flagUI.sprite = flag_Sprite[0];
+					break;
+				}
+				case 1:
+				{
+					flagUI.sprite = flag_Sprite[1];
+					break;
+				}
+			}
+		}
+	}
+
+	/// <summary>
 	/// 增兵
 	/// </summary>
 	public void AddSoldier()
@@ -123,7 +155,7 @@ public class Map : MonoBehaviour
 	/// <summary>
 	/// 更新UI显示
 	/// </summary>
-	public void UpadteMapUI()
+	public void UpdateMapUI()
 	{
 		baseSoldierNum_UI.text = baseSoldierNum.ToString();
 	}
@@ -135,6 +167,7 @@ public class Map : MonoBehaviour
 	{
 		baseSoldierNum_UI.text = baseSoldierNum.ToString();
 		effectSoldierNum_UI.text = effectSoldierNum.ToString();
+		UpdateFlagUI();
 	}
 
 	/// <summary>

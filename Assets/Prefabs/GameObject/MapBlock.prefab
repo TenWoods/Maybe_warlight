@@ -109,13 +109,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c474c1bab0b8034fbb24c593ff7b711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrain: 0
   mapID_player: 0
   mapID_MapManager: 0
   mapManagerID: 0
   playerID: 0
   baseSoldierNum_UI: {fileID: 0}
   effectSoldierNum_UI: {fileID: 0}
+  baseSoldierNum: 1
   nextMaps: []
-  arrows: []
+  arrows_Green: []
+  arrows_Red: []
   MoveDirMap: []
   MoveSoldierNum: 
+  flagUI: {fileID: 0}
+  flag_Sprite: []

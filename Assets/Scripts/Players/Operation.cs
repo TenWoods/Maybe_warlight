@@ -37,7 +37,6 @@ public class Operation
 	/// <param name="player">所属玩家</param>
 	public Operation(Player player, PlayerStep steps)
 	{
-		arrow = player.arrow_Prefab;
 		playerID = player.PlayerID;
 		state = player.OpState;
 		commandUI = player.commandUI;
@@ -93,7 +92,7 @@ public class Operation
 					//指挥士兵
 					case OperateState.COMMAND_SOLDIER:
 					{
-						if (hitInfo.collider.tag == "Map")
+						if (hitInfo.collider.tag == "Map" && !commandUI.activeSelf)
 						{
 							commandUI.SetActive(false);
 							DrawArrows(hitInfo.collider.gameObject);	
