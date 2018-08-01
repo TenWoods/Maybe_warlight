@@ -106,15 +106,15 @@ public class GameManager : MonoBehaviour
 		//还原地图状态
 		foreach(Operator p in players)
 		{
-			if (p.gameObject.gameObject.tag != "Player")
-			{
-				continue;
-			}
-			for (i = 0; i < p.Steps.AddMaps.Count; i++)
-			{
-				p.Steps.AddMaps[i].BaseSoldierNum -= p.Steps.AddNums[i];
-				p.Steps.AddMaps[i].UpdateMapUI();
-			}
+			// if (p.gameObject.gameObject.tag != "Player")
+			// {
+			// 	continue;
+			// }
+			// for (i = 0; i < p.Steps.AddMaps.Count; i++)
+			// {
+			// 	p.Steps.AddMaps[i].BaseSoldierNum -= p.Steps.AddNums[i];
+			// 	p.Steps.AddMaps[i].UpdateMapUI();
+			// }
 			for (i = 0; i < p.Steps.CommandMaps.Count; i++)
 			{
 				foreach (int n in p.Steps.CommandMaps[i].MoveSoldierNum)
@@ -124,14 +124,14 @@ public class GameManager : MonoBehaviour
 			}
 		}
 		//增兵过程
-		foreach(Operator p in players)
-		{
-			for (i = 0; i < p.Steps.AddMaps.Count; i++)
-			{
-				p.Steps.AddMaps[i].BaseSoldierNum += p.Steps.AddNums[i];
-				p.Steps.AddMaps[i].UpdateMapUI();
-			}
-		}
+		// foreach(Operator p in players)
+		// {
+		// 	for (i = 0; i < p.Steps.AddMaps.Count; i++)
+		// 	{
+		// 		p.Steps.AddMaps[i].BaseSoldierNum += p.Steps.AddNums[i];
+		// 		p.Steps.AddMaps[i].UpdateMapUI();
+		// 	}
+		// }
 		//指挥过程
 		foreach(Operator p in players)
 		{
@@ -140,20 +140,14 @@ public class GameManager : MonoBehaviour
 			{
 				AttackCaculation(m);
 			}
+			//初始化士兵数
+			p.SoldierNum = 5;
 		}
 		//每个地图管理检查士兵数的增加
 		foreach(MapManager mm in mapManagers)
 		{
 			mm.CheckUpdateAdd();
 		}
-		//还原操作状态
-		foreach(Operator p in players)
-		{
-			p.CleanSteps();
-			p.ChangeOperateStateStart();
-			p.UpdateSoldierNum();
-		}
-		startCaculate = false;
 		//游戏结束检测
 		foreach (Operator p in players)
 		{
@@ -163,6 +157,14 @@ public class GameManager : MonoBehaviour
 				Debug.Log("游戏结束");
 			}
 		}
+		//还原操作状态
+		foreach(Operator p in players)
+		{
+			p.CleanSteps();
+			p.ChangeOperateStateStart();
+			p.UpdateSoldierNum();
+		}
+		startCaculate = false;
 	}
 
 	/// <summary>
@@ -183,8 +185,12 @@ public class GameManager : MonoBehaviour
 			defendPower = targetMaps[i].DefendPower;
 			if (startMap.BaseSoldierNum < moveNums[i])
 			{
-				Debug.Log(startMap.gameObject.name);
+				Debug.Log(startMap.gameObject.name + "数量不够");
 				//如果地图块上的人数不足，调增出兵人数
+				if (startMap.BaseSoldierNum - 1 < 0)
+				{
+					return;
+				}
 				moveNums[i] = startMap.BaseSoldierNum - 1;
 			}
 			if (startMap.PlayerID == targetMaps[i].PlayerID)

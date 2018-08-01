@@ -1652,6 +1652,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[6]
       value: 
       objectReference: {fileID: 2015649255}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -1803,6 +1808,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[5]
       value: 
       objectReference: {fileID: 1203365204}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -2729,6 +2739,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[4]
       value: 
       objectReference: {fileID: 312829183}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -4635,6 +4650,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[3]
       value: 
       objectReference: {fileID: 1487023589}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -8222,6 +8242,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[5]
       value: 
       objectReference: {fileID: 1657410024}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -10592,12 +10617,12 @@ Prefab:
     - target: {fileID: 224384639384704670, guid: de463bdea1947224ba49203fd103d16f,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 677
+      value: 734
       objectReference: {fileID: 0}
     - target: {fileID: 224384639384704670, guid: de463bdea1947224ba49203fd103d16f,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -137.2998
+      value: -297
       objectReference: {fileID: 0}
     - target: {fileID: 224384639384704670, guid: de463bdea1947224ba49203fd103d16f,
         type: 2}
@@ -16009,6 +16034,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[5]
       value: 
       objectReference: {fileID: 159308136}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -16796,6 +16826,11 @@ Prefab:
       propertyPath: AllCardsObjects.Array.data[5]
       value: 
       objectReference: {fileID: 81210495}
+    - target: {fileID: 114449962417713422, guid: 599c312acd813be449963758c8bb05f3,
+        type: 2}
+      propertyPath: useAI
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 599c312acd813be449963758c8bb05f3, type: 2}
   m_IsPrefabParent: 0
@@ -19148,6 +19183,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[5]
       value: 
       objectReference: {fileID: 785667253}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -21575,6 +21615,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[5]
       value: 
       objectReference: {fileID: 587976280}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -21711,6 +21756,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[4]
       value: 
       objectReference: {fileID: 667697287}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -22077,6 +22127,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[4]
       value: 
       objectReference: {fileID: 320223732}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -24426,6 +24481,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[4]
       value: 
       objectReference: {fileID: 973926656}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -24766,6 +24826,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[6]
       value: 
       objectReference: {fileID: 1561729438}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -29175,6 +29240,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[4]
       value: 
       objectReference: {fileID: 677715566}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -31346,7 +31416,7 @@ Prefab:
     - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
         type: 2}
       propertyPath: addSoldierNum
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
         type: 2}
@@ -32793,6 +32863,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[5]
       value: 
       objectReference: {fileID: 1348105500}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -36799,6 +36874,11 @@ Prefab:
       propertyPath: manageBlocks.Array.data[3]
       value: 
       objectReference: {fileID: 624094104}
+    - target: {fileID: 114287449295738580, guid: 2261212cfac600843b9fc3d83cecb3e2,
+        type: 2}
+      propertyPath: addSoldierNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2261212cfac600843b9fc3d83cecb3e2, type: 2}
   m_IsPrefabParent: 0
@@ -38890,12 +38970,12 @@ Prefab:
     - target: {fileID: 224049506026395914, guid: 5341556781907854d80071a27fe3d72b,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 676.2993
+      value: 733.2993
       objectReference: {fileID: 0}
     - target: {fileID: 224049506026395914, guid: 5341556781907854d80071a27fe3d72b,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -246.10107
+      value: -405.80127
       objectReference: {fileID: 0}
     - target: {fileID: 224049506026395914, guid: 5341556781907854d80071a27fe3d72b,
         type: 2}

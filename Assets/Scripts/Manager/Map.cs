@@ -88,7 +88,7 @@ public class Map : MonoBehaviour
 	/// <returns>是否有权限</returns>
 	public bool CheckAuthority(int operatorID)
 	{
-		if (operatorID == playerID || playerID == -1)
+		if (operatorID == playerID)
 		{
 			return true;
 		}

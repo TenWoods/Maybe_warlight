@@ -9,6 +9,7 @@ public class AIController : Operator
 	private List<Map> commandMap;
 	/*AI手中的卡牌*/
 	private List<int> cards_in_hand;
+	public bool useAI = false;
 	
 	protected override void Start() 
 	{
@@ -19,6 +20,11 @@ public class AIController : Operator
 
 	private void Update() 
 	{
+		if (!useAI)
+		{
+			opState = OperateState.OP_END;
+			return;
+		}
 		if (!gameStart)
 		{
 			return;
@@ -33,7 +39,13 @@ public class AIController : Operator
 	{
 		switch (opState)
 		{
-			case OperateState.OP_START : break;
+			case OperateState.OP_START : 
+			{
+				GetAddMap();
+				opState = OperateState.ADD_SOLDIER;
+				break;
+			}
+			
 			case OperateState.ADD_SOLDIER :
 			{
 				Attack_AI();
@@ -59,8 +71,6 @@ public class AIController : Operator
 		opState = OperateState.OP_START;
 		GetCard(getCardNum);
 		getCardNum = 1;   //重置每回合的抽牌数量
-		GetAddMap();
-		opState = OperateState.ADD_SOLDIER;
 		//TODO:每回合刚开始的初始化
 	}
 
@@ -133,6 +143,10 @@ public class AIController : Operator
 			//寻找进攻目标
 			foreach(Map nm in m.NextMaps)
 			{
+				if (nm.PlayerID == m.PlayerID)
+				{
+					continue;
+				}
 				if (GameManager.Instance.MapManagers[nm.MapManagerID].AddSoldierNum > temp)
 				{
 					temp = GameManager.Instance.MapManagers[nm.MapManagerID].AddSoldierNum;
@@ -253,16 +267,21 @@ public class AIController : Operator
 				#endregion
 				//所需兵力
 				addNum = (int)(m.MoveDirMap[i].BaseSoldierNum * defendPower / attackPower + 0.5f);
-				Debug.Log(addNum);
+				addNum += 2; //剩下一个保留的在原地图
 				//TODO:测试
 				if ((soldierNum - addNum) <= 0)
 				{
-					Debug.Log("数量不够");
+					//Debug.Log("数量不够");
 					m.MoveDirMap.Remove(m.MoveDirMap[i]);
 				}
 				else
 				{
-					Debug.Log("AI增兵");
+					soldierNum -= addNum;
+					Debug.Log("AI增兵" + m.gameObject.name + addNum);
+					for (int j = 0; j < addNum; j++)
+					{
+						m.AddSoldier();
+					}
 					steps.SaveAddSteps(addNum, m);
 					steps.SaveCommamdSteps(m, addNum);
 				}

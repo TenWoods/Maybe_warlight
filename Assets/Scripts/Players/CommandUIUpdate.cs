@@ -82,14 +82,22 @@ public class CommandUIUpdate : MonoBehaviour
 			return;
 		}
 		save_Step.SaveCommamdSteps(commandMap, targetMap, (int)addNum, arrow);
-		foreach(GameObject a in ArrowManager.Instance.Arrows_Able)
+		for (int i = 0; i < ArrowManager.Instance.Arrows_Able.Count; i++)
 		{
-			if (ArrowManager.Instance.Arrows_Remain.Contains(a))
+			if (ArrowManager.Instance.Arrows_Remain.Contains( ArrowManager.Instance.Arrows_Able[i]))
 			{
 				continue;
 			}
-			a.SetActive(false);
+			ArrowManager.Instance.Arrows_Able[i].SetActive(false);
 		}
+		// foreach(GameObject a in ArrowManager.Instance.Arrows_Able)
+		// {
+		// 	if (ArrowManager.Instance.Arrows_Remain.Contains(a))
+		// 	{
+		// 		continue;
+		// 	}
+		// 	a.SetActive(false);
+		// }
 		this.gameObject.SetActive(false);
 	}
 

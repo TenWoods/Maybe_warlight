@@ -75,7 +75,6 @@ public class PlayerStep
 	public void SaveCommamdSteps(Map startMap, int moveNum)
 	{
 		commandMaps.Add(startMap);
-		Debug.Log(commandMaps.Count);
 		startMap.MoveSoldierNum.Add(moveNum);
 	}
 
@@ -96,6 +95,11 @@ public class PlayerStep
 	{
 		addMaps.Clear();
 		addNums.Clear();
+		foreach (Map m in commandMaps)
+		{
+			m.MoveDirMap.Clear();
+			m.MoveSoldierNum.Clear();
+		}
 		commandMaps.Clear();
 		cardMaps.Clear();
 		ArrowManager.Instance.CleanRemainArrow();

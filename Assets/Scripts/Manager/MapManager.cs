@@ -58,7 +58,7 @@ public class MapManager : MonoBehaviour
 			}
 			GameManager.Instance.Players[playerID].Maps.Add(manageBlocks[i]);
 		}
-		Debug.Log(i);
+		//Debug.Log(i);
 	}
 
 	public Map[] M_mapBlocks
