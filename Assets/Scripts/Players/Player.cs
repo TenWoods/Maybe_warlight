@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Operator 
 {
@@ -10,9 +11,13 @@ public class Player : Operator
 	[SerializeField]
 	private float cardSize = 1.5f;
 	/*卡牌生成的位置*/
-	public Transform CardSpawnPoint;
+	public RectTransform CardSpawnPoint;
+	/*手牌中心*/
+	public RectTransform CardPointMiddle;
 	/*指挥所用UI*/
 	public GameObject commandUI;
+	/*牌库实体*/
+	public GameObject[] AllCardsObjects;
 	
 	protected override void Start() 
 	{
@@ -21,7 +26,8 @@ public class Player : Operator
 		{
 			allCards[i] = i + 1;
 		}
-		selfOperate = new Operation(this, steps);
+		selfOperate = this.GetComponent<Operation>();
+		selfOperate.Init_Operation(this, steps);
 	}
 
 	private void Update() 
@@ -65,6 +71,10 @@ public class Player : Operator
 			ArrowManager.Instance.DisabledArrows();
 			commandUI.SetActive(false);
 		}
+		foreach (Card c in cardObjects)
+		{
+			c.gameObject.GetComponent<Button>().enabled = true;
+		}
 	}
 
 	/// <summary>
@@ -73,6 +83,10 @@ public class Player : Operator
 	public void ChangeOperateStateCommand()
 	{
 		opState = OperateState.COMMAND_SOLDIER;
+		foreach (Card c in cardObjects)
+		{
+			c.gameObject.GetComponent<Button>().enabled = true;
+		}
 	}
 
 	/// <summary>
@@ -86,6 +100,10 @@ public class Player : Operator
 			ArrowManager.Instance.DisabledArrows();
 			commandUI.SetActive(false);
 		}
+		foreach (Card c in cardObjects)
+		{
+			c.gameObject.GetComponent<Button>().enabled = true;
+		}
 	}
 	
 	/// <summary>
@@ -98,6 +116,10 @@ public class Player : Operator
 		{
 			ArrowManager.Instance.DisabledArrows();
 			commandUI.SetActive(false);
+		}
+		foreach (Card c in cardObjects)
+		{
+			c.gameObject.GetComponent<Button>().enabled = true;
 		}
 	}
 
@@ -124,6 +146,7 @@ public class Player : Operator
 				return;
 			}
 		}
+		//手牌满了
 		if (cardObjects.Count == cards_Num_Max)
 		{
 			cards_index++;
@@ -133,21 +156,8 @@ public class Player : Operator
 		for (int i = 0; i < num; i++)
 		{
 			GameObject card = null;
-			switch(allCards[cards_index])
-			{
-				case 1: card = Instantiate((GameObject)Resources.Load("Card 1"), CardSpawnPoint.position, CardSpawnPoint.rotation);
-						break;
-				case 2: card = Instantiate((GameObject)Resources.Load("Card 2"), CardSpawnPoint.position, CardSpawnPoint.rotation);
-						break;
-				case 3: card = Instantiate((GameObject)Resources.Load("Card 3"), CardSpawnPoint.position, CardSpawnPoint.rotation);
-						break;
-				case 4: card = Instantiate((GameObject)Resources.Load("Card 4"), CardSpawnPoint.position, CardSpawnPoint.rotation);
-						break;
-				case 5: card = Instantiate((GameObject)Resources.Load("Card 5"), CardSpawnPoint.position, CardSpawnPoint.rotation);
-						break;
-				case 6: card = Instantiate((GameObject)Resources.Load("Card6"), CardSpawnPoint.position, CardSpawnPoint.rotation);
-						break;
-			}
+			card = AllCardsObjects[cards_index];
+			card.SetActive(true);
 			cardObjects.Add(card.GetComponent<Card>());
 			cards_index++;
 		}
@@ -160,13 +170,13 @@ public class Player : Operator
 	public void SortCardObject()
 	{
 		int half = cardObjects.Count / 2;
-		Vector3 screenPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-		Vector3 cardPos = new Vector3(-half * cardSize, -(screenPoint.y * 11 / 13), 0);
+		Vector3 cardPos = new Vector3(CardPointMiddle.position.x - cardSize * half, CardPointMiddle.position.y, CardPointMiddle.position.z);
 		//Debug.Log(cardPosY);
 		int i;
 		for (i = 0; i < cardObjects.Count; i++)
 		{
 			cardObjects[i].SetCardMoveDir(cardPos);
+			cardObjects[i].HandPos = cardPos;
 			cardPos += new Vector3(cardSize, 0, 0);
 		}
 	}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CardOpKind
 {
@@ -13,9 +14,6 @@ public class Card : MonoBehaviour
 {
 	/*使用玩家编号*/
 	protected int playerID;
-	/*卡牌的操作类型*/
-	[SerializeField]
-	protected CardOpKind opKind;
 	/*是否进阶*/
 	protected bool upgrade = false;
 	/*所需统帅值*/
@@ -31,27 +29,81 @@ public class Card : MonoBehaviour
 	[SerializeField]
 	private float moveSpeed = 1;
 	/*卡牌使用信号*/
-	private bool hasUsed = false;
+	protected bool hasUsed = false;
+	/*卡牌跟随鼠标移动*/
+	private bool moveWithMouse = false;
+	protected bool effective = false;
+	private RectTransform rt;
+	private Vector3 startPos;
+	private Vector3 handPos = Vector3.zero;
+	private Operation playerOP;
+
+	private void Start() 
+	{
+		rt = GetComponent<RectTransform>();
+		startPos = rt.position;
+	}
 
 	private void Update() 
 	{
-		if (!timeToGo)
+		//自动移动
+		if (timeToGo)
 		{
+			if ((transform.position - destination).magnitude >= 0.1)
+			{
+				transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
+				return;
+			}
+			timeToGo = false;
 			return;
 		}
-		if ((transform.position - destination).magnitude >= 0.1)
+		//玩家操控移动
+		if (moveWithMouse)
 		{
-			//transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * moveSpeed);
-			transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
-			return;
+			//左键取消选中
+			if (Input.GetMouseButton(1))
+			{
+				CancelClick();
+				playerOP.ClickCard = null;
+				return;
+			}
+			rt.position = Input.mousePosition;
+			//出牌
+			Debug.Log(rt.position.y);
+			Debug.Log(Screen.height / 2);
+			if (rt.position.y > Screen.height / 2)
+			{
+				if (playerOP.LeaderPoint - leaderPoint < 0)
+				{
+					Debug.Log("Use");
+					CancelClick();
+				}
+				else
+				{
+					moveWithMouse = false;
+					rt.position = startPos;
+					rt.localScale /= 2;	
+					effective = true;
+				}
+			}
+		}
+		if (effective)
+		{
+			CardEffect();
 		}
 		if (!hasUsed)
 		{
 			return;
 		}
-		Destroy(this.gameObject);
+		rt.position = startPos;
+		this.gameObject.SetActive(false);
 	}
-	
+
+	public virtual void CardEffect()
+	{
+
+	}
+
 	/// <summary>
 	/// 卡牌效果   指定地图
 	/// </summary>
@@ -91,12 +143,24 @@ public class Card : MonoBehaviour
 		timeToGo = true;
 	}	
 
-	public CardOpKind OpKind
+	/// <summary>
+	/// 点击卡牌
+	/// </summary>
+	/// <param name="op"></param>
+	public void Click(Operation op)
 	{
-		get
-		{
-			return opKind;
-		}
+		playerOP = op;
+		moveWithMouse = true;
+	}
+
+	/// <summary>
+	/// 取消选中
+	/// </summary>
+	public void CancelClick()
+	{
+		moveWithMouse = false;
+		rt.position = handPos;
+		rt.localScale /= 2;
 	}
 
 	public bool HasUsed
@@ -116,6 +180,14 @@ public class Card : MonoBehaviour
 		get
 		{
 			return leaderPoint;
+		}
+	}
+
+	public Vector3 HandPos 
+	{
+		set
+		{
+			handPos = value;
 		}
 	}
 

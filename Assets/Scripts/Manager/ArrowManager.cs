@@ -83,6 +83,7 @@ public class ArrowManager : MonoBehaviour
 	{
 		foreach (GameObject a in arrows_Remain)
 		{
+			a.GetComponent<BoxCollider2D>().enabled = true;
 			a.SetActive(false);
 		}
 		arrows_Remain.Clear();

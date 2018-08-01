@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
-public class Operation
+using UnityEngine.UI;
+
+public class Operation : MonoBehaviour
 {
 	/*执行操作的玩家ID*/
 	private int playerID;
@@ -12,8 +13,6 @@ public class Operation
 	private GameObject clickMap;
 	/*卡牌使用阶段选择的卡牌*/
 	private GameObject clickCard;
-	/*选中卡牌的操作类型*/
-	private CardOpKind opKind;
 	/*选中单个目标*/
 	private GameObject singleObject = null;
 	/*选中多个目标*/
@@ -30,12 +29,16 @@ public class Operation
 	private int soldierNum;
 	/*指挥所用UI*/
 	private GameObject commandUI;
+	/*地图数据显示UI*/
+	public GameObject dataUI;
+	public Text attckText;
+	public Text defendText; 
 
 	/// <summary>
 	/// 操作类的构造函数
 	/// </summary>
 	/// <param name="player">所属玩家</param>
-	public Operation(Player player, PlayerStep steps)
+	public void Init_Operation(Player player, PlayerStep steps)
 	{
 		playerID = player.PlayerID;
 		state = player.OpState;
@@ -103,35 +106,29 @@ public class Operation
 						}
 						break;
 					}
-					//使用卡牌
-					case OperateState.USE_CARDS:
-					{
-						if (hitInfo.collider.tag == "Card")
-						{
-							ChooseCard(hitInfo.collider.gameObject);
-							break;
-						}
-						if (clickCard == null)
-						{
-							break;
-						}
-						ChooseTarget(hitInfo.collider.gameObject);
-						break;
-					}
 					default: break;
+				}
+			}
+		}
+		//数据显示
+		if (Input.GetMouseButtonDown(1))
+		{
+			Vector2 mousPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			RaycastHit2D hitInfo = Physics2D.Raycast(mousPos, Vector2.zero);
+			if (hitInfo.collider != null)
+			{
+				if (hitInfo.collider.tag == "Map" && state != OperateState.USE_CARDS)
+				{
+					dataUI.SetActive(true);
+					Map map = hitInfo.collider.gameObject.GetComponent<Map>();
+					dataUI.transform.position = map.flagUI.transform.position + new Vector3(2, 0, 0);
+					attckText.text = "攻击力:" + map.AttackPower.ToString();
+					defendText.text = "防御力:" + map.DefendPower.ToString();
 				}
 			}
 			else
 			{
-				if (state == OperateState.USE_CARDS)
-				{
-					if (clickCard != null)
-					{
-						clickCard.transform.localScale /= 2;    //还原卡牌大小
-						clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
-						clickCard = null;    //清空选中卡牌
-					}
-				}
+				dataUI.SetActive(false);
 			}
 		}
 	}
@@ -247,80 +244,23 @@ public class Operation
 	/// 选择使用的卡牌
 	/// </summary>
 	/// <param name="card">选中的卡牌</param>
-	private void ChooseCard(GameObject card)
+	public void ChooseCard(GameObject card)
 	{
+		if (state != OperateState.USE_CARDS)
+		{
+			return;
+		}
 		if (clickCard == card)
 		{
 			return;
 		}
 		if (clickCard != null)
 		{
-			clickCard.transform.localScale /= 2;    //还原卡牌大小
-			clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
+			clickCard.GetComponent<Card>().CancelClick();
 		} 
 		clickCard = card;
-		Debug.Log(clickCard.name);
-		opKind = clickCard.GetComponent<Card>().OpKind;
-		clickCard.transform.localScale *= 2;
-		clickCard.GetComponent<SpriteRenderer>().sortingOrder = 2; //将卡片置顶
-	}
-
-	/// <summary>
-	/// 选择卡牌作用目标
-	/// </summary>
-	private void ChooseTarget(GameObject target)
-	{
-		Card card = clickCard.GetComponent<Card>();
-		switch (opKind)
-		{
-			case CardOpKind.SingleMap : 
-			case CardOpKind.MapArea :
-			{
-				singleObject = target;
-				clickCard.transform.localScale /= 2;   //还原卡牌大小
-				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
-				if(leaderPoint_current - card.LeaderPoint <= 0)
-				{
-					Debug.Log("统帅值不足");
-					return;
-				}
-				if (card.CardEffect(playerID, singleObject))
-				{
-					card.SetCardMoveDir(singleObject.transform.position);
-					card.HasUsed = true;
-					singleObject = null;
-					GameManager.Instance.Players[playerID].CardObjects.Remove(clickCard.GetComponent<Card>());
-				}
-				break;
-			}
-			case CardOpKind.MultiMap : 
-			{
-				if (multiObject == null)
-				{
-					Debug.Log("选择第一个");
-					multiObject = new GameObject[2];
-					multiObject[0] = target;
-					return;
-				}
-				Debug.Log("选择第二个");
-				multiObject[1] = target;
-				clickCard.transform.localScale /= 2;   //还原卡牌大小
-				clickCard.GetComponent<SpriteRenderer>().sortingOrder = 1;  //还原卡片层级
-				if(leaderPoint_current - card.LeaderPoint <= 0)
-				{
-					Debug.Log("统帅值不足");
-					return;
-				}
-				if (card.CardEffect(playerID, multiObject))
-				{
-					card.SetCardMoveDir((multiObject[0].transform.position + multiObject[1].transform.position) / 2);
-					card.HasUsed = true;
-					multiObject = null;
-					GameManager.Instance.Players[playerID].CardObjects.Remove(clickCard.GetComponent<Card>());
-				}				
-				break;
-			}
-		}
+		clickCard.GetComponent<Card>().Click(this);
+		clickCard.GetComponent<RectTransform>().localScale *= 2;
 	}
 
 	#endregion
@@ -346,6 +286,26 @@ public class Operation
 		set
 		{
 			state = value;
+		}
+	}
+
+	public GameObject ClickCard 
+	{
+		set
+		{
+			clickCard = value;
+		}
+	}
+
+	public int LeaderPoint 
+	{
+		get
+		{
+			return leaderPoint_current;
+		}
+		set
+		{
+			leaderPoint_current = value;
 		}
 	}
 }

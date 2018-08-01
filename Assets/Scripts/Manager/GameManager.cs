@@ -154,6 +154,15 @@ public class GameManager : MonoBehaviour
 			p.UpdateSoldierNum();
 		}
 		startCaculate = false;
+		//游戏结束检测
+		foreach (Operator p in players)
+		{
+			if (p.Maps.Count == 0)
+			{
+				gameStart = false;
+				Debug.Log("游戏结束");
+			}
+		}
 	}
 
 	/// <summary>
@@ -250,21 +259,22 @@ public class GameManager : MonoBehaviour
 				}
 				default : break;
 			}
-			//结算结果
-			//攻击人数*攻击力 - 防御人数*防御力
 			result = moveNums[i] * attackPower - targetMaps[i].BaseSoldierNum * defendPower;
-			// Debug.Log("攻击力" + power);
-			// Debug.Log("防御力" + defend);
 			Debug.Log("结算结果" + result);
 			//结算后占领土地
 			if (result > 0)
 			{
 				targetMaps[i].BaseSoldierNum = (int)(result + 0.9f);
+				if (targetMaps[i].BaseSoldierNum == 0)
+				{
+					targetMaps[i].BaseSoldierNum = 1;
+				}
 				if (targetMaps[i].PlayerID != -1)
 				{
 					players[targetMaps[i].PlayerID].Maps.Remove(targetMaps[i]);
 				}
 				targetMaps[i].PlayerID = startMap.PlayerID;
+				targetMaps[i].UpdateFlagUI();
 				players[startMap.PlayerID].Maps.Add(targetMaps[i]);
 			}
 			Debug.Log(moveNums[i]);

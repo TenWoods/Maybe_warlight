@@ -9,7 +9,7 @@ public class MapManager : MonoBehaviour
 	private Terrain terrain;
 	/*管理的地图块*/
 	[SerializeField]
-	private Map[] m_mapBlocks;
+	private Map[] manageBlocks;
 	/*士兵数收益*/
 	[SerializeField]
 	[Header("士兵数收益")]
@@ -23,8 +23,8 @@ public class MapManager : MonoBehaviour
 
 	public void CheckUpdateAdd()
 	{
-		int playerID = m_mapBlocks[0].PlayerID;
-		foreach(Map m in m_mapBlocks)
+		int playerID = manageBlocks[0].PlayerID;
+		foreach(Map m in manageBlocks)
 		{
 			if (m.PlayerID != playerID)
 			{
@@ -39,22 +39,29 @@ public class MapManager : MonoBehaviour
 	/// </summary>
 	public void InitBlocksData()
 	{
-		for(int i = 0; i < m_mapBlocks.Length; i++)
+		int i;
+		for(i = 0; i < manageBlocks.Length; i++)
 		{
-			m_mapBlocks[i].Terrain = terrain; //地形
-			m_mapBlocks[i].MapID_MapManager = i; //在此处的索引
-			m_mapBlocks[i].MapManagerID = mapManagerID; //manager的编号
-			m_mapBlocks[i].PlayerID = playerID; //所属玩家的ID
-			m_mapBlocks[i].Init_Start(); //开始初始化地图
-			GameManager.Instance.Players[playerID].Maps.Add(m_mapBlocks[i]);
+			manageBlocks[i].Terrain = terrain; //地形
+			manageBlocks[i].MapID_MapManager = i; //在此处的索引
+			manageBlocks[i].MapManagerID = mapManagerID; //manager的编号
+			manageBlocks[i].PlayerID = playerID; //所属玩家的ID
+			manageBlocks[i].Init_Start(); //开始初始化地图
+			manageBlocks[i].UpdateFlagUI();
+			if (playerID == -1)
+			{
+				break;
+			}
+			GameManager.Instance.Players[playerID].Maps.Add(manageBlocks[i]);
 		}
+		Debug.Log(i);
 	}
 
 	public Map[] M_mapBlocks
 	{
 		get
 		{
-			return m_mapBlocks;
+			return manageBlocks;
 		}
 	}
 

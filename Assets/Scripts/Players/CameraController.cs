@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
 		edge_width = 24.0f - Camera.main.orthographicSize * 24.0f / 13.5f;
 		edge_height = 13.5f - Camera.main.orthographicSize;
 		//控制拖拽
-		if (Input.GetMouseButton(1))
+		if (Input.GetMouseButton(2))
 		{
 			Vector3 dir = Vector3.Normalize(Input.mousePosition - lastMousePos) * mouseMove_Sensitivty;
 			Vector3 targetPos = transform.position - dir;
