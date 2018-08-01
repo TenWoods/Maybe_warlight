@@ -31,6 +31,10 @@ public class MapManager : MonoBehaviour
 				return;
 			}
 		}
+		if (playerID == -1)
+		{
+			return;
+		}
 		GameManager.Instance.Players[playerID].SoldierNum += addSoldierNum;
 	}
 
@@ -50,7 +54,7 @@ public class MapManager : MonoBehaviour
 			manageBlocks[i].UpdateFlagUI();
 			if (playerID == -1)
 			{
-				break;
+				continue;
 			}
 			GameManager.Instance.Players[playerID].Maps.Add(manageBlocks[i]);
 		}
