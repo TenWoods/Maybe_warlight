@@ -19,9 +19,9 @@ public class Player : Operator
 	/*牌库实体*/
 	public GameObject[] AllCardsObjects;
 	
-	protected override void Start() 
+	protected override void Awake() 
 	{
-		base.Start();
+		base.Awake();
 		for (int i = 0; i < cards_Num_Max; i++)
 		{
 			allCards[i] = i + 1;
@@ -137,9 +137,10 @@ public class Player : Operator
 			cardObjects = new List<Card>();
 		}
 		//判断是否抽完牌
+		Debug.Log(allCards.Length);
 		if ((cards_index + num) > allCards.Length)
 		{
-			num = (cards_index + num) - allCards.Length;
+			num = allCards.Length - cards_index;
 			if (num == 0)
 			{
 				Debug.Log("牌库空了");
@@ -158,6 +159,7 @@ public class Player : Operator
 			GameObject card = null;
 			card = AllCardsObjects[cards_index];
 			card.SetActive(true);
+			card.GetComponent<Card>().inHand = true;
 			cardObjects.Add(card.GetComponent<Card>());
 			cards_index++;
 		}
@@ -175,6 +177,10 @@ public class Player : Operator
 		int i;
 		for (i = 0; i < cardObjects.Count; i++)
 		{
+			if (cardObjects[i].GetComponent<Card>().HasUsed)
+			{
+				continue;
+			}
 			cardObjects[i].SetCardMoveDir(cardPos);
 			cardObjects[i].HandPos = cardPos;
 			cardPos += new Vector3(cardSize, 0, 0);

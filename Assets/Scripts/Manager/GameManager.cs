@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
 	private bool startCaculate = false;
 	/*所有玩家的行为步骤*/
 	private PlayerStep[] all_Steps; 
+	/*有buff的地图*/
+	public List<Map> buffMap;
+	/*游戏结束UI */
+	public GameObject winnerUI;
+	public GameObject loseUI;
+	public GameObject reStartButton;
 
 	private static GameManager _instance;
     public static GameManager Instance
@@ -40,6 +46,7 @@ public class GameManager : MonoBehaviour
 	{
 		mapManagerNum = mapManagers.Length;
 		all_Steps = new PlayerStep[players.Length];
+		buffMap = new List<Map>();
 		InitPlayers();
 		InitMapBlocks();
 	}
@@ -106,15 +113,15 @@ public class GameManager : MonoBehaviour
 		//还原地图状态
 		foreach(Operator p in players)
 		{
-			// if (p.gameObject.gameObject.tag != "Player")
-			// {
-			// 	continue;
-			// }
-			// for (i = 0; i < p.Steps.AddMaps.Count; i++)
-			// {
-			// 	p.Steps.AddMaps[i].BaseSoldierNum -= p.Steps.AddNums[i];
-			// 	p.Steps.AddMaps[i].UpdateMapUI();
-			// }
+			for (i = 0; i < p.Steps.AddMaps.Count; i++)
+			{
+				p.Steps.AddMaps[i].BaseSoldierNum -= p.Steps.AddNums[i];
+				p.Steps.AddMaps[i].UpdateMapUI();
+			}
+			if (p.tag != "Player")
+			{
+				continue;
+			}
 			for (i = 0; i < p.Steps.CommandMaps.Count; i++)
 			{
 				foreach (int n in p.Steps.CommandMaps[i].MoveSoldierNum)
@@ -123,25 +130,75 @@ public class GameManager : MonoBehaviour
 				}
 			}
 		}
+		//卡牌攻击
+		for(i = 0; i < players[0].Steps.CardMaps.Count; i++)
+		{
+			if (players[0].Steps.CardMaps[i].BaseSoldierNum - players[0].Steps.damage[i] < 0)
+			{
+				players[0].Steps.CardMaps[i].PlayerID = -1;
+				players[0].Steps.CardMaps[i].BaseSoldierNum = 1;
+				if (players[1].Steps.CommandMaps.Contains(players[0].Steps.CardMaps[i]))
+				{
+					players[1].Steps.CommandMaps.Remove(players[0].Steps.CardMaps[i]);
+				}
+				if (players[1].Maps.Contains(players[0].Steps.CardMaps[i]))
+				{
+					players[1].Maps.Remove(players[0].Steps.CardMaps[i]);
+				}
+				players[0].Steps.CardMaps[i].UpdateFlagUI();
+				players[0].Steps.CardMaps[i].UpdateMapUI();
+			}
+		}
+		//卡牌改变所属
+		for(i = 0; i < players[0].Steps.cardBelongMap.Count; i++)
+		{
+			if (players[0].Steps.cardBelongMap[i].BaseSoldierNum < players[0].Steps.condition[i])
+			{
+				players[0].Steps.cardBelongMap[i].PlayerID = players[0].Steps.id[i];
+				if (players[1].Steps.CommandMaps.Contains(players[0].Steps.cardBelongMap[i]))
+				{
+					players[1].Steps.CommandMaps.Remove(players[0].Steps.cardBelongMap[i]);
+				}
+				if (players[1].Maps.Contains(players[0].Steps.cardBelongMap[i]))
+				{
+					players[1].Maps.Remove(players[0].Steps.cardBelongMap[i]);
+				}
+				if (players[0].Steps.id[i] != -1)
+				{
+					players[players[0].Steps.id[i]].Maps.Add(players[0].Steps.cardBelongMap[i]);
+				}
+				players[0].Steps.cardBelongMap[i].UpdateFlagUI();
+				players[0].Steps.cardBelongMap[i].UpdateMapUI();
+			}
+		}
 		//增兵过程
-		// foreach(Operator p in players)
-		// {
-		// 	for (i = 0; i < p.Steps.AddMaps.Count; i++)
-		// 	{
-		// 		p.Steps.AddMaps[i].BaseSoldierNum += p.Steps.AddNums[i];
-		// 		p.Steps.AddMaps[i].UpdateMapUI();
-		// 	}
-		// }
+		foreach(Operator p in players)
+		{
+			for (i = 0; i < p.Steps.AddMaps.Count; i++)
+			{
+				p.Steps.AddMaps[i].BaseSoldierNum += p.Steps.AddNums[i];
+				p.Steps.AddMaps[i].UpdateMapUI();
+			}
+		}
 		//指挥过程
 		foreach(Operator p in players)
 		{
 			Debug.Log(p.gameObject.name + ":" + p.Steps.CommandMaps.Count);
 			foreach(Map m in p.Steps.CommandMaps)
 			{
+				if (m.PlayerID != p.PlayerID)
+				{
+					continue;
+				}
 				AttackCaculation(m);
 			}
+		}
+		foreach(Operator p in players)
+		{
 			//初始化士兵数
 			p.SoldierNum = 5;
+			//初始化统帅值
+			p.LeaderPoint = 0;
 		}
 		//每个地图管理检查士兵数的增加
 		foreach(MapManager mm in mapManagers)
@@ -154,7 +211,17 @@ public class GameManager : MonoBehaviour
 			if (p.Maps.Count == 0)
 			{
 				gameStart = false;
+				if (p.tag == "Player")
+				{
+					loseUI.SetActive(true);
+				}
+				else
+				{
+					winnerUI.SetActive(true);
+				}
+				reStartButton.SetActive(true);
 				Debug.Log("游戏结束");
+				return;
 			}
 		}
 		//还原操作状态
@@ -163,6 +230,17 @@ public class GameManager : MonoBehaviour
 			p.CleanSteps();
 			p.ChangeOperateStateStart();
 			p.UpdateSoldierNum();
+		}
+		//清除本回合buff并设置下回合buff
+		for (i = buffMap.Count - 1; i >= 0; i--)
+		{
+			buffMap[i].CleanBuff();
+			if (buffMap[i].all_buff.Count == 0)
+			{
+				buffMap.Remove(buffMap[i]);
+				continue;
+			}
+			buffMap[i].CheckBuff();
 		}
 		startCaculate = false;
 	}
@@ -278,6 +356,10 @@ public class GameManager : MonoBehaviour
 				if (targetMaps[i].PlayerID != -1)
 				{
 					players[targetMaps[i].PlayerID].Maps.Remove(targetMaps[i]);
+					if (players[targetMaps[i].PlayerID].Steps.CommandMaps.Contains(targetMaps[i]))
+					{
+						players[targetMaps[i].PlayerID].Steps.CommandMaps.Remove(targetMaps[i]);
+					}
 				}
 				targetMaps[i].PlayerID = startMap.PlayerID;
 				targetMaps[i].UpdateFlagUI();
@@ -285,6 +367,10 @@ public class GameManager : MonoBehaviour
 			}
 			Debug.Log(moveNums[i]);
 			startMap.BaseSoldierNum -= moveNums[i];
+			if (startMap.BaseSoldierNum == 0)
+			{
+				startMap.BaseSoldierNum = 1;
+			}
 			//更新UI显示
 			startMap.UpdateMapUI();
 			targetMaps[i].UpdateMapUI();
@@ -294,7 +380,7 @@ public class GameManager : MonoBehaviour
 	/// <summary>
 	/// 开始游戏
 	/// </summary>
-	public void StartGame()
+	public void StartGame(GameObject button)
 	{
 		Debug.Log("开始");
 		gameStart = true;
@@ -303,6 +389,7 @@ public class GameManager : MonoBehaviour
 			p.ChangeOperateStateStart();
 			p.GameStart = true;
 		}
+		button.SetActive(false);
 	}
 
 	/// <summary>
@@ -316,6 +403,7 @@ public class GameManager : MonoBehaviour
 		{
 			p.GameStart = gameStart;
 		}
+		Application.Quit();
 	}
 
 	public Operator[] Players 

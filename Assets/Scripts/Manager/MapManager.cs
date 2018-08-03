@@ -14,12 +14,17 @@ public class MapManager : MonoBehaviour
 	[SerializeField]
 	[Header("士兵数收益")]
 	private int addSoldierNum = 1;
+	/*统帅值收益*/
+	[SerializeField]
+	[Header("统帅值收益")]
+	private int addLeaderPoint = 1;
 	/*初始时所属玩家ID*/
 	[SerializeField]
 	private int playerID = -1;
 	/*在GameManager处的ID*/
 	[SerializeField]
 	private int mapManagerID = -1;
+	public List<int> initIndex = new List<int>();
 
 	public void CheckUpdateAdd()
 	{
@@ -36,6 +41,7 @@ public class MapManager : MonoBehaviour
 			return;
 		}
 		GameManager.Instance.Players[playerID].SoldierNum += addSoldierNum;
+		GameManager.Instance.Players[playerID].LeaderPoint += addLeaderPoint;
 	}
 
 	/// <summary>
@@ -49,16 +55,24 @@ public class MapManager : MonoBehaviour
 			manageBlocks[i].Terrain = terrain; //地形
 			manageBlocks[i].MapID_MapManager = i; //在此处的索引
 			manageBlocks[i].MapManagerID = mapManagerID; //manager的编号
-			manageBlocks[i].PlayerID = playerID; //所属玩家的ID
 			manageBlocks[i].Init_Start(); //开始初始化地图
-			manageBlocks[i].UpdateFlagUI();
 			if (playerID == -1)
 			{
+				manageBlocks[i].PlayerID = -1;
+				manageBlocks[i].UpdateFlagUI();
 				continue;
 			}
-			GameManager.Instance.Players[playerID].Maps.Add(manageBlocks[i]);
+			if (initIndex.Contains(i))
+			{
+				manageBlocks[i].PlayerID = playerID; //所属玩家的ID
+				GameManager.Instance.Players[playerID].Maps.Add(manageBlocks[i]);
+			}
+			else
+			{
+				manageBlocks[i].PlayerID = -1;
+			}
+			manageBlocks[i].UpdateFlagUI();
 		}
-		//Debug.Log(i);
 	}
 
 	public Map[] M_mapBlocks

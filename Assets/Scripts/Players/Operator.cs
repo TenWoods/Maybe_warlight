@@ -30,7 +30,7 @@ public abstract class Operator : MonoBehaviour
 	[SerializeField]
 	protected int leaderPoint;
 	/*手牌最大的数量*/
-	protected static int cards_Num_Max = 20;
+	protected static int cards_Num_Max = 12;
 	/*本回合抽牌的数量*/
 	protected int getCardNum = 1;
 	/*手牌实体*/
@@ -47,7 +47,7 @@ public abstract class Operator : MonoBehaviour
 	/*玩家操作记录*/
 	protected PlayerStep steps;
 
-	protected virtual void Start() 
+	protected virtual void Awake() 
 	{
 		maps = new List<Map>();
 		cardObjects = new List<Card>();

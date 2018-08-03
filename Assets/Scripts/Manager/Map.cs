@@ -12,6 +12,32 @@ public enum Terrain
 	VALLY
 };
 
+public class Buff
+{
+	public int lastTurn;
+	public float attackBuff;
+	public float defendBuff;
+
+	public Buff(int lastTurn, float attackBuff, float defendBuff)
+	{
+		this.lastTurn = lastTurn;
+		this.attackBuff = attackBuff;
+		this.defendBuff = defendBuff;
+	}
+}
+
+public class Command
+{
+	public Map map;
+	public int soldierNum;
+
+	public Command(Map m, int num)
+	{
+		map = m;
+		soldierNum = num;
+	}
+}
+
 public class Map : MonoBehaviour
 {
 	/*地图的地形属性*/
@@ -62,10 +88,14 @@ public class Map : MonoBehaviour
 	public List<Map> MoveDirMap;
 	/*移动士兵数量*/
 	public List<int> MoveSoldierNum;
+	/*地图上的buff*/
+	public List<Buff> all_buff;
 	/*旗子UI*/
 	public Image flagUI;
 	/*旗子图片*/
 	public Sprite[] flag_Sprite;
+	/*是否检查了buff*/
+	public bool isChecked = false;
 
 	/// <summary>
 	/// 根据初始数据进行初始化
@@ -78,6 +108,7 @@ public class Map : MonoBehaviour
 		GetNextBlock();
 		arrows_Green = new List<GameObject>();
 		arrows_Red = new List<GameObject>();
+		all_buff = new List<Buff>();
 		InitMapUI();
 	}
 
@@ -158,6 +189,44 @@ public class Map : MonoBehaviour
 	public void UpdateMapUI()
 	{
 		baseSoldierNum_UI.text = baseSoldierNum.ToString();
+	}
+
+	/// <summary>
+	/// 检查当前回合buff
+	/// </summary>
+	public void CheckBuff()
+	{
+		if (isChecked)
+		{
+			return;
+		}
+		foreach(Buff b in all_buff)
+		{
+			attackPower += b.attackBuff;
+			defendPower += b.defendBuff;
+		}
+		isChecked = true;
+	}
+
+	/// <summary>
+	/// 清除这回合buff
+	/// </summary>
+	public void CleanBuff()
+	{
+		isChecked = false;
+		foreach(Buff b in all_buff)
+		{
+			attackPower -= b.attackBuff;
+			defendPower -= b.defendBuff;
+		}
+		for (int i = all_buff.Count - 1; i >= 0; i--)
+		{
+			all_buff[i].lastTurn -= 1;
+			if (all_buff[i].lastTurn <= 0)
+			{
+				all_buff.Remove(all_buff[i]);
+			}
+		}
 	}
 
 	/// <summary>

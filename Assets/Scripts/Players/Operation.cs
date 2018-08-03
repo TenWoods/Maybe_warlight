@@ -13,16 +13,14 @@ public class Operation : MonoBehaviour
 	private GameObject clickMap;
 	/*卡牌使用阶段选择的卡牌*/
 	private GameObject clickCard;
-	/*选中单个目标*/
-	private GameObject singleObject = null;
-	/*选中多个目标*/
-	private GameObject[] multiObject = null;
 	/*增兵阶段的目前士兵数*/
+	private int soldierNum_All;
 	private int soldierNum_current;
 	/*卡牌使用阶段统帅值*/
+	private int leaderPoint_All;
 	private int leaderPoint_current;
 	/*记录玩家行为步骤*/
-	private PlayerStep save_Steps;
+	public PlayerStep save_Steps;
 	/*箭头预制体*/
 	private GameObject arrow;
 	/*获取单步派兵数量(由UI控制)*/
@@ -33,6 +31,12 @@ public class Operation : MonoBehaviour
 	public GameObject dataUI;
 	public Text attckText;
 	public Text defendText; 
+	/*士兵数UI*/
+	public Text soldierNumUI;
+	/*统帅值UI*/
+	public Text leaderPointUI;
+	//选择进阶卡
+	public bool getUpCard = false;
 
 	/// <summary>
 	/// 操作类的构造函数
@@ -55,6 +59,10 @@ public class Operation : MonoBehaviour
 	{
 		soldierNum_current = player.SoldierNum;
 		leaderPoint_current = player.LeaderPoint;
+		leaderPoint_All = player.LeaderPoint;
+		soldierNum_All = player.SoldierNum;
+		soldierNumUI.text = "增兵  " + soldierNum_current.ToString() + "/" + soldierNum_All;
+		leaderPointUI.text = "统率值: " + leaderPoint_All.ToString();
 		//TODO:可能会有其他的更新
 	}
 
@@ -117,7 +125,7 @@ public class Operation : MonoBehaviour
 			RaycastHit2D hitInfo = Physics2D.Raycast(mousPos, Vector2.zero);
 			if (hitInfo.collider != null)
 			{
-				if (hitInfo.collider.tag == "Map" && state != OperateState.USE_CARDS)
+				if (hitInfo.collider.tag == "Map")
 				{
 					dataUI.SetActive(true);
 					Map map = hitInfo.collider.gameObject.GetComponent<Map>();
@@ -154,6 +162,7 @@ public class Operation : MonoBehaviour
 			save_Steps.SaveAddSteps(1, mapBlock.GetComponent<Map>());
 			mapBlock.GetComponent<Map>().AddSoldier();
 			soldierNum_current -= 1;
+			soldierNumUI.text = "增兵  " + soldierNum_current.ToString() + "/" + soldierNum_All;
 		}
 	}
 
@@ -250,6 +259,14 @@ public class Operation : MonoBehaviour
 		{
 			return;
 		}
+		if (getUpCard)
+		{
+			return;
+		}
+		if (!card.GetComponent<Card>().inHand)
+		{
+			return;
+		}
 		if (clickCard == card)
 		{
 			return;
@@ -260,7 +277,11 @@ public class Operation : MonoBehaviour
 		} 
 		clickCard = card;
 		clickCard.GetComponent<Card>().Click(this);
-		clickCard.GetComponent<RectTransform>().localScale *= 2;
+	}
+
+	public void UpdateLeaderPointUI()
+	{
+		leaderPointUI.text = "统率值: " + leaderPoint_current.ToString();
 	}
 
 	#endregion

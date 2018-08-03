@@ -11,9 +11,9 @@ public class AIController : Operator
 	private List<int> cards_in_hand;
 	public bool useAI = false;
 	
-	protected override void Start() 
+	protected override void Awake() 
 	{
-		base.Start();
+		base.Awake();
 		commandMap = new List<Map>();
 		cards_in_hand = new List<int>();
 	}
@@ -69,8 +69,8 @@ public class AIController : Operator
 	public override void ChangeOperateStateStart()
 	{
 		opState = OperateState.OP_START;
-		GetCard(getCardNum);
-		getCardNum = 1;   //重置每回合的抽牌数量
+		//GetCard(getCardNum);
+		//getCardNum = 1;   //重置每回合的抽牌数量
 		//TODO:每回合刚开始的初始化
 	}
 
@@ -181,6 +181,7 @@ public class AIController : Operator
 	/// </summary>
 	private void Attack_AI()
 	{
+		Debug.Log(soldierNum);
 		float attackPower = 0;
 		float defendPower = 0;
 		int addNum;
@@ -194,7 +195,7 @@ public class AIController : Operator
 		}
 		foreach(Map m in commandMap)
 		{	
-			for(int i = 0; i < m.MoveDirMap.Count; i++)
+			for(int i = m.MoveDirMap.Count - 1; i >= 0; i--)
 			{
 				addNum = 0;
 				attackPower = m.AttackPower;
@@ -267,12 +268,13 @@ public class AIController : Operator
 				#endregion
 				//所需兵力
 				addNum = (int)(m.MoveDirMap[i].BaseSoldierNum * defendPower / attackPower + 0.5f);
-				addNum += 2; //剩下一个保留的在原地图
+				addNum += 1; //剩下一个保留的在原地图
 				//TODO:测试
 				if ((soldierNum - addNum) <= 0)
 				{
 					//Debug.Log("数量不够");
-					m.MoveDirMap.Remove(m.MoveDirMap[i]);
+					m.MoveDirMap.RemoveAt(i);
+
 				}
 				else
 				{
@@ -289,13 +291,5 @@ public class AIController : Operator
 		}
 		//结束回合
 		opState = OperateState.OP_END;
-	}
-
-	/// <summary>
-	/// 出牌(AI)
-	/// </summary>
-	private void CARD_AI()
-	{
-
 	}
 }

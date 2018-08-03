@@ -13,7 +13,6 @@ public class Card_1 : Card
 
 	public override void CardEffect()
 	{
-		Debug.Log("Check");
 		if (Input.GetMouseButtonDown(0))
 		{
 			Vector2 mousPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -28,46 +27,20 @@ public class Card_1 : Card
 						Debug.Log("对象错误(卡牌)");
 						return;
 					}
-					if (!upgrade)
-					{
-						targetMap.BaseSoldierNum += addSoldierNum;
-					}
-					else
-					{
-						targetMap.BaseSoldierNum += addSoldierNum;
-					}
+					targetMap.BaseSoldierNum += addSoldierNum;
 					targetMap.UpdateMapUI();
-					GameManager.Instance.Players[playerID].LeaderPoint -= leaderPoint;
+					playerOP.LeaderPoint -= leaderPoint;
+					playerOP.UpdateLeaderPointUI();
 					hasUsed = true;
 				}
 			}
 		}
 	}
 
-	public override bool CardEffect(int playerID, GameObject target)
-	{
-		Map targetMap = target.GetComponent<Map>();
-		if (targetMap.PlayerID != playerID)
-		{
-			Debug.Log("对象错误(卡牌)");
-			return false;
-		}
-		if (!upgrade)
-		{
-			targetMap.BaseSoldierNum += addSoldierNum;
-		}
-		else
-		{
-			targetMap.BaseSoldierNum += addSoldierNum;
-		}
-		targetMap.UpdateMapUI();
-		GameManager.Instance.Players[playerID].LeaderPoint -= leaderPoint;
-		return true;
-	}
-
 	public override void UpGrade()
 	{
 		addSoldierNum = 20;
 		leaderPoint = 4;
+		upgrade = true;
 	}
 }

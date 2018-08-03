@@ -13,9 +13,16 @@ public enum CardOpKind
 public class Card : MonoBehaviour 
 {
 	/*使用玩家编号*/
+	[SerializeField]
 	protected int playerID;
 	/*是否进阶*/
 	protected bool upgrade = false;
+	/*卡牌效果说明*/
+	[SerializeField]
+	protected GameObject[] tips;
+	/*卡牌图片*/
+	[SerializeField]
+	protected Sprite[] images;
 	/*所需统帅值*/
 	[SerializeField]//调试用
 	protected int leaderPoint = 1;
@@ -27,16 +34,21 @@ public class Card : MonoBehaviour
 	private Vector3 destination;
 	/*卡牌移动速度*/
 	[SerializeField]
-	private float moveSpeed = 1;
+	private float moveSpeed = 800;
 	/*卡牌使用信号*/
 	protected bool hasUsed = false;
-	/*卡牌跟随鼠标移动*/
+	/*音效*/
+	public AudioSource ados;
+	/*卡牌操作*/
 	private bool moveWithMouse = false;
 	protected bool effective = false;
 	private RectTransform rt;
 	private Vector3 startPos;
 	private Vector3 handPos = Vector3.zero;
-	private Operation playerOP;
+	protected Operation playerOP;
+	private bool isSmall = false;
+	public bool inHand = false;
+	
 
 	private void Start() 
 	{
@@ -69,13 +81,24 @@ public class Card : MonoBehaviour
 			}
 			rt.position = Input.mousePosition;
 			//出牌
-			Debug.Log(rt.position.y);
-			Debug.Log(Screen.height / 2);
+			if (rt.position.y > Screen.height / 4 && (tips[0].activeSelf || tips[1].activeSelf))
+			{
+				ados.Play();
+				rt.localScale /= 2;
+				isSmall = true;
+				if (!upgrade)
+				{
+					tips[0].SetActive(false);
+				}
+				else
+				{
+					tips[1].SetActive(false);
+				}
+			}
 			if (rt.position.y > Screen.height / 2)
 			{
 				if (playerOP.LeaderPoint - leaderPoint < 0)
 				{
-					Debug.Log("Use");
 					CancelClick();
 				}
 				else
@@ -151,6 +174,17 @@ public class Card : MonoBehaviour
 	{
 		playerOP = op;
 		moveWithMouse = true;
+		rt.localScale *= 2;
+		if (!upgrade)
+		{
+			this.GetComponent<Image>().sprite = images[0];
+			tips[0].SetActive(true);
+		}
+		else
+		{
+			this.GetComponent<Image>().sprite = images[1];
+			tips[1].SetActive(true);
+		}
 	}
 
 	/// <summary>
@@ -160,6 +194,18 @@ public class Card : MonoBehaviour
 	{
 		moveWithMouse = false;
 		rt.position = handPos;
+		if (!upgrade)
+		{
+			tips[0].SetActive(false);
+		}
+		else
+		{
+			tips[1].SetActive(false);
+		}
+		if (isSmall)
+		{
+			return;
+		}
 		rt.localScale /= 2;
 	}
 

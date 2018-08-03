@@ -12,6 +12,14 @@ public class PlayerStep
 	private List<Map> commandMaps;
 	/*卡牌使用集合*/
 	private List<Map> cardMaps;
+	/*伤害集合*/
+	public List<int> damage;
+	/*卡牌改变地图所属*/
+	public List<Map> cardBelongMap;
+	/*判断条件*/
+	public List<int> condition;
+	/*所属ID*/
+	public List<int> id;
 
 	public PlayerStep()
 	{
@@ -19,6 +27,10 @@ public class PlayerStep
 		addNums = new List<int>();
 		commandMaps = new List<Map>();
 		cardMaps = new List<Map>();
+		damage = new List<int>();
+		cardBelongMap = new List<Map>();
+		condition = new List<int>();
+		id = new List<int>();
 	}
 
 
@@ -74,6 +86,11 @@ public class PlayerStep
 	/// </summary>
 	public void SaveCommamdSteps(Map startMap, int moveNum)
 	{
+		if (commandMaps.Contains(startMap))
+		{
+			startMap.MoveSoldierNum.Add(moveNum);
+			return;
+		}
 		commandMaps.Add(startMap);
 		startMap.MoveSoldierNum.Add(moveNum);
 	}
@@ -82,13 +99,25 @@ public class PlayerStep
 	/// 储存卡牌操作阶段
 	/// </summary>
 	/// <param name="map">作用的卡牌</param>
-	public void SaveCardSteps(Map map)
+	public void SaveCardSteps(Map map, int damage)
 	{
 		if (cardMaps.Contains(map))
 		{
 			return;
 		}
 		cardMaps.Add(map);
+		this.damage.Add(damage);
+	}
+
+	public void SaveCardSteps(Map map, int condition, int id)
+	{
+		if (cardMaps.Contains(map))
+		{
+			return;
+		}
+		cardBelongMap.Add(map);
+		this.condition.Add(condition);
+		this.id.Add(id);
 	}
 
 	public void CleanSteps()
@@ -126,6 +155,14 @@ public class PlayerStep
 		get
 		{
 			return commandMaps;
+		}
+	}
+
+	public List<Map> CardMaps 
+	{
+		get
+		{
+			return cardMaps;
 		}
 	}
 }
