@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class PlayerStep
 {
+	/*所属ID*/
+	public List<int> id;
 	/*增兵地图块集合*/
 	private List<Map> addMaps;
 	/*增兵数量集合*/
 	private List<int> addNums;
 	/*指挥地图块集合*/
 	private List<Map> commandMaps;
+	//卡牌相关
 	/*卡牌使用集合*/
 	private List<Map> cardMaps;
 	/*伤害集合*/
 	public List<int> damage;
 	/*卡牌改变地图所属*/
 	public List<Map> cardBelongMap;
-	/*判断条件*/
+	/*所属改变的判断条件*/
 	public List<int> condition;
-	/*所属ID*/
-	public List<int> id;
-
+	
 	public PlayerStep()
 	{
 		addMaps = new List<Map>();

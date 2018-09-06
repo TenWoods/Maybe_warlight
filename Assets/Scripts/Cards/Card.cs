@@ -41,12 +41,15 @@ public class Card : MonoBehaviour
 	public AudioSource ados;
 	/*卡牌操作*/
 	private bool moveWithMouse = false;
+	/*卡牌效果生效,卡牌回位*/
 	protected bool effective = false;
 	private RectTransform rt;
 	private Vector3 startPos;
 	private Vector3 handPos = Vector3.zero;
 	protected Operation playerOP;
+	/*卡牌是否变小*/
 	private bool isSmall = false;
+	/*卡牌是否在手上(游戏开始的时候所有的卡牌都在场景中)*/
 	public bool inHand = false;
 	
 
@@ -83,6 +86,7 @@ public class Card : MonoBehaviour
 			//出牌
 			if (rt.position.y > Screen.height / 4 && (tips[0].activeSelf || tips[1].activeSelf))
 			{
+				//音效播放
 				ados.Play();
 				rt.localScale /= 2;
 				isSmall = true;
@@ -159,7 +163,7 @@ public class Card : MonoBehaviour
 	/// <summary>
 	/// 设置卡牌移动方向并开启移动
 	/// </summary>
-	/// <param name="destination"></param>
+	/// <param name="des"></param>
 	public void SetCardMoveDir(Vector3 des)
 	{
 		destination = des;
@@ -204,9 +208,11 @@ public class Card : MonoBehaviour
 		}
 		if (isSmall)
 		{
+			isSmall = false;
 			return;
 		}
 		rt.localScale /= 2;
+		isSmall = false;
 	}
 
 	public bool HasUsed

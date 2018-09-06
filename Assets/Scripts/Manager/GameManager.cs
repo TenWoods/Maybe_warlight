@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
 				players[0].Steps.CardMaps[i].UpdateMapUI();
 			}
 		}
-		//卡牌改变所属
+		//卡牌效果改变所属
 		for(i = 0; i < players[0].Steps.cardBelongMap.Count; i++)
 		{
 			if (players[0].Steps.cardBelongMap[i].BaseSoldierNum < players[0].Steps.condition[i])

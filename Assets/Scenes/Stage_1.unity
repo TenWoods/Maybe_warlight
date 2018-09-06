@@ -17834,7 +17834,7 @@ Prefab:
     - target: {fileID: 114449962417713422, guid: 599c312acd813be449963758c8bb05f3,
         type: 2}
       propertyPath: useAI
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114406850631358222, guid: 599c312acd813be449963758c8bb05f3,
         type: 2}
