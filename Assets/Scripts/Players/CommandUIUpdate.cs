@@ -98,6 +98,7 @@ public class CommandUIUpdate : MonoBehaviour
 		// 	}
 		// 	a.SetActive(false);
 		// }
+		GameObject.FindWithTag("Player").GetComponent<Operation>().ChooseMap = null;
 		this.gameObject.SetActive(false);
 	}
 
@@ -115,6 +116,7 @@ public class CommandUIUpdate : MonoBehaviour
 			}
 			a.SetActive(false);
 		}
+		GameObject.FindWithTag("Player").GetComponent<Operation>().ChooseMap = null;
 		this.gameObject.SetActive(false);
 	}
 

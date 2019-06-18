@@ -21,6 +21,9 @@ public class Operation : MonoBehaviour
 	private int leaderPoint_current;
 	/*记录玩家行为步骤*/
 	public PlayerStep save_Steps;
+	/*指挥阶段选中的地图*/
+	[SerializeField]
+	private GameObject chooseMap = null;
 	/*箭头预制体*/
 	private GameObject arrow;
 	/*获取单步派兵数量(由UI控制)*/
@@ -103,14 +106,23 @@ public class Operation : MonoBehaviour
 					//指挥士兵
 					case OperateState.COMMAND_SOLDIER:
 					{
-						if (hitInfo.collider.tag == "Map" && !commandUI.activeSelf)
+						if (hitInfo.collider.tag == "Map" && !commandUI.activeSelf && chooseMap == null)
 						{
 							commandUI.SetActive(false);
 							DrawArrows(hitInfo.collider.gameObject);	
 						}
-						if (hitInfo.collider.tag == "Arrow")
+						else if (hitInfo.collider.gameObject != chooseMap)
 						{
-							CommandSoilderUI(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
+							if (chooseMap.GetComponent<Map>().NextMaps.Contains(hitInfo.collider.gameObject.GetComponent<Map>()))
+							{
+								CommandSoilderUI(hitInfo.collider.gameObject, clickMap.GetComponent<Map>());
+							}
+						}
+						else if (hitInfo.collider.gameObject == chooseMap)
+						{
+							Debug.Log("Cancel");
+							ArrowManager.Instance.DisabledArrows();
+							chooseMap = null;
 						}
 						break;
 					}
@@ -183,6 +195,7 @@ public class Operation : MonoBehaviour
 			Debug.Log("没有权限");
 			return;
 		}
+		chooseMap = mapBlock;
 		if (clickMap != null)
 		{
 			for (int i = 0; i < ArrowManager.Instance.Arrows_Able.Count; i++)
@@ -228,18 +241,28 @@ public class Operation : MonoBehaviour
 	/// <summary>
 	/// 显示指挥UI
 	/// </summary>
-	/// <param name="arrow">点击的箭头</param>
-	private void CommandSoilderUI(GameObject arrow, Map startMap)
+	/// <param name="targetMap">点击的箭头</param>
+	private void CommandSoilderUI(GameObject targetMap, Map startMap)
 	{
 		int index;
-		if (startMap.Arrows_Green.Contains(arrow))
+		GameObject arrow;
+		index = startMap.NextMaps.IndexOf(targetMap.GetComponent<Map>());
+		if (targetMap.GetComponent<Map>().PlayerID != playerID)
 		{
-			index = startMap.Arrows_Green.IndexOf(arrow);
+			arrow = startMap.Arrows_Red[index];
 		}
 		else
 		{
-			index = startMap.Arrows_Red.IndexOf(arrow);
+			arrow = startMap.Arrows_Green[index];
 		}
+		// if (startMap.Arrows_Green.Contains(targetMap))
+		// {
+		// 	index = startMap.Arrows_Green.IndexOf(targetMap);
+		// }
+		// else
+		// {
+		// 	index = startMap.Arrows_Red.IndexOf(targetMap);
+		// }
 		commandUI.SetActive(true);
 		//把步骤储存交给UI控制类
 		commandUI.GetComponent<CommandUIUpdate>().SetCommandUI(startMap.BaseSoldierNum, startMap, startMap.NextMaps[index], save_Steps, arrow);
@@ -327,6 +350,14 @@ public class Operation : MonoBehaviour
 		set
 		{
 			leaderPoint_current = value;
+		}
+	}
+
+	public GameObject ChooseMap
+	{
+		set
+		{
+			chooseMap = value;
 		}
 	}
 }
